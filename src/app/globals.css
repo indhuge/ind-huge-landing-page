@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.gradient {
+  @apply bg-gradient-to-bl from-[#001E71] to-[#36FB7B];
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
