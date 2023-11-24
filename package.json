@@ -18,7 +18,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.24",
+    "@slicemachine/adapter-next": "^0.3.25",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -26,7 +26,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "postcss": "^8",
-    "slice-machine-ui": "^1.19.2",
+    "slice-machine-ui": "^1.20.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

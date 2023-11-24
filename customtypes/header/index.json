@@ -1,0 +1,69 @@
+{
+  "id": "header",
+  "label": "Header",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "logo_mobile": {
+        "type": "Image",
+        "config": {
+          "label": "Logo Mobile",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "links": {
+        "type": "Group",
+        "config": {
+          "label": "Links",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Text",
+              "config": {
+                "label": "Link",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "label_cta": {
+        "type": "Text",
+        "config": {
+          "label": "Label CTA",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}
