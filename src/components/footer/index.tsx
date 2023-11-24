@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-async-client-component */
+//"use client";
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
 import { PrismicNextImage } from "@prismicio/next";
@@ -9,12 +11,13 @@ type Params = { uid: string };
 
 export default async function Page() {
     const client = createClient();
-    const iconeLocalizacao = require("../../../public/assets/icone-localizacao.svg");
-    var checkbox = false;
     const page = await client
         .getByUID("footer", "footer")
     //.catch(() => notFound());
-
+    console.log(typeof page);
+    const iconeLocalizacao = require("../../../public/assets/icone-localizacao.svg");
+    //const [checkbox, setCheckbox] = useState(false);
+    
     return (
         <div 
             className={`
@@ -69,9 +72,9 @@ export default async function Page() {
                             <input className="border-none bg-transparent w-full p-2.5" type="email" name="email" placeholder="Digite seu melhor e-mail..." required />
                         </div>
                         <div className="flex items-center justify-between">
-                            <input className="scale-150 -mr-12" type="checkbox" name="corcordo" onChange={()=>{checkbox = !checkbox; console.log(checkbox)}} required />
+                            <input className="scale-150 -mr-12" type="checkbox" name="corcordo" /*onChange={()=>setCheckbox(!checkbox)}*/ required />
                             <label>Concordo em receber e-mails</label>
-                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 " type="submit" value="INSCREVER-SE" />
+                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 " type="submit" value="INSCREVER-SE" disabled={false} />
                         </div>
                     </form>
                 </div>
@@ -106,3 +109,13 @@ export async function generateStaticParams() {
         return { uid: page.uid };
     });
 }
+/*
+export async function getStaticProps(){
+    const client = createClient();
+    const page = await client
+        .getByUID("footer", "footer")
+    //.catch(() => notFound());
+    console.log(typeof page);
+    return {props: {page}}
+}
+*/

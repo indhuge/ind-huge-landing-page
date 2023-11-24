@@ -27,7 +27,7 @@ export default async function Page() {
             <div className="flex-auto justify-end">
                 <PrismicNextImage field={page?.data?.logo} />
             </div>
-            <div className="flex-none flex space-x-4 justify-center tablet:hidden">
+            <div className="flex-none flex space-x-4 justify-center TabletPortrait:hidden">
                 {page?.data?.links.map((i, index) => {
                     let link = i?.link as string
                     return (
@@ -35,7 +35,7 @@ export default async function Page() {
                     );
                 })}
             </div>
-            <div className="flex flex-none space-x-4 tablet:hidden">
+            <div className="flex flex-none space-x-4 TabletPortrait:hidden">
                 <button className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue hover:scale-105">{page?.data?.label_cta}</button>
                 <button className="flex-initial bg-green px-3 py-2 rounded-full text-darkblue hover:scale-105"><Image src={iconeUsuario} alt="Icone Usuário"/></button>
             </div>
