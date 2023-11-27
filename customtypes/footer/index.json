@@ -94,7 +94,10 @@
               "type": "Image",
               "config": {
                 "label": "Icone",
-                "constraint": {},
+                "constraint": {
+                  "width": 15,
+                  "height": 15
+                },
                 "thumbnails": []
               }
             },

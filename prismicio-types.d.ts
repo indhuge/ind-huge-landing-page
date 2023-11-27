@@ -4,6 +4,234 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type BannerDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Banner documents
+ */
+interface BannerDocumentData {
+  /**
+   * Título field in *Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * Subtítulo field in *Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.subtitulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitulo: prismic.KeyTextField;
+
+  /**
+   * Texto field in *Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.texto
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  texto: prismic.KeyTextField;
+
+  /**
+   * Label_CTA field in *Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.label_cta
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_cta: prismic.KeyTextField;
+
+  /**
+   * Video field in *Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.video
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  video: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Banner*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BannerDocumentDataSlicesSlice> /**
+   * Meta Description field in *Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: banner.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Banner*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: banner.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Banner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: banner.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Banner document from Prismic
+ *
+ * - **API ID**: `banner`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BannerDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<BannerDocumentData>, "banner", Lang>;
+
+/**
+ * Item in *Contato → Titulo*
+ */
+export interface ContatoDocumentDataTituloItem {
+  /**
+   * Texto field in *Contato → Titulo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.titulo[].texto
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  texto: prismic.KeyTextField;
+
+  /**
+   * Cor field in *Contato → Titulo*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: FFFFFF
+   * - **API ID Path**: contato.titulo[].cor
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  cor: prismic.ColorField;
+}
+
+type ContatoDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Contato documents
+ */
+interface ContatoDocumentData {
+  /**
+   * Titulo field in *Contato*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.titulo[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  titulo: prismic.GroupField<Simplify<ContatoDocumentDataTituloItem>>;
+
+  /**
+   * Descrição field in *Contato*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.descricao
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  descricao: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Contato*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContatoDocumentDataSlicesSlice> /**
+   * Meta Description field in *Contato*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: contato.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Contato*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Contato*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: contato.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Contato document from Prismic
+ *
+ * - **API ID**: `contato`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContatoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ContatoDocumentData>,
+    "contato",
+    Lang
+  >;
+
 /**
  * Item in *Footer → Links Navegação*
  */
@@ -358,6 +586,17 @@ interface HeaderDocumentData {
   logo_mobile: prismic.ImageField<never>;
 
   /**
+   * Logo Menu Aberto field in *Header*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.logo_menu_aberto
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_menu_aberto: prismic.ImageField<never>;
+
+  /**
    * Links field in *Header*
    *
    * - **Field Type**: Group
@@ -378,6 +617,17 @@ interface HeaderDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_cta: prismic.KeyTextField;
+
+  /**
+   * Label Entrar field in *Header*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.label_entrar
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_entrar: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Header*
@@ -469,6 +719,8 @@ export type LandingPageDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | BannerDocument
+  | ContatoDocument
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument;
@@ -510,6 +762,13 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      BannerDocument,
+      BannerDocumentData,
+      BannerDocumentDataSlicesSlice,
+      ContatoDocument,
+      ContatoDocumentData,
+      ContatoDocumentDataTituloItem,
+      ContatoDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataLinksItem,

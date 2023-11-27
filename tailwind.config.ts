@@ -19,12 +19,12 @@ const config: Config = {
 		},
 		extend: {
 			colors: {
-				green: "#00D272",
-				darkblue: "#002748",
-				blue: "#003973",
-				lightblue: "#0060AE",
-				gray: "#BABFC0",
-				lightgray: "#E7EAE8",
+				green: "#26D07C",
+				darkblue: "#002B49",
+				blue: "#003C71",
+				lightblue: "#0080AE",
+				gray: "#BABEBF",
+				lightgray: "#E7E9E7",
 				white: "#FFFFFF",
 			},
 			backgroundImage: {

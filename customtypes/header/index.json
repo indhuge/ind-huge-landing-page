@@ -24,7 +24,21 @@
         "type": "Image",
         "config": {
           "label": "Logo Mobile",
-          "constraint": {},
+          "constraint": {
+            "width": 40,
+            "height": 40
+          },
+          "thumbnails": []
+        }
+      },
+      "logo_menu_aberto": {
+        "type": "Image",
+        "config": {
+          "label": "Logo Menu Aberto",
+          "constraint": {
+            "height": 40,
+            "width": 40
+          },
           "thumbnails": []
         }
       },
@@ -54,6 +68,13 @@
         "type": "Text",
         "config": {
           "label": "Label CTA",
+          "placeholder": ""
+        }
+      },
+      "label_entrar": {
+        "type": "Text",
+        "config": {
+          "label": "Label Entrar",
           "placeholder": ""
         }
       },
