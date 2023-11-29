@@ -653,7 +653,7 @@ interface HeaderDocumentData {
 export type HeaderDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
 
-type LandingPageDocumentDataSlicesSlice = FeaturesSliceSlice;
+type LandingPageDocumentDataSlicesSlice = CasesSliceSlice | FeaturesSliceSlice;
 
 /**
  * Content for Landing Page documents
@@ -724,6 +724,147 @@ export type AllDocumentTypes =
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument;
+
+/**
+ * Primary content in *CasesSlice → Primary*
+ */
+export interface CasesSliceSliceDefaultPrimary {
+  /**
+   * Title field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *CasesSlice → Items*
+ */
+export interface CasesSliceSliceDefaultItem {
+  /**
+   * Image field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Client field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: cases_slice.items[].client
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  client: prismic.BooleanField;
+
+  /**
+   * LeftIcon field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].lefticon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lefticon: prismic.KeyTextField;
+
+  /**
+   * LeftIconText field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].lefticontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lefticontext: prismic.KeyTextField;
+
+  /**
+   * RigthIcon field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].rigthicon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  rigthicon: prismic.ImageField<never>;
+
+  /**
+   * RigthIconText field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].rigthicontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  rigthicontext: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for CasesSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CasesSliceSliceDefaultPrimary>,
+  Simplify<CasesSliceSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CasesSlice*
+ */
+type CasesSliceSliceVariation = CasesSliceSliceDefault;
+
+/**
+ * CasesSlice Shared Slice
+ *
+ * - **API ID**: `cases_slice`
+ * - **Description**: CasesSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesSliceSlice = prismic.SharedSlice<
+  "cases_slice",
+  CasesSliceSliceVariation
+>;
 
 /**
  * Primary content in *FeaturesSlice → Primary*
@@ -874,6 +1015,11 @@ declare module "@prismicio/client" {
       LandingPageDocumentData,
       LandingPageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CasesSliceSlice,
+      CasesSliceSliceDefaultPrimary,
+      CasesSliceSliceDefaultItem,
+      CasesSliceSliceVariation,
+      CasesSliceSliceDefault,
       FeaturesSliceSlice,
       FeaturesSliceSliceDefaultPrimary,
       FeaturesSliceSliceDefaultItem,

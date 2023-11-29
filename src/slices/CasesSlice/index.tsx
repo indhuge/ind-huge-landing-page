@@ -15,8 +15,7 @@ const CasesSlice = ({ slice }: CasesSliceProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for cases_slice (variation: {slice.variation})
-      Slices
+      
     </section>
   );
 };
