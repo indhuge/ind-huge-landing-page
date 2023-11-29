@@ -1,0 +1,94 @@
+{
+  "id": "cases_slice",
+  "type": "SharedSlice",
+  "name": "CasesSlice",
+  "description": "CasesSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        },
+        "client": {
+          "type": "Boolean",
+          "config": {
+            "label": "Client",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "lefticon": {
+          "type": "Text",
+          "config": {
+            "label": "LeftIcon",
+            "placeholder": ""
+          }
+        },
+        "lefticontext": {
+          "type": "Text",
+          "config": {
+            "label": "LeftIconText",
+            "placeholder": ""
+          }
+        },
+        "rigthicon": {
+          "type": "Image",
+          "config": {
+            "label": "RigthIcon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "rigthicontext": {
+          "type": "Text",
+          "config": {
+            "label": "RigthIconText",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}
