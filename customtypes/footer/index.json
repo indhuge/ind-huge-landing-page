@@ -111,17 +111,17 @@
           }
         }
       },
-      "subtitulo_newsteller": {
+      "subtitulo_newsletter": {
         "type": "Text",
         "config": {
-          "label": "Subtítulo Newsteller",
+          "label": "Subtítulo Newsletter",
           "placeholder": ""
         }
       },
-      "descricao_newsteller": {
+      "descricao_newsletter": {
         "type": "Text",
         "config": {
-          "label": "Descrição Newsteller",
+          "label": "Descrição Newsletter",
           "placeholder": ""
         }
       },

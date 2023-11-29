@@ -16,13 +16,15 @@
     "@prismicio/client": "^7.3.1",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.3",
+    "dotenv": "^16.3.1",
     "next": "14.0.3",
     "react": "^18",
+    "react-cookie": "^6.1.1",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.25",
-    "@types/node": "^20",
+    "@types/node": "^20.10.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",

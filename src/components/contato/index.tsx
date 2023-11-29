@@ -4,7 +4,8 @@ import borda from "../../../public/assets/bordaVideo.svg";
 import { ContatoDocument } from "../../../prismicio-types";
 import TextField from "@mui/material/TextField";
 import { Checkbox, FormControlLabel, styled } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 
 type Params = { uid: string };
 
@@ -28,22 +29,80 @@ const CssTextField = styled(TextField)({
     },
 });
 
-export async function mandaForm(dados: object) {
-    var jsondados = await JSON.stringify(dados)
-    var resp = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTALID}/${process.env.HUBSPOT_FORMGUID}`,
-        { body: jsondados, method: 'POST' }
-    ).then(() => { console.log(resp) }).catch()
+export async function mandaForm(dados: any) {
+    const d = new Date();
+
+    var form = {
+        "submittedAt": d.getTime(), // This millisecond timestamp is optional. Update the value from "1517927174000" to avoid an INVALID_TIMESTAMP error.
+        "fields": [
+            {
+                "objectTypeId": "0-1",
+                "name": "firstname",
+                "value": dados?.nome
+            },
+            {
+                "objectTypeId": "0-1",
+                "name": "phone",
+                "value": dados?.telefone
+            },
+            {
+                "objectTypeId": "0-1",
+                "name": "email",
+                "value": dados?.email
+            },
+            {
+                "objectTypeId": "0-1",
+                "name": "message",
+                "value": dados?.mensagem
+            },
+            {
+                "objectTypeId": "0-1",
+                "name": "newsletter",
+                "value": dados?.newsletter
+            },
+
+        ],
+        "context": {
+            "hutk": dados?.cookie, // include this parameter and set it to the hubspotutk cookie value to enable cookie tracking on your submission
+            "pageUri": "www.indhuge.com",
+            "pageName": "Landing Page"
+        },
+        "legalConsentOptions": {
+            "consent": { // Include this object when GDPR options are enabled
+                "consentToProcess": true,
+                "text": "I agree to allow indhuge to store and process my personal data.",
+                "communications": [
+                    {
+                        "value": true,
+                        "subscriptionTypeId": 999,
+                        "text": "I agree to receive marketing communications from Example Company."
+                    }
+                ]
+            }
+        }
+    }
+
+    var jsondados = await JSON.stringify(form)
+    console.log(jsondados);
+    fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTALID}/${process.env.HUBSPOT_FORMGUID}`, {
+        headers: { 'Content-Type': 'application/json' },
+        body: jsondados,
+        method: 'POST'
+    }).then((res) => { console.log(res) }).catch()
 }
 
 export default function Page(page: any) {
     page = (page?.page) as ContatoDocument<string>
+
+    const [cookies] = useCookies(["hubspotutk"]);
 
     const [formDados, setFormDados] = useState({
         "nome": "",
         "telefone": "",
         "email": "",
         "mensagem": "",
-        "newsteller": true
+        "newsletter": true,
+        "cookie": cookies.hubspotutk
     });
 
     return (
@@ -66,7 +125,7 @@ export default function Page(page: any) {
                     </p>
                     <p className="mx-12 mb-24 text-[10px] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{page?.data?.descricao}</p>
                 </div>
-                <form onSubmit={() => { mandaForm(formDados) }} className={`flex flex-col items-start justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[40vw] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>
+                <form className={`flex flex-col items-start justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[40vw] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>
                     <CssTextField
                         className="my-4"
                         id="nome"
@@ -86,7 +145,7 @@ export default function Page(page: any) {
                         type="text"
                         label="Telefone(apenas números)"
                         placeholder="46912345678"
-                        inputProps={{ pattern:"[0-9]{10,11}", style: { color: "#FFFFFF" } }}
+                        inputProps={{ pattern: "[0-9]{10,11}", style: { color: "#FFFFFF" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.telefone}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, telefone: event.target.value }); console.log(formDados) }}
@@ -123,26 +182,17 @@ export default function Page(page: any) {
                     <div className="flex items-center justify-between w-full TabletPortrait:flex-col">
                         <FormControlLabel
                             control={
-                                <Checkbox checked={formDados.newsteller}
-                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, newsteller: event.target.checked }); console.log(formDados) }}
+                                <Checkbox checked={formDados.newsletter}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, newsletter: event.target.checked }); console.log(formDados) }}
                                     style={{ color: "white" }} defaultChecked
                                 />
                             }
                             label={<span className="text-sm Mobile:text-[4vw]">Concordo em receber e-mails</span>}
                         />
-                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="submit" value="ENVIAR MENSAGEM" />
+                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="button" onClick={() => { mandaForm(formDados) }} value="ENVIAR MENSAGEM" />
                     </div>
                 </form>
             </div>
         </div>
     );
-}
-
-export async function generateStaticParams() {
-    const client = createClient();
-    const pages = await client.getAllByType("header");
-
-    return pages.map((page) => {
-        return { uid: page.uid };
-    });
 }

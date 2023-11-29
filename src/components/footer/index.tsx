@@ -84,8 +84,8 @@ export default function Page(page: any) {
                         </div>
                     </div>
                     <form className="col-span-3 mx-5 TabletPortrait:col-span-1 TabletPortrait:mt-8 TabletPortrait:w-[90vw]">
-                        <h5 className="text-lg font-bold">{page?.data?.subtitulo_newsteller}</h5>
-                        <label>{page?.data?.descricao_newsteller}</label>
+                        <h5 className="text-lg font-bold">{page?.data?.subtitulo_newsletter}</h5>
+                        <label>{page?.data?.descricao_newsletter}</label>
                         <CssTextField
                             className="my-4"
                             id="email"

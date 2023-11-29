@@ -6,29 +6,30 @@ import { components } from "@/slices";
 import Banner from "@/components/banner";
 import Contato from "@/components/contato";
 
+
 type Params = { uid: "landing_page" };
 
 export default async function Page({ params }: { params: Params }) {
+
 	const client = createClient();
 	const page = await client
 		.getByUID("landing_page", "landing_page")
-		.catch(() => notFound());
-	const banner = await client
+		.catch(()=> notFound());
+	/*const banner = await client
 		.getByUID("banner", "banner")
-		.catch(() => notFound());
+		.catch(()=> notFound());*/
 	const contato = await client
 		.getByUID("contato", "contato")
-		.catch(() => notFound());
-
+		.catch(()=> notFound());
 
 	return (
 
 		<>
 			{/*Script Hubspot*/}
 			<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/43688574.js" />
-			<Banner page={banner} />
+			{/*<Banner page={banner} />*/}
 			<Contato page={contato} />
-			<SliceZone slices={page.data.slices} components={components} />
+			<SliceZone slices={page?.data?.slices} components={components} />
 		</>
 	);
 }

@@ -421,26 +421,26 @@ interface FooterDocumentData {
   >;
 
   /**
-   * Subtítulo Newsteller field in *Footer*
+   * Subtítulo Newsletter field in *Footer*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: footer.subtitulo_newsteller
+   * - **API ID Path**: footer.subtitulo_newsletter
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  subtitulo_newsteller: prismic.KeyTextField;
+  subtitulo_newsletter: prismic.KeyTextField;
 
   /**
-   * Descrição Newsteller field in *Footer*
+   * Descrição Newsletter field in *Footer*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: footer.descricao_newsteller
+   * - **API ID Path**: footer.descricao_newsletter
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  descricao_newsteller: prismic.KeyTextField;
+  descricao_newsletter: prismic.KeyTextField;
 
   /**
    * Direitos field in *Footer*
