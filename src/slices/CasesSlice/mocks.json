@@ -1,0 +1,120 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "fireplace",
+				"type": "Text"
+			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"value": "living",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"__TYPE__": "ImageContent",
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+								"width": 4172,
+								"height": 4000
+							},
+							"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+							"width": 4172,
+							"height": 4000,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"thumbnails": {}
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "program",
+							"type": "Text"
+						}
+					],
+					[
+						"text",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "official",
+							"type": "Text"
+						}
+					],
+					[
+						"client",
+						{
+							"__TYPE__": "BooleanContent",
+							"value": false
+						}
+					],
+					[
+						"lefticon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "want",
+							"type": "Text"
+						}
+					],
+					[
+						"lefticontext",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "composed",
+							"type": "Text"
+						}
+					],
+					[
+						"rigthicon",
+						{
+							"__TYPE__": "ImageContent",
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+								"width": 4480,
+								"height": 4480
+							},
+							"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+							"width": 4480,
+							"height": 4480,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"thumbnails": {}
+						}
+					],
+					[
+						"rigthicontext",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "influence",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]
