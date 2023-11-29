@@ -59,13 +59,6 @@
             "placeholder_false": "false"
           }
         },
-        "lefticon": {
-          "type": "Text",
-          "config": {
-            "label": "LeftIcon",
-            "placeholder": ""
-          }
-        },
         "lefticontext": {
           "type": "Text",
           "config": {
@@ -86,6 +79,14 @@
           "config": {
             "label": "RigthIconText",
             "placeholder": ""
+          }
+        },
+        "lefticon": {
+          "type": "Image",
+          "config": {
+            "label": "LeftIcon",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       }

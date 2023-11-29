@@ -796,16 +796,6 @@ export interface CasesSliceSliceDefaultItem {
   client: prismic.BooleanField;
 
   /**
-   * LeftIcon field in *CasesSlice → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cases_slice.items[].lefticon
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  lefticon: prismic.KeyTextField;
-
-  /**
    * LeftIconText field in *CasesSlice → Items*
    *
    * - **Field Type**: Text
@@ -834,6 +824,16 @@ export interface CasesSliceSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   rigthicontext: prismic.KeyTextField;
+
+  /**
+   * LeftIcon field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].lefticon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  lefticon: prismic.ImageField<never>;
 }
 
 /**
