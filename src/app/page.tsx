@@ -15,9 +15,6 @@ export default async function Page({ params }: { params: Params }) {
   const banner = await client
     .getByUID("banner", "banner")
     .catch(() => notFound());
-  const contato = await client
-    .getByUID("contato", "contato")
-    .catch(() => notFound());
   console.log(page.data.slices);
   return (
     <>
@@ -30,7 +27,6 @@ export default async function Page({ params }: { params: Params }) {
         src="//js.hs-scripts.com/43688574.js"
       />
       <Banner page={banner} />
-      <Contato page={contato} />
       <SliceZone slices={page.data.slices} components={components} />
     </>
   );
