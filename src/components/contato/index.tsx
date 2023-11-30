@@ -30,65 +30,14 @@ const CssTextField = styled(TextField)({
 });
 
 export async function mandaForm(dados: any) {
-    const d = new Date();
 
-    var form = {
-        "submittedAt": d.getTime(), // This millisecond timestamp is optional. Update the value from "1517927174000" to avoid an INVALID_TIMESTAMP error.
-        "fields": [
-            {
-                "objectTypeId": "0-1",
-                "name": "firstname",
-                "value": dados?.nome
-            },
-            {
-                "objectTypeId": "0-1",
-                "name": "phone",
-                "value": dados?.telefone
-            },
-            {
-                "objectTypeId": "0-1",
-                "name": "email",
-                "value": dados?.email
-            },
-            {
-                "objectTypeId": "0-1",
-                "name": "message",
-                "value": dados?.mensagem
-            },
-            {
-                "objectTypeId": "0-1",
-                "name": "newsletter",
-                "value": dados?.newsletter
-            },
+    dados = JSON.stringify(dados)
 
-        ],
-        "context": {
-            "hutk": dados?.cookie, // include this parameter and set it to the hubspotutk cookie value to enable cookie tracking on your submission
-            "pageUri": "www.indhuge.com",
-            "pageName": "Landing Page"
-        },
-        "legalConsentOptions": {
-            "consent": { // Include this object when GDPR options are enabled
-                "consentToProcess": true,
-                "text": "I agree to allow indhuge to store and process my personal data.",
-                "communications": [
-                    {
-                        "value": true,
-                        "subscriptionTypeId": 999,
-                        "text": "I agree to receive marketing communications from Example Company."
-                    }
-                ]
-            }
-        }
-    }
-
-    var jsondados = await JSON.stringify(form)
-    console.log(jsondados);
-    fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTALID}/${process.env.HUBSPOT_FORMGUID}`, {
-        headers: { 'Content-Type': 'application/json' },
-        body: jsondados,
-        method: 'POST'
-    }).then((res) => { console.log(res) }).catch()
+    fetch("/api/formularioContato", {
+        headers: { "Content-Type": "application/json" },
+        body: dados,
+        method: "POST"
+    })
 }
 
 export default function Page(page: any) {
@@ -125,9 +74,8 @@ export default function Page(page: any) {
                     </p>
                     <p className="mx-12 mb-24 text-[10px] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{page?.data?.descricao}</p>
                 </div>
-                <form className={`flex flex-col items-start justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[40vw] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>
+                <form className={`flex flex-col items-start space-y-4 justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[40vw] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>
                     <CssTextField
-                        className="my-4"
                         id="nome"
                         type="text"
                         label="Nome Completo"
@@ -140,7 +88,6 @@ export default function Page(page: any) {
                         required
                     />
                     <CssTextField
-                        className="my-4"
                         id="telefone"
                         type="text"
                         label="Telefone(apenas números)"
@@ -153,7 +100,6 @@ export default function Page(page: any) {
                         required
                     />
                     <CssTextField
-                        className="my-4"
                         id="email"
                         type="email"
                         label="E-mail"
@@ -166,7 +112,6 @@ export default function Page(page: any) {
                         required
                     />
                     <CssTextField
-                        className="my-4"
                         id="mensagem"
                         type="text"
                         label="Mensagem"
