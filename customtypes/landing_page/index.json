@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "contato": {
+              "type": "SharedSlice"
+            },
             "cases_slice": {
               "type": "SharedSlice"
             },

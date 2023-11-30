@@ -1,11 +1,11 @@
 'use client'
-import { createClient } from "@/prismicio";
 import borda from "../../../public/assets/bordaVideo.svg";
-import { ContatoDocument } from "../../../prismicio-types";
 import TextField from "@mui/material/TextField";
 import { Checkbox, FormControlLabel, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
+import { ContatoSliceDefaultItem, Simplify } from "../../../prismicio-types";
+import { ContatoProps } from "@/slices/ContatoSlice";
 
 type Params = { uid: string };
 
@@ -40,8 +40,9 @@ export async function mandaForm(dados: any) {
     })
 }
 
-export default function Page(page: any) {
-    page = (page?.page) as ContatoDocument<string>
+export default function Contato(slice: ContatoProps) {
+
+    console.log(slice)
 
     const [cookies] = useCookies(["hubspotutk"]);
 
@@ -66,13 +67,13 @@ export default function Page(page: any) {
             >
                 <div className={`flex flex-col items-start justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat my-52 h-[250px] aspect-video TabletPortrait:bg-[length:0_0] TabletPortrait:w-full TabletPortrait:h-fit TabletPortrait:my-0`} style={{ backgroundImage: `url(${borda.src})` }}>
                     <p className=" flex-none text-[26px] font-bold mx-12 my-4 TabletPortrait:text-[7vw] TabletPortrait:mx-6">
-                        {page?.data?.titulo.map((i: any, index: undefined) => {
+                        {slice?.slice?.items?.map((i: Simplify<ContatoSliceDefaultItem>, index: number) => {
                             return (
-                                <span key={index} style={{ color: i?.cor }}>{i?.texto}</span>
+                                <span key={index} className={`text-[${i?.cor}]`}>{i?.titulo}</span>
                             )
                         })}
                     </p>
-                    <p className="mx-12 mb-24 text-[10px] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{page?.data?.descricao}</p>
+                    <p className="mx-12 mb-24 text-[10px] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{slice?.slice?.primary?.descricao}</p>
                 </div>
                 <form className={`flex flex-col items-start space-y-4 justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[40vw] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>
                     <CssTextField

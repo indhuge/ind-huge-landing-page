@@ -121,118 +121,6 @@ export type BannerDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BannerDocumentData>, "banner", Lang>;
 
 /**
- * Item in *Contato → Titulo*
- */
-export interface ContatoDocumentDataTituloItem {
-  /**
-   * Texto field in *Contato → Titulo*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contato.titulo[].texto
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  texto: prismic.KeyTextField;
-
-  /**
-   * Cor field in *Contato → Titulo*
-   *
-   * - **Field Type**: Color
-   * - **Placeholder**: FFFFFF
-   * - **API ID Path**: contato.titulo[].cor
-   * - **Documentation**: https://prismic.io/docs/field#color
-   */
-  cor: prismic.ColorField;
-}
-
-type ContatoDocumentDataSlicesSlice = never;
-
-/**
- * Content for Contato documents
- */
-interface ContatoDocumentData {
-  /**
-   * Titulo field in *Contato*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contato.titulo[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  titulo: prismic.GroupField<Simplify<ContatoDocumentDataTituloItem>>;
-
-  /**
-   * Descrição field in *Contato*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contato.descricao
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  descricao: prismic.KeyTextField;
-
-  /**
-   * Slice Zone field in *Contato*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contato.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<ContatoDocumentDataSlicesSlice> /**
-   * Meta Description field in *Contato*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: contato.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Contato*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contato.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
-
-  /**
-   * Meta Title field in *Contato*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: contato.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_title: prismic.KeyTextField;
-}
-
-/**
- * Contato document from Prismic
- *
- * - **API ID**: `contato`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ContatoDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<ContatoDocumentData>,
-    "contato",
-    Lang
-  >;
-
-/**
  * Item in *Footer → Links Navegação*
  */
 export interface FooterDocumentDataLinksItem {
@@ -653,7 +541,10 @@ interface HeaderDocumentData {
 export type HeaderDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
 
-type LandingPageDocumentDataSlicesSlice = CasesSliceSlice | FeaturesSliceSlice;
+type LandingPageDocumentDataSlicesSlice =
+  | ContatoSlice
+  | CasesSliceSlice
+  | FeaturesSliceSlice;
 
 /**
  * Content for Landing Page documents
@@ -720,7 +611,6 @@ export type LandingPageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BannerDocument
-  | ContatoDocument
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument;
@@ -867,6 +757,76 @@ export type CasesSliceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ContatoSlice → Primary*
+ */
+export interface ContatoSliceDefaultPrimary {
+  /**
+   * Descrição field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.descricao
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  descricao: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ContatoSlice → Items*
+ */
+export interface ContatoSliceDefaultItem {
+  /**
+   * Título field in *ContatoSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.items[].titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * Cor field in *ContatoSlice → Items*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.items[].cor
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  cor: prismic.ColorField;
+}
+
+/**
+ * Default variation for ContatoSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContatoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContatoSliceDefaultPrimary>,
+  Simplify<ContatoSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ContatoSlice*
+ */
+type ContatoSliceVariation = ContatoSliceDefault;
+
+/**
+ * ContatoSlice Shared Slice
+ *
+ * - **API ID**: `contato`
+ * - **Description**: Contato
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContatoSlice = prismic.SharedSlice<
+  "contato",
+  ContatoSliceVariation
+>;
+
+/**
  * Primary content in *FeaturesSlice → Primary*
  */
 export interface FeaturesSliceSliceDefaultPrimary {
@@ -996,10 +956,6 @@ declare module "@prismicio/client" {
       BannerDocument,
       BannerDocumentData,
       BannerDocumentDataSlicesSlice,
-      ContatoDocument,
-      ContatoDocumentData,
-      ContatoDocumentDataTituloItem,
-      ContatoDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataLinksItem,
@@ -1020,6 +976,11 @@ declare module "@prismicio/client" {
       CasesSliceSliceDefaultItem,
       CasesSliceSliceVariation,
       CasesSliceSliceDefault,
+      ContatoSlice,
+      ContatoSliceDefaultPrimary,
+      ContatoSliceDefaultItem,
+      ContatoSliceVariation,
+      ContatoSliceDefault,
       FeaturesSliceSlice,
       FeaturesSliceSliceDefaultPrimary,
       FeaturesSliceSliceDefaultItem,
