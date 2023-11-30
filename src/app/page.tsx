@@ -5,7 +5,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Banner from "@/components/banner";
 import Contato from "@/components/contato";
-
+import { pages } from "next/dist/build/templates/app-page";
 
 type Params = { uid: "landing_page" };
 
@@ -35,26 +35,26 @@ export default async function Page({ params }: { params: Params }) {
 }
 
 export async function generateMetadata({
-	params,
+  params,
 }: {
-	params: Params;
+  params: Params;
 }): Promise<Metadata> {
-	const client = createClient();
-	const page = await client
-		.getByUID("landing_page", "landing_page")
-		.catch(() => notFound());
+  const client = createClient();
+  const page = await client
+    .getByUID("landing_page", "landing_page")
+    .catch(() => notFound());
 
-	return {
-		title: page.data.meta_title,
-		description: page.data.meta_description,
-	};
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
 }
 
 export async function generateStaticParams() {
-	const client = createClient();
-	const pages = await client.getAllByType("landing_page");
+  const client = createClient();
+  const pages = await client.getAllByType("landing_page");
 
-	return pages.map((page) => {
-		return { uid: page.uid };
-	});
+  return pages.map((page) => {
+    return { uid: page.uid };
+  });
 }
