@@ -3,6 +3,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import Style from "./style.module.css";
 
 export default function FeatureCard({ slice }: FeaturesSliceProps) {
+  // hover:flex-[2_1_25%]
   return (
     <div className="p-6 flex flex-col bg-white lg:px-28 lg:py-24">
       <div className="flex flex-col  lg:flex-row justify-between my-8 gap-4">
@@ -21,7 +22,7 @@ export default function FeatureCard({ slice }: FeaturesSliceProps) {
           return (
             <div
               key={i}
-              className={`${Style.pai} flex-[1_1_25%] hover:flex-[2_1_25%] flex flex-col p-6 gap-6 
+              className={`${Style.pai} flex-[1_1_25%] flex flex-col p-6 gap-6 
               bg-white border border-green rounded-lg transition-all duration-300 min-w-full s_mobile:min-w-[25rem]
               hover:text-darkblue hover:bg-green hover:drop-shadow-base text-gray`}
             >
