@@ -38,6 +38,8 @@ export async function mandaForm(dados: any) {
         body: dados,
         method: "POST"
     })
+
+    alert("Formulario Enviado com Sucesso!");
 }
 
 export default function Contato(slice: ContatoProps) {
