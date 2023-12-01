@@ -63,7 +63,7 @@ export default function Page(page: any) {
                         {page?.data?.links.map((i: any, index: undefined) => {
                             let link = i?.link as string
                             return (
-                                <Link key={index} href={link} className="text-white text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4">{i?.label}</Link>
+                                <Link key={index} href={link} className="text-white text-sm TabletPortrait:text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4">{i?.label}</Link>
                             );
                         })}
                     </div>
@@ -71,7 +71,7 @@ export default function Page(page: any) {
                         <h5 className="text-lg font-bold">{page?.data?.subtitulo_contato}</h5>
                         {page?.data?.labels_contato.map((i: any, index: undefined) => {
                             return (
-                                <label key={index} className="text-white text-[1vw] my-2 TabletPortrait:text-base">{i?.label}</label>
+                                <label key={index} className="text-white text-sm TabletPortrait:text-[1vw] my-2 TabletPortrait:text-base">{i?.label}</label>
                             );
                         })}
                         <div className="flex flex-row mt-2">
