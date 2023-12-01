@@ -1,5 +1,5 @@
 {
-  "repositoryName": "ind-huge-landing-page",
+  "repositoryName": "indhuge-lp",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"],
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"

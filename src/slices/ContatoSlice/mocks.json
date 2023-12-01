@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"descricao": {
+				"__TYPE__": "FieldContent",
+				"value": "nose",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"titulo",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "peace",
+							"type": "Text"
+						}
+					],
+					[
+						"cor",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "#d720fc",
+							"type": "Color"
+						}
+					]
+				]
+			}
+		]
+	}
+]

@@ -1,0 +1,90 @@
+{
+  "id": "header",
+  "label": "Header",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "logo_mobile": {
+        "type": "Image",
+        "config": {
+          "label": "Logo Mobile",
+          "constraint": {
+            "width": 40,
+            "height": 40
+          },
+          "thumbnails": []
+        }
+      },
+      "logo_menu_aberto": {
+        "type": "Image",
+        "config": {
+          "label": "Logo Menu Aberto",
+          "constraint": {
+            "height": 40,
+            "width": 40
+          },
+          "thumbnails": []
+        }
+      },
+      "links": {
+        "type": "Group",
+        "config": {
+          "label": "Links",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Text",
+              "config": {
+                "label": "Link",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "label_cta": {
+        "type": "Text",
+        "config": {
+          "label": "Label CTA",
+          "placeholder": ""
+        }
+      },
+      "label_entrar": {
+        "type": "Text",
+        "config": {
+          "label": "Label Entrar",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}

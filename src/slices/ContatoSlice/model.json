@@ -1,0 +1,41 @@
+{
+  "id": "contato",
+  "type": "SharedSlice",
+  "name": "ContatoSlice",
+  "description": "Contato",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "descricao": {
+          "type": "Text",
+          "config": {
+            "label": "Descrição",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "titulo": {
+          "type": "Text",
+          "config": {
+            "label": "Título",
+            "placeholder": ""
+          }
+        },
+        "cor": {
+          "type": "Color",
+          "config": {
+            "label": "Cor",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}
