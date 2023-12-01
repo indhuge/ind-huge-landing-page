@@ -4,28 +4,31 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Banner from "@/components/banner";
-import Contato from "@/components/contato";
 import { pages } from "next/dist/build/templates/app-page";
 
 type Params = { uid: "landing_page" };
 
 export default async function Page({ params }: { params: Params }) {
-
-	const client = createClient();
-	const page = await client.getSingle("landing_page").catch(() => notFound());
-
-	const banner = await client
-		.getByUID("banner", "banner")
-		.catch(()=> notFound());
-
-	return (
-		<>
-			{/*Script Hubspot*/}
-			<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/43688574.js" />
-			<Banner page={banner} />
-			<SliceZone slices={page?.data?.slices} components={components} />
-		</>
-	);
+  const client = createClient();
+  const page = await client.getSingle("landing_page").catch(() => notFound());
+  const banner = await client
+    .getByUID("banner", "banner")
+    .catch(() => notFound());
+  console.log(page.data.slices);
+  return (
+    <>
+      {/*Script Hubspot*/}
+      <script
+        type="text/javascript"
+        id="hs-script-loader"
+        async
+        defer
+        src="//js.hs-scripts.com/43688574.js"
+      />
+      <Banner page={banner} />
+      <SliceZone slices={page.data.slices} components={components} />
+    </>
+  );
 }
 
 export async function generateMetadata({

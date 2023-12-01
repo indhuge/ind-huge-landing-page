@@ -7,4 +7,5 @@ export const components = {
   contato: dynamic(() => import("./ContatoSlice")),
   features_slice: dynamic(() => import("./FeaturesSlice")),
   teste: dynamic(() => import("./Teste")),
+  cases_slice: dynamic(() => import("./CasesSlice")),
 };
