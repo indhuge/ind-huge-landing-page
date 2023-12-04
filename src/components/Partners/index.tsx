@@ -11,7 +11,8 @@ export default function Partners({ slice }: PartnersSliceProps) {
         {slice.items.map((e, i) => {
           return (
             <PrismicNextImage
-              className="aspect-[3/3] object-contain"
+              key={i}
+              className="w-[15%] h-auto aspect-[1/1] object-contain TabletPortrait:w-[30%]"
               field={e.logo}
             />
           );
