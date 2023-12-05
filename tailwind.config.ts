@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      s_mobile: "445px",
+      lg: "1024px",
+      md: "768px",
       Mobile: { max: "575px" },
       // => @media (max-width: 575px) { ... }
 

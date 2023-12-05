@@ -17,7 +17,7 @@ const FeaturesSlice = ({ slice }: FeaturesSliceProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <FeatureCard />
+      <FeatureCard slice={slice} index={0} slices={[]} context={undefined} />
     </section>
   );
 };
