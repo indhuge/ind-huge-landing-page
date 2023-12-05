@@ -6,16 +6,18 @@ import { useState } from "react";
 export default function Cases({ slice }: CasesSliceProps) {
   const [selected, setSelected] = useState(1);
   const middleElementIndex = Math.floor(slice.items.length / 2);
+  const indexTotal = slice.items.length - 1;
 
   const MakeTranslation = (value: number) => {
     var e = document.getElementById("cardHolder");
     if (e != null) e.style.transform = `translate(${value}%, 0)`;
   };
 
-  const CalcTranslation = (value: number) => (middleElementIndex - value) * 35;
+  const CalcTranslation = (value: number) =>
+    (middleElementIndex - value) * 33.33;
 
   const toRight = () => {
-    const value = selected == 2 ? 0 : selected + 1;
+    const value = selected == indexTotal ? 0 : selected + 1;
     setSelected(value);
     MakeTranslation(CalcTranslation(value));
   };
