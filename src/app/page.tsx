@@ -4,7 +4,6 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Banner from "@/components/banner";
-import Contato from "@/components/contato";
 import { pages } from "next/dist/build/templates/app-page";
 
 type Params = { uid: "landing_page" };
