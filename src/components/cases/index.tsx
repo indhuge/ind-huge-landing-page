@@ -47,7 +47,7 @@ export default function Cases({ slice }: CasesSliceProps) {
             <div
               className={`${
                 selected == i ? "scale-110" : "blur-sm"
-              } justify-center items-center gap-8 flex w-[40vw] Mobile:w-[87vw] TabletPortrait:w-[87vw] TabletLandscape:w-[60vw] mx-10 transition-all duration-700`}
+              } justify-center items-center gap-8 flex w-[40vw] Mobile:w-[87vw] TabletPortrait:w-[87vw] Laptop:w-[60vw] mx-10 transition-all duration-700`}
               id={`card-${i}`}
             >
               <div className="w-full h-full overflow-hidden rounded-2xl ">
