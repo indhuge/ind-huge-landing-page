@@ -14,10 +14,10 @@ const config: Config = {
       TabletPortrait: { max: "992px" },
       // => @media (min-width: 575px, max-width: 992px) { ... }
 
-      TabletLandscape: "992px",
+      TabletLandscape: { min: "992px" },
       // => @media (min-width: 992px) { ... }
 
-      Laptop: { max: "1440px" },
+      Laptop: { min: "923px", max: "1440px" },
     },
     extend: {
       colors: {
