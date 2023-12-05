@@ -542,6 +542,7 @@ export type HeaderDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
 
 type LandingPageDocumentDataSlicesSlice =
+  | PartnersSliceSlice
   | ContatoSlice
   | CasesSliceSlice
   | FeaturesSliceSlice;
@@ -917,6 +918,66 @@ export type FeaturesSliceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *PartnersSlice → Primary*
+ */
+export interface PartnersSliceSliceDefaultPrimary {
+  /**
+   * Title field in *PartnersSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_slice.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *PartnersSlice → Items*
+ */
+export interface PartnersSliceSliceDefaultItem {
+  /**
+   * Logo field in *PartnersSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_slice.items[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for PartnersSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PartnersSliceSliceDefaultPrimary>,
+  Simplify<PartnersSliceSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *PartnersSlice*
+ */
+type PartnersSliceSliceVariation = PartnersSliceSliceDefault;
+
+/**
+ * PartnersSlice Shared Slice
+ *
+ * - **API ID**: `partners_slice`
+ * - **Description**: PartnersSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersSliceSlice = prismic.SharedSlice<
+  "partners_slice",
+  PartnersSliceSliceVariation
+>;
+
+/**
  * Default variation for Teste Slice
  *
  * - **API ID**: `default`
@@ -986,6 +1047,11 @@ declare module "@prismicio/client" {
       FeaturesSliceSliceDefaultItem,
       FeaturesSliceSliceVariation,
       FeaturesSliceSliceDefault,
+      PartnersSliceSlice,
+      PartnersSliceSliceDefaultPrimary,
+      PartnersSliceSliceDefaultItem,
+      PartnersSliceSliceVariation,
+      PartnersSliceSliceDefault,
       TesteSlice,
       TesteSliceVariation,
       TesteSliceDefault,
