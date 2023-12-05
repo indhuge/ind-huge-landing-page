@@ -17,8 +17,10 @@ const config: Config = {
       TabletPortrait: { max: "992px" },
       // => @media (min-width: 575px, max-width: 992px) { ... }
 
-      TabletLandscape: "992px",
+      TabletLandscape: { min: "992px" },
       // => @media (min-width: 992px) { ... }
+
+      Laptop: { min: "923px", max: "1440px" },
     },
     extend: {
       colors: {
@@ -30,13 +32,13 @@ const config: Config = {
         lightgray: "#E7E9E7",
         white: "#FFFFFF",
       },
-      dropShadow: {
-        base: "0 0 25px #26D07C",
-      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      transitionTimingFunction: {
+        "circular-0-0-0-1": "cubic-bezier(0, 0, 0, 1)",
       },
     },
   },
