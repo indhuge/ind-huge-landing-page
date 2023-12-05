@@ -12,7 +12,7 @@ export default function Partners({ slice }: PartnersSliceProps) {
           return (
             <PrismicNextImage
               key={i}
-              className="w-[15%] h-auto aspect-[1/1] object-contain TabletPortrait:w-[30%]"
+              className="lg:w-[15%] s_mobile:w-[30%] h-auto aspect-[1/1] object-contain Mobile:w-[100vw]"
               field={e.logo}
             />
           );
