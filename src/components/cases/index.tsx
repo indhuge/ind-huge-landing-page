@@ -5,22 +5,34 @@ import { useState } from "react";
 
 export default function Cases({ slice }: CasesSliceProps) {
   const [selected, setSelected] = useState(1);
-  const [transition, setTranslation] = useState(0);
+  const middleElementIndex = Math.floor(slice.items.length / 2);
 
-  const getTranslateValue = () => {
-    console.log((2 - selected) * 35);
-    return (2 - selected) * 35;
+  const MakeTranslation = (value: number) => {
+    var e = document.getElementById("cardHolder");
+    if (e != null) e.style.transform = `translate(${value}%, 0)`;
   };
 
-  const onClick = () => {
-    setSelected(selected == 2 ? 0 : selected + 1);
-    setTranslation(getTranslateValue());
+  const CalcTranslation = (value: number) => (middleElementIndex - value) * 35;
+
+  const toRight = () => {
+    const value = selected == 2 ? 0 : selected + 1;
+    setSelected(value);
+    MakeTranslation(CalcTranslation(value));
+  };
+
+  const toLeft = () => {
+    const value = selected == 0 ? 2 : selected - 1;
+    setSelected(value);
+    MakeTranslation(CalcTranslation(value));
   };
 
   return (
-    <div className="w-full h-fit py-[100px] TabletPortrait:p-[0px] flex-col justify-center items-center gap-8 flex bg-white">
-      <button className="bg-blue" onClick={onClick}>
-        click me
+    <div className="w-full h-fit py-[100px] TabletPortrait:p-[0px] flex-col justify-center items-center gap-8 flex bg-white overflow-hidden">
+      <button className="bg-blue" onClick={toLeft}>
+        click -
+      </button>
+      <button className="bg-blue" onClick={toRight}>
+        click +
       </button>
       <div className="flex-col justify-center items-center flex">
         <div className="text-green text-sm font-semibold uppercase tracking-[8.26px]">
@@ -31,14 +43,15 @@ export default function Cases({ slice }: CasesSliceProps) {
         </div>
       </div>
       <div
-        className={`flex-row flex gap-8 translate-x-[${transition}%] transition-all duration-300`}
+        className={`flex-row flex gap-8 transition-all duration-700 transform-gpu ease-circular-0-0-0-1`}
+        id="cardHolder"
       >
         {slice.items.map((e, i) => {
           return (
             <div
               className={`${
                 selected == i ? "scale-110" : "blur-sm"
-              } justify-center items-center gap-8 flex w-[40vw] mx-10 transition-all duration-300`}
+              } justify-center items-center gap-8 flex w-[40vw] mx-10 transition-all duration-700`}
               id={`card-${i}`}
             >
               <div className="w-full h-full overflow-hidden rounded-2xl ">
