@@ -32,6 +32,9 @@ const config: Config = {
         lightgray: "#E7E9E7",
         white: "#FFFFFF",
       },
+      dropShadow: {
+        base: "0 0 25px #26D07C",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
