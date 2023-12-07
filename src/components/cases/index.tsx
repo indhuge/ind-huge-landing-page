@@ -45,6 +45,7 @@ export default function Cases({ slice }: CasesSliceProps) {
         {slice.items.map((e, i) => {
           return (
             <div
+              key={i}
               className={`${
                 selected == i ? "scale-110" : "blur-sm"
               } justify-center items-center gap-8 flex w-[40vw] Mobile:w-[87vw] TabletPortrait:w-[87vw] Laptop:w-[60vw] mx-10 transition-all duration-700`}
