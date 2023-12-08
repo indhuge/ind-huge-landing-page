@@ -42,6 +42,11 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"bignumberstitlehighlights": {
+				"__TYPE__": "FieldContent",
+				"value": "occur",
+				"type": "Text"
 			}
 		},
 		"items": [
@@ -62,6 +67,13 @@
 							"__TYPE__": "FieldContent",
 							"value": "88",
 							"type": "Number"
+						}
+					],
+					[
+						"bignumberslicetriggernumberfraction",
+						{
+							"__TYPE__": "BooleanContent",
+							"value": false
 						}
 					]
 				]

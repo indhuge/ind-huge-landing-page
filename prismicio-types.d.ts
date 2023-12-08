@@ -632,6 +632,16 @@ export interface BigNumbersSliceSliceDefaultPrimary {
   bignumberstitle: prismic.KeyTextField;
 
   /**
+   * BigNumbersTitleHighlights field in *BigNumbersSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Palavras para destacar
+   * - **API ID Path**: big_numbers_slice.primary.bignumberstitlehighlights
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bignumberstitlehighlights: prismic.KeyTextField;
+
+  /**
    * BigNumbersSliceButtontext field in *BigNumbersSlice → Primary*
    *
    * - **Field Type**: Text
@@ -685,6 +695,17 @@ export interface BigNumbersSliceSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   bignumberslicetriggernumber: prismic.NumberField;
+
+  /**
+   * BigNumberSliceTriggerNumberFraction field in *BigNumbersSlice → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: big_numbers_slice.items[].bignumberslicetriggernumberfraction
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  bignumberslicetriggernumberfraction: prismic.BooleanField;
 }
 
 /**

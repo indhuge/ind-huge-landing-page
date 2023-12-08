@@ -3,9 +3,11 @@ import React, { useState, useEffect, useRef } from "react";
 export default function BigNumbersItens({
   number,
   title,
+  isFraction,
 }: {
   number: number;
   title: string;
+  isFraction: boolean;
 }) {
   const [currentNumber, setCurrentNumber] = useState(0);
   const numberRef = useRef(null);
@@ -50,12 +52,14 @@ export default function BigNumbersItens({
         className="flex flex-col items-center mb-4 md:mb-000"
         ref={numberRef}
       >
-        <p className="text-5xl font-bold text-green">+{currentNumber}</p>
+        {/* TODO: Implement percentage flags or similar visual indicators */}
+        <p className="text-5xl font-bold text-green">
+          {isFraction ? `+${currentNumber}%` : `+${currentNumber}`}
+        </p>
         <h3 className="text-white text-center leading-trim text-cap font-inter text-xs font-normal uppercase">
           {title}
         </h3>
       </div>
-      <div className="bg-[#177686] w-[0.1rem] h-16 bg-gradient-to-r from-teal-600 to-transparent"></div>
     </React.Fragment>
   );
 }
