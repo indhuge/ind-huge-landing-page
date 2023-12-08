@@ -5,7 +5,7 @@ import Style from "./style.module.css";
 export default function FeatureCard({ slice }: FeaturesSliceProps) {
   // hover:flex-[2_1_25%]
   return (
-    <div className="p-6 flex flex-col bg-white lg:px-28 lg:py-24">
+    <div className="p-6 flex flex-col bg-white lg:px-28 lg:py-24 relative z-10">
       <div className="flex flex-col  lg:flex-row justify-between my-8 gap-4">
         <h2 className="text-darkblue text-4xl font-bold flex flex-col md:flex-row">
           {slice.primary.main_title?.split(" ")[0]}

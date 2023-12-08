@@ -20,7 +20,8 @@
     "next": "14.0.3",
     "react": "^18",
     "react-cookie": "^6.1.1",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-scroll-parallax": "^3.4.5"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.25",

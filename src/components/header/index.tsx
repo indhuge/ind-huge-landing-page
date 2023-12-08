@@ -68,7 +68,7 @@ export default function Page(page:any) {
                 fixed top-0 left-0 right-0
                 w-[100vw] h-[60px]
                 flex 
-                z-10
+                z-20
                 space-x-8 pl-32 py-1 TabletPortrait:pl-8
                 items-center justify-end 
             `}
