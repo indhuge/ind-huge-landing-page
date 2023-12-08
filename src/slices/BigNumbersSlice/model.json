@@ -1,0 +1,64 @@
+{
+  "id": "big_numbers_slice",
+  "type": "SharedSlice",
+  "name": "BigNumbersSlice",
+  "description": "BigNumbersSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "bignumberstitle": {
+          "type": "Text",
+          "config": {
+            "label": "BigNumbersTitle",
+            "placeholder": ""
+          }
+        },
+        "bignumbersslicebuttontext": {
+          "type": "Text",
+          "config": {
+            "label": "BigNumbersSliceButtontext",
+            "placeholder": ""
+          }
+        },
+        "bignumbersslicebuttonlink": {
+          "type": "Link",
+          "config": {
+            "label": "BigNumbersSliceButtonLink",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "bignumbersimage": {
+          "type": "Image",
+          "config": {
+            "label": "BigNumbersImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {
+        "bignumberslicetriggertitle": {
+          "type": "Text",
+          "config": {
+            "label": "BigNumberSliceTriggerTitle",
+            "placeholder": ""
+          }
+        },
+        "bignumberslicetriggernumber": {
+          "type": "Number",
+          "config": {
+            "label": "BigNumberSliceTriggerNumber",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}
