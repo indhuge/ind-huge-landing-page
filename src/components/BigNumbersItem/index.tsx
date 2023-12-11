@@ -53,10 +53,10 @@ export default function BigNumbersItens({
         ref={numberRef}
       >
         {/* TODO: Implement percentage flags or similar visual indicators */}
-        <p className="text-5xl font-bold text-green">
+        <p className="md:text-5xl text-8xl font-bold text-green">
           {isFraction ? `+${currentNumber}%` : `+${currentNumber}`}
         </p>
-        <h3 className="text-white text-center leading-trim text-cap font-inter text-xs font-normal uppercase">
+        <h3 className="text-white text-center leading-trim text-cap font-inter md:text-xs text-2xl font-normal uppercase">
           {title}
         </h3>
       </div>

@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import BigNumbers from "@/components/bigNumbers";
+import BigNumbers from "@/components/BigNumbers";
 
 /**
  * Props for `BigNumbersSlice`.
