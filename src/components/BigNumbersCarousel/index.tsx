@@ -13,7 +13,7 @@ export default function BigNumbersItens({ bigNumberProps }: { bigNumberProps: ob
       setCurrentIndex((prevIndex) =>
         prevIndex === (bigNumberProps as Array<any>).length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [(bigNumberProps as Array<any>).length]);
@@ -52,10 +52,11 @@ export default function BigNumbersItens({ bigNumberProps }: { bigNumberProps: ob
               cursor: "pointer",
               margin: " 0 0 20px 5px",
               display: "inline-block",
+              padding: index === currentIndex ? "5px" : "0",
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              backgroundColor: index === currentIndex ? "#177686" : "#ccc",
+              backgroundColor: index === currentIndex ? "#FFFFFF" : "#B1B1B1",
             }}
           />
         ))}
