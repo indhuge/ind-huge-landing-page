@@ -542,6 +542,7 @@ export type HeaderDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
 
 type LandingPageDocumentDataSlicesSlice =
+  | BigNumbersSliceSlice
   | PartnersSliceSlice
   | ContatoSlice
   | CasesSliceSlice
@@ -615,6 +616,127 @@ export type AllDocumentTypes =
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument;
+
+/**
+ * Primary content in *BigNumbersSlice → Primary*
+ */
+export interface BigNumbersSliceSliceDefaultPrimary {
+  /**
+   * BigNumbersTitle field in *BigNumbersSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: big_numbers_slice.primary.bignumberstitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bignumberstitle: prismic.KeyTextField;
+
+  /**
+   * BigNumbersTitleHighlights field in *BigNumbersSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Palavras para destacar
+   * - **API ID Path**: big_numbers_slice.primary.bignumberstitlehighlights
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bignumberstitlehighlights: prismic.KeyTextField;
+
+  /**
+   * BigNumbersSliceButtontext field in *BigNumbersSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: big_numbers_slice.primary.bignumbersslicebuttontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bignumbersslicebuttontext: prismic.KeyTextField;
+
+  /**
+   * BigNumbersSliceButtonLink field in *BigNumbersSlice → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: big_numbers_slice.primary.bignumbersslicebuttonlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  bignumbersslicebuttonlink: prismic.LinkField;
+
+  /**
+   * BigNumbersImage field in *BigNumbersSlice → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: big_numbers_slice.primary.bignumbersimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  bignumbersimage: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *BigNumbersSlice → Items*
+ */
+export interface BigNumbersSliceSliceDefaultItem {
+  /**
+   * BigNumberSliceTriggerTitle field in *BigNumbersSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: big_numbers_slice.items[].bignumberslicetriggertitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  bignumberslicetriggertitle: prismic.KeyTextField;
+
+  /**
+   * BigNumberSliceTriggerNumber field in *BigNumbersSlice → Items*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: big_numbers_slice.items[].bignumberslicetriggernumber
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  bignumberslicetriggernumber: prismic.NumberField;
+
+  /**
+   * BigNumberSliceTriggerNumberFraction field in *BigNumbersSlice → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: big_numbers_slice.items[].bignumberslicetriggernumberfraction
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  bignumberslicetriggernumberfraction: prismic.BooleanField;
+}
+
+/**
+ * Default variation for BigNumbersSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BigNumbersSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BigNumbersSliceSliceDefaultPrimary>,
+  Simplify<BigNumbersSliceSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *BigNumbersSlice*
+ */
+type BigNumbersSliceSliceVariation = BigNumbersSliceSliceDefault;
+
+/**
+ * BigNumbersSlice Shared Slice
+ *
+ * - **API ID**: `big_numbers_slice`
+ * - **Description**: BigNumbersSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BigNumbersSliceSlice = prismic.SharedSlice<
+  "big_numbers_slice",
+  BigNumbersSliceSliceVariation
+>;
 
 /**
  * Primary content in *CasesSlice → Primary*
@@ -1032,6 +1154,11 @@ declare module "@prismicio/client" {
       LandingPageDocumentData,
       LandingPageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      BigNumbersSliceSlice,
+      BigNumbersSliceSliceDefaultPrimary,
+      BigNumbersSliceSliceDefaultItem,
+      BigNumbersSliceSliceVariation,
+      BigNumbersSliceSliceDefault,
       CasesSliceSlice,
       CasesSliceSliceDefaultPrimary,
       CasesSliceSliceDefaultItem,

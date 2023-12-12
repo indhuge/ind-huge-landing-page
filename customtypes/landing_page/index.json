@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "big_numbers_slice": {
+              "type": "SharedSlice"
+            },
             "partners_slice": {
               "type": "SharedSlice"
             },

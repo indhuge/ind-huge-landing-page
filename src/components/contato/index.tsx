@@ -60,6 +60,7 @@ export default function Contato(slice: ContatoProps) {
     return (
         <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="vw-[100vw]">
             <div
+            id="contactForm" 
                 className={`
                 grid grid-cols-10
                 space-x-8 pl-32 py-1

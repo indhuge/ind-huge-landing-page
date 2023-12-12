@@ -1,0 +1,83 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"bignumberstitle": {
+				"__TYPE__": "FieldContent",
+				"value": "bee",
+				"type": "Text"
+			},
+			"bignumbersslicebuttontext": {
+				"__TYPE__": "FieldContent",
+				"value": "degree",
+				"type": "Text"
+			},
+			"bignumbersslicebuttonlink": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"bignumbersimage": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
+					"width": 3456,
+					"height": 3456
+				},
+				"url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
+				"width": 3456,
+				"height": 3456,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"bignumberstitlehighlights": {
+				"__TYPE__": "FieldContent",
+				"value": "occur",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"bignumberslicetriggertitle",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "led",
+							"type": "Text"
+						}
+					],
+					[
+						"bignumberslicetriggernumber",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "88",
+							"type": "Number"
+						}
+					],
+					[
+						"bignumberslicetriggernumberfraction",
+						{
+							"__TYPE__": "BooleanContent",
+							"value": false
+						}
+					]
+				]
+			}
+		]
+	}
+]
