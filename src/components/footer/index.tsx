@@ -54,7 +54,7 @@ export default function Page(page: any) {
             >
                 <div className="grid grid-cols-7 my-12 text-sm TabletPortrait:grid-cols-1">
                     <div className="col-span-2 mx-5 TabletPortrait:col-span-1 TabletPortrait:mb-8">
-                        <PrismicNextImage field={page?.data?.logo} />
+                        <PrismicNextImage alt="" field={page?.data?.logo} />
                         <p className="my-7 TabletPortrait:w-[70vw]">{page?.data?.descricao_logo}</p>
                         <button className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
                     </div>
@@ -78,7 +78,7 @@ export default function Page(page: any) {
                             {page?.data?.botoes_contato.map((i: any, index: undefined) => {
                                 let link = i?.link as string
                                 return (
-                                    <Link key={index} href={link} className="text-white p-2 mr-3 rounded-full border-solid border"><PrismicNextImage field={i?.icone} /></Link>
+                                    <Link key={index} href={link} className="text-white p-2 mr-3 rounded-full border-solid border"><PrismicNextImage alt="" field={i?.icone} /></Link>
                                 );
                             })}
                         </div>
@@ -100,7 +100,7 @@ export default function Page(page: any) {
                         />
                         <div className="flex items-center justify-between Mobile:flex-col">
                             <FormControlLabel
-                                control={<Checkbox checked={checked} onChange={()=>{setChecked(!checked)}} style={{ color: "white" }} defaultChecked />}
+                                control={<Checkbox checked={checked} onChange={()=>{setChecked(!checked)}} style={{ color: "white" }} />}
                                 label={<span className="text-sm">Concordo em receber e-mails</span>}
                             />
                             <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm" type="submit" value="INSCREVER-SE" disabled={!checked} />
@@ -121,7 +121,7 @@ export default function Page(page: any) {
                     {page?.data?.redes_sociais.map((i: any, index: undefined) => {
                         let link = i?.link as string
                         return (
-                            <Link key={index} href={link} className="text-white ml-4 scale-125"><PrismicNextImage field={i?.icone} /></Link>
+                            <Link key={index} href={link} className="text-white ml-4 scale-125"><PrismicNextImage alt="" field={i?.icone} /></Link>
                         );
                     })}
                 </div>

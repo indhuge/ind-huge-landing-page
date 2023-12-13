@@ -21,7 +21,7 @@ export default function Page(page:any) {
     const botaoMenu = require("../../../public/assets/BotãoMenuMobile.svg");
     const iconeFechar = require("../../../public/assets/icone-fechar.svg");
 
-    console.log(page)
+    // console.log(page)
 
     const [state, setState] = React.useState({ right: false });
 
@@ -46,7 +46,7 @@ export default function Page(page:any) {
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <PrismicNextImage className="hover:scale-105 TabletLandscape:hidden float-left my-[12px] ml-[12px] h-[40px] w-[40px]" field={page?.data?.logo_menu_aberto}/>
+            <PrismicNextImage alt="" className="hover:scale-105 TabletLandscape:hidden float-left my-[12px] ml-[12px] h-[40px] w-[40px]" field={page?.data?.logo_menu_aberto}/>
             <Button className="hover:scale-105 TabletLandscape:hidden float-right h-[64px]" onClick={toggleDrawer(anchor, false)}><Image src={iconeFechar} alt="Menu" /></Button>
             <List>
                 {page?.data?.links.map((i:any, index:undefined) => (
@@ -75,8 +75,8 @@ export default function Page(page:any) {
             style={{backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)"}} 
         >
             <div className="flex-auto">
-                <PrismicNextImage className="TabletPortrait:hidden" field={page?.data?.logo} />
-                <PrismicNextImage className="TabletLandscape:hidden" field={page?.data?.logo_mobile} />
+                <PrismicNextImage alt="" className="TabletPortrait:hidden" field={page?.data?.logo} />
+                <PrismicNextImage alt="" className="TabletLandscape:hidden" field={page?.data?.logo_mobile} />
             </div>
             <div className="flex-none flex space-x-4 justify-center TabletPortrait:hidden">
                 {page?.data?.links.map((i:any, index:undefined) => {

@@ -29,7 +29,7 @@ export default function FeatureCard({ slice }: FeaturesSliceProps) {
               <div
                 className={` ${Style.filho} flex border-[1.5px] border-solid border-inherit p-4 w-fit rounded-full transition-all duration-300`}
               >
-                <PrismicNextImage
+                <PrismicNextImage alt=""
                   className="w-12 h-12 transition-all"
                   field={e.icon}
                 />
