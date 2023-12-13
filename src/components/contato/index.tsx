@@ -44,7 +44,7 @@ export async function mandaForm(dados: any) {
 
 export default function Contato(slice: ContatoProps) {
 
-    console.log(slice)
+    // console.log(slice)
 
     const [cookies] = useCookies(["hubspotutk"]);
 
@@ -87,7 +87,8 @@ export default function Contato(slice: ContatoProps) {
                         inputProps={{ style: { color: "#FFFFFF" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.nome}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, nome: event.target.value }); console.log(formDados) }}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, nome: event.target.value }); //console.log(formDados) 
+                    }}
                         fullWidth
                         required
                     />
@@ -99,7 +100,8 @@ export default function Contato(slice: ContatoProps) {
                         inputProps={{ pattern: "[0-9]{10,11}", style: { color: "#FFFFFF" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.telefone}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, telefone: event.target.value }); console.log(formDados) }}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, telefone: event.target.value }); //console.log(formDados)
+                     }}
                         fullWidth
                         required
                     />
@@ -111,7 +113,8 @@ export default function Contato(slice: ContatoProps) {
                         inputProps={{ style: { color: "#FFFFFF" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.email}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, email: event.target.value }); console.log(formDados) }}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, email: event.target.value }); //console.log(formDados) 
+                    }}
                         fullWidth
                         required
                     />
@@ -123,7 +126,8 @@ export default function Contato(slice: ContatoProps) {
                         inputProps={{ style: { color: "#FFFFFF", height: "100px" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.mensagem}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, mensagem: event.target.value }); console.log(formDados) }}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, mensagem: event.target.value }); //console.log(formDados)
+                     }}
                         fullWidth
                         multiline
                         required
@@ -132,7 +136,8 @@ export default function Contato(slice: ContatoProps) {
                         <FormControlLabel
                             control={
                                 <Checkbox checked={formDados.newsletter}
-                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, newsletter: event.target.checked }); console.log(formDados) }}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setFormDados({ ...formDados, newsletter: event.target.checked }); //console.log(formDados)
+                                 }}
                                     style={{ color: "white" }} defaultChecked
                                 />
                             }

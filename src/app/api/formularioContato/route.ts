@@ -5,7 +5,7 @@ export async function POST(req: Request, res: Response, nextres: NextApiResponse
 
     var { nome, telefone, email, mensagem, newsletter, cookie }: { nome: string, telefone: string, email: string, mensagem: string, newsletter: boolean, cookie: string } = await req.json()
 
-    console.log(nome, telefone, email, mensagem, newsletter, cookie);
+    // console.log(nome, telefone, email, mensagem, newsletter, cookie);
 
     var form = {
         "submittedAt": d.getTime(), // This millisecond timestamp is optional. Update the value from "1517927174000" to avoid an INVALID_TIMESTAMP error.
@@ -57,7 +57,7 @@ export async function POST(req: Request, res: Response, nextres: NextApiResponse
         }
     }
 
-    console.log(nome, telefone, email, mensagem, newsletter, cookie)
+    // console.log(nome, telefone, email, mensagem, newsletter, cookie)
 
     var jsondados = await JSON.stringify(form)
     //console.log(jsondados);

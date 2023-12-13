@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: Params }) {
   const banner = await client
     .getByUID("banner", "banner")
     .catch(() => notFound());
-  console.log(page.data.slices);
+  // console.log(page.data.slices);
   return (
     <>
       {/*Script Hubspot*/}
