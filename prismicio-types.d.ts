@@ -761,6 +761,16 @@ export interface CasesSliceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitle: prismic.KeyTextField;
+
+  /**
+   * Auto Scroll Interval (s) field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 10
+   * - **API ID Path**: cases_slice.primary.auto_scroll_interval
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  auto_scroll_interval: prismic.NumberField;
 }
 
 /**
