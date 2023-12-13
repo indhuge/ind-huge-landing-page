@@ -670,6 +670,17 @@ export interface BigNumbersSliceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   bignumbersimage: prismic.ImageField<never>;
+
+  /**
+   * BigNumbersImageVisibility field in *BigNumbersSlice → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: big_numbers_slice.primary.bignumbersimagevisibility
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  bignumbersimagevisibility: prismic.BooleanField;
 }
 
 /**

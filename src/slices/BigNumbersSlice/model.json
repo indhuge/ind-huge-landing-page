@@ -48,6 +48,15 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "bignumbersimagevisibility": {
+          "type": "Boolean",
+          "config": {
+            "label": "BigNumbersImageVisibility",
+            "placeholder_false": "NotVisible",
+            "placeholder_true": "Visible",
+            "default_value": true
+          }
         }
       },
       "items": {
