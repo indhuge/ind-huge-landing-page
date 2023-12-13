@@ -13,7 +13,7 @@ export default function BigNumbers({ slice }: BigNumbersSliceProps) {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsCarousel(window.innerWidth < 768); 
+      setIsCarousel(window.innerWidth < 768);
     };
 
     handleResize();
@@ -23,6 +23,22 @@ export default function BigNumbers({ slice }: BigNumbersSliceProps) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const imageParallax = (
+    <div id="ImageParallax">
+      <ParallaxProvider>
+        <div className="absolute left-0 float">
+          <Parallax translateY={[-80, 80]}>
+            <PrismicNextImage
+              alt=""
+              test-id="BigNumbersImageParallax"
+              field={slice.primary.bignumbersimage}
+            />
+          </Parallax>
+        </div>
+      </ParallaxProvider>
+    </div>
+  );
 
   const bigNumbersList = (
     <div
@@ -44,13 +60,13 @@ export default function BigNumbers({ slice }: BigNumbersSliceProps) {
     </div>
   );
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+  function hideImageParallax(hidden: boolean) {
+    if (typeof document === "undefined" || hidden) return;
+    const element = document.getElementById("ImageParallax");
+    if (element) {
+      element.style.display = "none";
+    }
+  }
 
   function highlightTextWithColor(
     text: KeyTextField,
@@ -82,32 +98,29 @@ export default function BigNumbers({ slice }: BigNumbersSliceProps) {
   return (
     <div className="bg-gradient-to-br from-[#026C73] to-[#0C6F76] via-[#014E6C]">
       <div className="py-24 w-full text-center text-white flex justify-center items-center">
-        <ParallaxProvider>
-          <div className="absolute left-0 float">
-            <Parallax translateY={[-80, 80]}>
-              <PrismicNextImage
-                alt=""
-                test-id="BigNumbersImageParallax"
-                field={slice.primary.bignumbersimage}
-              />
-            </Parallax>
-          </div>
-        </ParallaxProvider>
+        <>{imageParallax}</>
         <div className="z-10">
           <h2 id="BigNumbersSliceTitle" className="text-5xl py-4 font-bold">
             {highlightedText}
           </h2>
           {isCarousel ? (
-            <BigNumbersCarousel bigNumberProps={slice.items} />
+            <>
+              {hideImageParallax(slice.primary.bignumbersimagevisibility)}
+              <BigNumbersCarousel bigNumberProps={slice.items} />
+            </>
           ) : (
-            <div>{bigNumbersList}</div>
+            <>
+              <div>{bigNumbersList}</div>
+            </>
           )}
-          <PrismicNextLink
-            className="block w-full max-w-xs mx-auto bg-green text-darkblue rounded-full py-3 text-center text-sm font-semibold hover:scale-105 transition duration-300 ease-in-out font-inter uppercase"
-            field={slice.primary.bignumbersslicebuttonlink}
-          >
-            {slice.primary.bignumbersslicebuttontext}
-          </PrismicNextLink>
+          <>
+            <PrismicNextLink
+              className="block w-full max-w-xs mx-auto bg-green text-darkblue rounded-full py-3 text-center text-sm font-semibold hover:scale-105 transition duration-300 ease-in-out font-inter uppercase"
+              field={slice.primary.bignumbersslicebuttonlink}
+            >
+              {slice.primary.bignumbersslicebuttontext}
+            </PrismicNextLink>
+          </>
         </div>
       </div>
     </div>
