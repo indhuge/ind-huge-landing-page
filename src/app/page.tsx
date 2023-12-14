@@ -5,6 +5,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Banner from "@/components/banner";
 import { pages } from "next/dist/build/templates/app-page";
+import BlogCard from "@/components/BlogCard";
 
 type Params = { uid: "landing_page" };
 
@@ -27,6 +28,18 @@ export default async function Page({ params }: { params: Params }) {
       />
       <Banner page={banner} />
       <SliceZone slices={page.data.slices} components={components} />
+      <div className="bg-white p-10">
+        <BlogCard
+          post={{
+            title: "Teste",
+            description:
+              "Lorem ipsum dolor sit amet consectetur. Enim vitae porta neque vulputate in eleifend mauris cursus. Proin venenatis.",
+            date: "12/12/23",
+            image: null,
+            tag: "test",
+          }}
+        />
+      </div>
     </>
   );
 }
