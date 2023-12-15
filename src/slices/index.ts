@@ -8,5 +8,8 @@ export const components = {
   contato: dynamic(() => import("./ContatoSlice")),
   features_slice: dynamic(() => import("./FeaturesSlice")),
   partners_slice: dynamic(() => import("./PartnersSlice")),
+  recents_posts_and_categories: dynamic(
+    () => import("./RecentsPostsAndCategories"),
+  ),
   teste: dynamic(() => import("./Teste")),
 };

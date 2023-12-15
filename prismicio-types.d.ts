@@ -120,6 +120,8 @@ interface BannerDocumentData {
 export type BannerDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BannerDocumentData>, "banner", Lang>;
 
+type BlogDocumentDataSlicesSlice = RecentsPostsAndCategoriesSlice;
+
 /**
  * Item in *FAQ → item*
  */
@@ -237,6 +239,65 @@ interface FaqDocumentData {
  */
 export type FaqDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FaqDocumentData>, "faq", Lang>;
+
+/**
+ * Content for Blog documents
+ */
+interface BlogDocumentData {
+  /**
+   * Slice Zone field in *Blog*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BlogDocumentDataSlicesSlice> /**
+   * Meta Description field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blog.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Blog*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blog.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Blog document from Prismic
+ *
+ * - **API ID**: `blog`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
 /**
  * Item in *Footer → Links Navegação*
@@ -732,6 +793,7 @@ export type LandingPageDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | BannerDocument
   | FaqDocument
+  | BlogDocument
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument;
@@ -1240,6 +1302,63 @@ export type PartnersSliceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *RecentsPostsAndCategories → Primary*
+ */
+export interface RecentsPostsAndCategoriesSliceDefaultPrimary {
+  /**
+   * Main TItle field in *RecentsPostsAndCategories → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recents_posts_and_categories.primary.main_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  main_title: prismic.KeyTextField;
+
+  /**
+   * See all text field in *RecentsPostsAndCategories → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recents_posts_and_categories.primary.see_all_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  see_all_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for RecentsPostsAndCategories Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecentsPostsAndCategoriesSliceDefault =
+  prismic.SharedSliceVariation<
+    "default",
+    Simplify<RecentsPostsAndCategoriesSliceDefaultPrimary>,
+    never
+  >;
+
+/**
+ * Slice variation for *RecentsPostsAndCategories*
+ */
+type RecentsPostsAndCategoriesSliceVariation =
+  RecentsPostsAndCategoriesSliceDefault;
+
+/**
+ * RecentsPostsAndCategories Shared Slice
+ *
+ * - **API ID**: `recents_posts_and_categories`
+ * - **Description**: RecentsPostsAndCategories
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecentsPostsAndCategoriesSlice = prismic.SharedSlice<
+  "recents_posts_and_categories",
+  RecentsPostsAndCategoriesSliceVariation
+>;
+
+/**
  * Default variation for Teste Slice
  *
  * - **API ID**: `default`
@@ -1283,6 +1402,9 @@ declare module "@prismicio/client" {
       FaqDocumentData,
       FaqDocumentDataItemItem,
       FaqDocumentDataSlicesSlice,
+      BlogDocument,
+      BlogDocumentData,
+      BlogDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataLinksItem,
@@ -1323,6 +1445,10 @@ declare module "@prismicio/client" {
       PartnersSliceSliceDefaultItem,
       PartnersSliceSliceVariation,
       PartnersSliceSliceDefault,
+      RecentsPostsAndCategoriesSlice,
+      RecentsPostsAndCategoriesSliceDefaultPrimary,
+      RecentsPostsAndCategoriesSliceVariation,
+      RecentsPostsAndCategoriesSliceDefault,
       TesteSlice,
       TesteSliceVariation,
       TesteSliceDefault,

@@ -1,0 +1,33 @@
+{
+  "id": "recents_posts_and_categories",
+  "type": "SharedSlice",
+  "name": "RecentsPostsAndCategories",
+  "description": "RecentsPostsAndCategories",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "main_title": {
+          "type": "Text",
+          "config": {
+            "label": "Main TItle",
+            "placeholder": ""
+          }
+        },
+        "see_all_text": {
+          "type": "Text",
+          "config": {
+            "label": "See all text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
