@@ -22,11 +22,11 @@ export default async function RootLayout({
   const client = createClient();
   const header = await client
     .getByUID("header", "header")
-    .catch(() => notFound());
+    //.catch(() => notFound());
 
   const footer = await client
     .getByUID("footer", "footer")
-    .catch(() => notFound());
+    //.catch(() => notFound());
 
   return (
     <html lang="en">

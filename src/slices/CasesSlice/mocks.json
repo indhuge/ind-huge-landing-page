@@ -12,6 +12,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "living",
 				"type": "Text"
+			},
+			"auto_scroll_interval": {
+				"__TYPE__": "FieldContent",
+				"value": "52",
+				"type": "Number"
 			}
 		},
 		"items": [
@@ -21,7 +26,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"origin": {
 								"id": "main",
 								"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
@@ -39,6 +43,9 @@
 								},
 								"background": "transparent"
 							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					],
