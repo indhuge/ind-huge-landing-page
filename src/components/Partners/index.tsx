@@ -10,7 +10,7 @@ export default function Partners({ slice }: PartnersSliceProps) {
       <div className="py-5 flex justify-between TabletPortrait:flex-col TabletPortrait:items-center">
         {slice.items.map((e, i) => {
           return (
-            <PrismicNextImage
+            <PrismicNextImage alt=""
               key={i}
               className="lg:w-[15%] s_mobile:w-[30%] h-auto aspect-[1/1] object-contain Mobile:w-[100vw]"
               field={e.logo}

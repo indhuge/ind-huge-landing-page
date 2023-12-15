@@ -39,10 +39,11 @@
               }
             },
             "topico": {
-              "type": "Text",
+              "type": "Link",
               "config": {
                 "label": "topico",
-                "placeholder": ""
+                "select": "document",
+                "customtypes": ["category"]
               }
             }
           }

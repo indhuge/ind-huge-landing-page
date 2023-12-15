@@ -5,6 +5,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Banner from "@/components/banner";
 import { pages } from "next/dist/build/templates/app-page";
+import BlogCard from "@/components/BlogCard";
 
 type Params = { uid: "landing_page" };
 
@@ -14,7 +15,7 @@ export default async function Page({ params }: { params: Params }) {
   const banner = await client
     .getByUID("banner", "banner")
     .catch(() => notFound());
-  console.log(page.data.slices);
+  // console.log(page.data.slices);
   return (
     <>
       {/*Script Hubspot*/}

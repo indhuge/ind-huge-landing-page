@@ -1,12 +1,13 @@
 "use client";
 import { CasesSliceProps } from "@/slices/CasesSlice";
 import { PrismicNextImage } from "@prismicio/next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Cases({ slice }: CasesSliceProps) {
   const middleElementIndex = Math.floor(slice.items.length / 2);
   const [selected, setSelected] = useState(middleElementIndex);
   const indexTotal = slice.items.length - 1;
+  const [interval, _setInterval] = useState<NodeJS.Timeout | null>();
 
   const MakeTranslation = (value: number) => {
     var e = document.getElementById("cardHolder");
@@ -16,10 +17,13 @@ export default function Cases({ slice }: CasesSliceProps) {
   const CalcTranslation = (value: number) =>
     (middleElementIndex - value) * Math.ceil(100 / slice.items.length);
 
-  const toRight = () => {
+  const toRight = (isAuto: Boolean = false) => {
     const value = selected == indexTotal ? 0 : selected + 1;
     setSelected(value);
     MakeTranslation(CalcTranslation(value));
+    if (!isAuto) {
+      clearTimeout(interval!!);
+    }
   };
 
   const toLeft = () => {
@@ -27,6 +31,16 @@ export default function Cases({ slice }: CasesSliceProps) {
     setSelected(value);
     MakeTranslation(CalcTranslation(value));
   };
+
+  useEffect(() => {
+    const tmp = setTimeout(
+      () => {
+        toRight(true);
+      },
+      (slice.primary.auto_scroll_interval ?? 10) * 1000
+    );
+    _setInterval(tmp);
+  }, [selected]);
 
   return (
     <div className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
@@ -39,7 +53,7 @@ export default function Cases({ slice }: CasesSliceProps) {
         </div>
       </div>
       <div
-        className={`flex-row flex gap-8 transition-all duration-700 transform-gpu ease-circular-0-0-0-1`}
+        className={`flex-row flex gap-8 transition-all duration-700 transform-gpu`}
         id="cardHolder"
       >
         {slice.items.map((e, i) => {
@@ -54,6 +68,7 @@ export default function Cases({ slice }: CasesSliceProps) {
               <div className="w-full h-full overflow-hidden rounded-2xl ">
                 <div className="grid w-auto h-full">
                   <PrismicNextImage
+                    alt=""
                     field={e.image}
                     className="w-full h-full aspect-video Mobile:aspect-square object-fill row-start-1 row-end-2 col-start-1 col-end-2"
                   />
@@ -67,6 +82,7 @@ export default function Cases({ slice }: CasesSliceProps) {
                     <div className="m-4 flex justify-between">
                       <div>
                         <PrismicNextImage
+                          alt=""
                           field={e.lefticon}
                           className="inline "
                         />
@@ -76,6 +92,7 @@ export default function Cases({ slice }: CasesSliceProps) {
                       </div>
                       <div>
                         <PrismicNextImage
+                          alt=""
                           field={e.rigthicon}
                           className="inline"
                         />
@@ -116,7 +133,7 @@ export default function Cases({ slice }: CasesSliceProps) {
         </button>
         <button
           className="bg-green rounded-full w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-4 flex items-center justify-center focus:outline-none"
-          onClick={toRight}
+          onClick={() => toRight()}
         >
           <span className="text-xl sm:text-2xl">&#10095;</span>
         </button>
