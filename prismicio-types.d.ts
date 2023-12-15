@@ -121,6 +121,124 @@ export type BannerDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BannerDocumentData>, "banner", Lang>;
 
 /**
+ * Item in *FAQ → item*
+ */
+export interface FaqDocumentDataItemItem {
+  /**
+   * pergunta field in *FAQ → item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.item[].pergunta
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  pergunta: prismic.KeyTextField;
+
+  /**
+   * resposta field in *FAQ → item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.item[].resposta
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  resposta: prismic.KeyTextField;
+
+  /**
+   * topico field in *FAQ → item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.item[].topico
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  topico: prismic.KeyTextField;
+}
+
+type FaqDocumentDataSlicesSlice = never;
+
+/**
+ * Content for FAQ documents
+ */
+interface FaqDocumentData {
+  /**
+   * Banner Texto field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.banner_texto
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  banner_texto: prismic.KeyTextField;
+
+  /**
+   * item field in *FAQ*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.item[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  item: prismic.GroupField<Simplify<FaqDocumentDataItemItem>>;
+
+  /**
+   * Slice Zone field in *FAQ*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FaqDocumentDataSlicesSlice> /**
+   * Meta Description field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: faq.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *FAQ*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: faq.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * FAQ document from Prismic
+ *
+ * - **API ID**: `faq`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FaqDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<FaqDocumentData>, "faq", Lang>;
+
+/**
  * Item in *Footer → Links Navegação*
  */
 export interface FooterDocumentDataLinksItem {
@@ -613,6 +731,7 @@ export type LandingPageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BannerDocument
+  | FaqDocument
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument;
@@ -772,6 +891,16 @@ export interface CasesSliceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitle: prismic.KeyTextField;
+
+  /**
+   * Auto Scroll Interval (s) field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 10
+   * - **API ID Path**: cases_slice.primary.auto_scroll_interval
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  auto_scroll_interval: prismic.NumberField;
 }
 
 /**
@@ -1150,6 +1279,10 @@ declare module "@prismicio/client" {
       BannerDocument,
       BannerDocumentData,
       BannerDocumentDataSlicesSlice,
+      FaqDocument,
+      FaqDocumentData,
+      FaqDocumentDataItemItem,
+      FaqDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataLinksItem,

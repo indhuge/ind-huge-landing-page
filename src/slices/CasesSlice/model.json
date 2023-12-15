@@ -25,6 +25,13 @@
             "label": "Subtitle",
             "placeholder": ""
           }
+        },
+        "auto_scroll_interval": {
+          "type": "Number",
+          "config": {
+            "label": "Auto Scroll Interval (s)",
+            "placeholder": "10"
+          }
         }
       },
       "items": {
