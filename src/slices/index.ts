@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 
 export const components = {
   big_numbers_slice: dynamic(() => import("./BigNumbersSlice")),
+  blog_image_slice: dynamic(() => import("./BlogImageSlice")),
+  blog_paragraph_slice: dynamic(() => import("./BlogParagraphSlice")),
   cases_slice: dynamic(() => import("./CasesSlice")),
   contato: dynamic(() => import("./ContatoSlice")),
   features_slice: dynamic(() => import("./FeaturesSlice")),

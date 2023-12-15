@@ -11,11 +11,20 @@ type BlogPost = {
   date: String;
 };
 
-export default function BlogCard({ post }: { post: BlogPost }) {
+export default function BlogCard({
+  post,
+  className,
+}: {
+  post: BlogPost;
+  className: string | null;
+}) {
   return (
     <div
-      className="h-[30rem] max-w-[22rem] flex flex-col
-     bg-white overflow-clip rounded-lg"
+      className={
+        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg" +
+        " " +
+        className
+      }
     >
       <Image
         className="h-1/2 object-cover"

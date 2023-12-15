@@ -1,3 +1,5 @@
+"use client";
+import RecentsPostsAndCategoriesComponent from "@/components/RecentsPostsAndCategoriesComponent";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
@@ -18,7 +20,12 @@ const RecentsPostsAndCategories = ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <p>Teste</p>
+      <RecentsPostsAndCategoriesComponent
+        slice={slice}
+        index={0}
+        slices={[]}
+        context={undefined}
+      />
     </section>
   );
 };

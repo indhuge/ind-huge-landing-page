@@ -1,0 +1,34 @@
+{
+  "id": "blog_image_slice",
+  "type": "SharedSlice",
+  "name": "BlogImageSlice",
+  "description": "BlogImageSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "legenda": {
+          "type": "Text",
+          "config": {
+            "label": "Legenda",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
