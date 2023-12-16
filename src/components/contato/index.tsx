@@ -105,7 +105,7 @@ export default function Contato(slice: ContatoProps) {
                     </div>
                     <p className="mx-[2vw] mb-[2vh] text-[1.5vw] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{slice?.slice?.primary?.descricao}</p>
                     <div className="flex flex-row] TabletPortrait:mb-[2vh]">
-                        <Link href={""} className="bg-green p-[1vw] mr-3 ml-[2vw] rounded-full TabletPortrait:mx-6 TabletPortrait:p-[3vw]"><Image src={whatsapp} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
+                        <Link href={"https://wa.me/+5500000000000"} className="bg-green p-[1vw] mr-3 ml-[2vw] rounded-full TabletPortrait:mx-6 TabletPortrait:p-[3vw]"><Image src={whatsapp} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
                         <Link href={"mailto:indhuge@gmail.com"} className="bg-green p-[1vw] mr-3 rounded-full TabletPortrait:p-[3vw]"><Image src={email} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
                     </div>
                 </div>
