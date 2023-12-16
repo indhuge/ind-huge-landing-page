@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "cases_slice": {
+              "type": "SharedSlice"
+            },
             "recents_posts_and_categories": {
               "type": "SharedSlice"
             }
