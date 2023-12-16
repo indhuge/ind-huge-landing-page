@@ -6,7 +6,7 @@
   "variations": [
     {
       "id": "default",
-      "name": "Default",
+      "name": "CarouselLanding",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -97,6 +97,65 @@
             "label": "LeftIcon",
             "constraint": {},
             "thumbnails": []
+          }
+        }
+      }
+    },
+    {
+      "id": "blogCarousel",
+      "name": "BlogCarousel",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "auto_scroll_interval": {
+          "type": "Number",
+          "config": {
+            "label": "Auto Scroll Interval (s)",
+            "placeholder": "10"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 796,
+              "height": 435
+            },
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        },
+        "lermaisbutton": {
+          "type": "Link",
+          "config": {
+            "label": "LerMaisButton",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "buttontext": {
+          "type": "Text",
+          "config": {
+            "label": "ButtonText",
+            "placeholder": ""
           }
         }
       }

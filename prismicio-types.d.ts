@@ -120,7 +120,9 @@ interface BannerDocumentData {
 export type BannerDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BannerDocumentData>, "banner", Lang>;
 
-type BlogDocumentDataSlicesSlice = RecentsPostsAndCategoriesSlice;
+type BlogDocumentDataSlicesSlice =
+  | CasesSliceSlice
+  | RecentsPostsAndCategoriesSlice;
 
 /**
  * Content for Blog documents
@@ -1449,7 +1451,7 @@ export interface CasesSliceSliceDefaultItem {
 }
 
 /**
- * Default variation for CasesSlice Slice
+ * CarouselLanding variation for CasesSlice Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -1462,9 +1464,94 @@ export type CasesSliceSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *CasesSlice → Primary*
+ */
+export interface CasesSliceSliceBlogCarouselPrimary {
+  /**
+   * Auto Scroll Interval (s) field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 10
+   * - **API ID Path**: cases_slice.primary.auto_scroll_interval
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  auto_scroll_interval: prismic.NumberField;
+}
+
+/**
+ * Primary content in *CasesSlice → Items*
+ */
+export interface CasesSliceSliceBlogCarouselItem {
+  /**
+   * Image field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * LerMaisButton field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].lermaisbutton
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  lermaisbutton: prismic.LinkField;
+
+  /**
+   * ButtonText field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].buttontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  buttontext: prismic.KeyTextField;
+}
+
+/**
+ * BlogCarousel variation for CasesSlice Slice
+ *
+ * - **API ID**: `blogCarousel`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesSliceSliceBlogCarousel = prismic.SharedSliceVariation<
+  "blogCarousel",
+  Simplify<CasesSliceSliceBlogCarouselPrimary>,
+  Simplify<CasesSliceSliceBlogCarouselItem>
+>;
+
+/**
  * Slice variation for *CasesSlice*
  */
-type CasesSliceSliceVariation = CasesSliceSliceDefault;
+type CasesSliceSliceVariation =
+  | CasesSliceSliceDefault
+  | CasesSliceSliceBlogCarousel;
 
 /**
  * CasesSlice Shared Slice
@@ -1842,8 +1929,11 @@ declare module "@prismicio/client" {
       CasesSliceSlice,
       CasesSliceSliceDefaultPrimary,
       CasesSliceSliceDefaultItem,
+      CasesSliceSliceBlogCarouselPrimary,
+      CasesSliceSliceBlogCarouselItem,
       CasesSliceSliceVariation,
       CasesSliceSliceDefault,
+      CasesSliceSliceBlogCarousel,
       ContatoSlice,
       ContatoSliceDefaultPrimary,
       ContatoSliceDefaultItem,
