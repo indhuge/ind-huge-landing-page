@@ -1,12 +1,13 @@
 'use client'
 import borda from "../../../public/assets/bordaVideo.svg";
 import TextField from "@mui/material/TextField";
-import { Checkbox, FormControlLabel, styled } from "@mui/material";
+import { Checkbox, FormControlLabel, Link, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { ContatoSliceDefaultItem, Simplify } from "../../../prismicio-types";
 import { ContatoProps } from "@/slices/ContatoSlice";
 import { KeyTextField } from "@prismicio/client";
+import Image from "next/image";
 
 type Params = { uid: string };
 
@@ -48,6 +49,8 @@ export default function Contato(slice: ContatoProps) {
     // console.log(slice)
 
     const [cookies] = useCookies(["hubspotutk"]);
+    const email = require("../../../public/assets/emailicone.svg");
+    const whatsapp = require("../../../public/assets/whatsappicone.svg");
 
     const [formDados, setFormDados] = useState({
         "nome": "",
@@ -97,10 +100,14 @@ export default function Contato(slice: ContatoProps) {
             `}
             >
                 <div className={`flex flex-col items-start justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat my-52 w-full aspect-video TabletPortrait:bg-[length:0_0] TabletPortrait:w-full TabletPortrait:h-fit TabletPortrait:my-0`} style={{ backgroundImage: `url(${borda.src})` }}>
-                    <div className="flex-none text-[2.5vw] font-bold mx-12 my-4 TabletPortrait:text-[7vw] TabletPortrait:mx-6">
+                    <div className="flex-none text-[2.5vw] font-bold mx-[2vw] my-4 TabletPortrait:text-[7vw] TabletPortrait:mx-6">
                         {highlightedText}
                     </div>
-                    <p className="mx-12 mb-24 text-[1.5vw] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{slice?.slice?.primary?.descricao}</p>
+                    <p className="mx-[2vw] mb-[2vh] text-[1.5vw] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{slice?.slice?.primary?.descricao}</p>
+                    <div className="flex flex-row] TabletPortrait:mb-[2vh]">
+                        <Link href={""} className="bg-green p-[1vw] mr-3 ml-[2vw] rounded-full TabletPortrait:mx-6 TabletPortrait:p-[3vw]"><Image src={whatsapp} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
+                        <Link href={"mailto:indhuge@gmail.com"} className="bg-green p-[1vw] mr-3 rounded-full TabletPortrait:p-[3vw]"><Image src={email} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
+                    </div>
                 </div>
                 <form className={`flex flex-col items-start space-y-4 justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[80%] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>
                     <CssTextField
@@ -108,8 +115,8 @@ export default function Contato(slice: ContatoProps) {
                         type="text"
                         label="Nome Completo"
                         placeholder="Digite seu nome..."
-                        inputProps={{ style: { color: "#FFFFFF"} }}
-                        InputLabelProps={{ style: { color: "#FFFFFF"} }}
+                        inputProps={{ style: { color: "#FFFFFF" } }}
+                        InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.nome}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             setFormDados({ ...formDados, nome: event.target.value }); //console.log(formDados) 
