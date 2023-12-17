@@ -121,6 +121,7 @@ export type BannerDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BannerDocumentData>, "banner", Lang>;
 
 type BlogDocumentDataSlicesSlice =
+  | NewsletterSlice
   | CasesSliceSlice
   | RecentsPostsAndCategoriesSlice;
 
@@ -392,124 +393,6 @@ export interface FaqDocumentDataItemItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   topico: prismic.ContentRelationshipField<"category">;
-}
-
-type FaqDocumentDataSlicesSlice = never;
-
-/**
- * Content for FAQ documents
- */
-interface FaqDocumentData {
-  /**
-   * Banner Texto field in *FAQ*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq.banner_texto
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  banner_texto: prismic.KeyTextField;
-
-  /**
-   * item field in *FAQ*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq.item[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  item: prismic.GroupField<Simplify<FaqDocumentDataItemItem>>;
-
-  /**
-   * Slice Zone field in *FAQ*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<FaqDocumentDataSlicesSlice> /**
-   * Meta Description field in *FAQ*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: faq.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *FAQ*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
-
-  /**
-   * Meta Title field in *FAQ*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: faq.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_title: prismic.KeyTextField;
-}
-
-/**
- * FAQ document from Prismic
- *
- * - **API ID**: `faq`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type FaqDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<FaqDocumentData>, "faq", Lang>;
-
-/**
- * Item in *FAQ → item*
- */
-export interface FaqDocumentDataItemItem {
-  /**
-   * pergunta field in *FAQ → item*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq.item[].pergunta
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  pergunta: prismic.KeyTextField;
-
-  /**
-   * resposta field in *FAQ → item*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq.item[].resposta
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  resposta: prismic.KeyTextField;
-
-  /**
-   * topico field in *FAQ → item*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq.item[].topico
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  topico: prismic.KeyTextField;
 }
 
 type FaqDocumentDataSlicesSlice = never;
@@ -1092,7 +975,6 @@ export type AllDocumentTypes =
   | BlogPostDocument
   | CategoryDocument
   | FaqDocument
-  | FaqDocument
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument;
@@ -1570,6 +1452,26 @@ export type CasesSliceSlice = prismic.SharedSlice<
  */
 export interface ContatoSliceDefaultPrimary {
   /**
+   * Titulo field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * Destaque do Titulo field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.destaque_titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  destaque_titulo: prismic.KeyTextField;
+
+  /**
    * Descrição field in *ContatoSlice → Primary*
    *
    * - **Field Type**: Text
@@ -1578,31 +1480,46 @@ export interface ContatoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   descricao: prismic.KeyTextField;
-}
 
-/**
- * Primary content in *ContatoSlice → Items*
- */
-export interface ContatoSliceDefaultItem {
   /**
-   * Título field in *ContatoSlice → Items*
+   * Logo Whatsapp field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.logo_whatsapp
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_whatsapp: prismic.ImageField<never>;
+
+  /**
+   * Link Whatsapp field in *ContatoSlice → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.items[].titulo
+   * - **API ID Path**: contato.primary.link_whatsapp
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  titulo: prismic.KeyTextField;
+  link_whatsapp: prismic.KeyTextField;
 
   /**
-   * Cor field in *ContatoSlice → Items*
+   * Logo Email field in *ContatoSlice → Primary*
    *
-   * - **Field Type**: Color
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.items[].cor
-   * - **Documentation**: https://prismic.io/docs/field#color
+   * - **API ID Path**: contato.primary.logo_email
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  cor: prismic.ColorField;
+  logo_email: prismic.ImageField<never>;
+
+  /**
+   * Link Email field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.link_email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_email: prismic.KeyTextField;
 }
 
 /**
@@ -1615,7 +1532,7 @@ export interface ContatoSliceDefaultItem {
 export type ContatoSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<ContatoSliceDefaultPrimary>,
-  Simplify<ContatoSliceDefaultItem>
+  never
 >;
 
 /**
@@ -1723,6 +1640,72 @@ type FeaturesSliceSliceVariation = FeaturesSliceSliceDefault;
 export type FeaturesSliceSlice = prismic.SharedSlice<
   "features_slice",
   FeaturesSliceSliceVariation
+>;
+
+/**
+ * Primary content in *NewsletterSlice → Primary*
+ */
+export interface NewsletterSliceDefaultPrimary {
+  /**
+   * Titulo field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * Subtitulo field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitulo: prismic.KeyTextField;
+
+  /**
+   * Tipo field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: newsletter.primary.tipo
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  tipo: prismic.BooleanField;
+}
+
+/**
+ * Default variation for NewsletterSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsletterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NewsletterSlice*
+ */
+type NewsletterSliceVariation = NewsletterSliceDefault;
+
+/**
+ * NewsletterSlice Shared Slice
+ *
+ * - **API ID**: `newsletter`
+ * - **Description**: Newsletter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSlice = prismic.SharedSlice<
+  "newsletter",
+  NewsletterSliceVariation
 >;
 
 /**
@@ -1894,10 +1877,6 @@ declare module "@prismicio/client" {
       FaqDocumentData,
       FaqDocumentDataItemItem,
       FaqDocumentDataSlicesSlice,
-      FaqDocument,
-      FaqDocumentData,
-      FaqDocumentDataItemItem,
-      FaqDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataLinksItem,
@@ -1936,7 +1915,6 @@ declare module "@prismicio/client" {
       CasesSliceSliceBlogCarousel,
       ContatoSlice,
       ContatoSliceDefaultPrimary,
-      ContatoSliceDefaultItem,
       ContatoSliceVariation,
       ContatoSliceDefault,
       FeaturesSliceSlice,
@@ -1944,6 +1922,10 @@ declare module "@prismicio/client" {
       FeaturesSliceSliceDefaultItem,
       FeaturesSliceSliceVariation,
       FeaturesSliceSliceDefault,
+      NewsletterSlice,
+      NewsletterSliceDefaultPrimary,
+      NewsletterSliceVariation,
+      NewsletterSliceDefault,
       PartnersSliceSlice,
       PartnersSliceSliceDefaultPrimary,
       PartnersSliceSliceDefaultItem,

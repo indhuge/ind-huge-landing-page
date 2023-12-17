@@ -12,30 +12,65 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "titulo": {
+          "type": "Text",
+          "config": {
+            "label": "Titulo",
+            "placeholder": ""
+          }
+        },
+        "destaque_titulo": {
+          "type": "Text",
+          "config": {
+            "label": "Destaque do Titulo",
+            "placeholder": ""
+          }
+        },
         "descricao": {
           "type": "Text",
           "config": {
             "label": "Descrição",
             "placeholder": ""
           }
-        }
-      },
-      "items": {
-        "titulo": {
+        },
+        "logo_whatsapp": {
+          "type": "Image",
+          "config": {
+            "label": "Logo Whatsapp",
+            "constraint": {
+              "width": 16,
+              "height": 16
+            },
+            "thumbnails": []
+          }
+        },
+        "link_whatsapp": {
           "type": "Text",
           "config": {
-            "label": "Título",
+            "label": "Link Whatsapp",
             "placeholder": ""
           }
         },
-        "cor": {
-          "type": "Color",
+        "logo_email": {
+          "type": "Image",
           "config": {
-            "label": "Cor",
+            "label": "Logo Email",
+            "constraint": {
+              "width": 16,
+              "height": 16
+            },
+            "thumbnails": []
+          }
+        },
+        "link_email": {
+          "type": "Text",
+          "config": {
+            "label": "Link Email",
             "placeholder": ""
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

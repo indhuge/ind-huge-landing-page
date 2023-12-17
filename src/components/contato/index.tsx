@@ -4,10 +4,10 @@ import TextField from "@mui/material/TextField";
 import { Checkbox, FormControlLabel, Link, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
-import { ContatoSliceDefaultItem, Simplify } from "../../../prismicio-types";
 import { ContatoProps } from "@/slices/ContatoSlice";
 import { KeyTextField } from "@prismicio/client";
 import Image from "next/image";
+import { PrismicNextImage } from "@prismicio/next";
 
 type Params = { uid: string };
 
@@ -83,8 +83,8 @@ export default function Contato(slice: ContatoProps) {
     }
 
     const highlightedText = highlightTextWithColor(
-        slice?.slice?.items[0]?.titulo,
-        slice?.slice?.items[1]?.titulo,
+        slice?.slice?.primary?.titulo,
+        slice?.slice?.primary?.destaque_titulo,
         "#26D07C"
     );
 
@@ -105,8 +105,8 @@ export default function Contato(slice: ContatoProps) {
                     </div>
                     <p className="mx-[2vw] mb-[2vh] text-[1.5vw] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{slice?.slice?.primary?.descricao}</p>
                     <div className="flex flex-row] TabletPortrait:mb-[2vh]">
-                        <Link href={"https://wa.me/+5500000000000"} className="bg-green p-[1vw] mr-3 ml-[2vw] rounded-full TabletPortrait:mx-6 TabletPortrait:p-[3vw]"><Image src={whatsapp} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
-                        <Link href={"mailto:indhuge@gmail.com"} className="bg-green p-[1vw] mr-3 rounded-full TabletPortrait:p-[3vw]"><Image src={email} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
+                        <Link href={slice?.slice?.primary?.link_whatsapp as string} className="bg-green p-[1vw] mr-3 ml-[2vw] rounded-full TabletPortrait:mx-6 TabletPortrait:p-[3vw]"><PrismicNextImage field={slice?.slice?.primary?.logo_whatsapp} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
+                        <Link href={slice?.slice?.primary?.link_email as string} className="bg-green p-[1vw] mr-3 rounded-full TabletPortrait:p-[3vw]"><PrismicNextImage field={slice?.slice?.primary?.logo_email} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
                     </div>
                 </div>
                 <form className={`flex flex-col items-start space-y-4 justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[80%] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>

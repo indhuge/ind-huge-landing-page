@@ -9,6 +9,7 @@ export const components = {
   cases_slice: dynamic(() => import("./CasesSlice")),
   contato: dynamic(() => import("./ContatoSlice")),
   features_slice: dynamic(() => import("./FeaturesSlice")),
+  newsletter: dynamic(() => import("./NewsletterSlice")),
   partners_slice: dynamic(() => import("./PartnersSlice")),
   recents_posts_and_categories: dynamic(
     () => import("./RecentsPostsAndCategories"),
