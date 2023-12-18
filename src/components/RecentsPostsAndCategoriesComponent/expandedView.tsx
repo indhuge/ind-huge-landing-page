@@ -24,7 +24,7 @@ export default function ExpandedView({
 
   return (
     <div className="flex flex-col">
-      <div className="grid grid-cols-3  justify-center gap-10 flex-wrap">
+      <div className="grid grid-cols-1 justify-between gap-5 flex-wrap lg:grid-cols-2 LaptopS:grid-cols-3">
         {postsView?.slice((nPage - 1) * 6, 6 * nPage).map((pages, i) => {
           return (
             <BlogCard

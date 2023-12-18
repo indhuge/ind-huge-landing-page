@@ -40,8 +40,8 @@ export default function RecentsPostsAndCategoriesComponent({
   if (categories?.length == 0) return <p>Carregando</p>;
 
   return (
-    <div className="bg-white flex flex-col py-10 px-36">
-      <div className="flex justify-center items-center">
+    <div className="bg-white flex flex-col py-10 px-2 ss_mobile:px-10 md:px-36">
+      <div className="flex justify-center items-center flex-wrap">
         <CircularButton
           key={-1}
           text="ver todos"
@@ -71,7 +71,7 @@ export default function RecentsPostsAndCategoriesComponent({
                 : categories!![selected].data.name}
           </h2>
           <p
-            className="text-blue text-sm font-semibold hover:underline select-none hover:cursor-pointer"
+            className="text-blue text-sm font-semibold hover:underline select-none hover:cursor-pointer hidden lg:block"
             onClick={() => setExpanded(!isExpanded)}
           >
             {!isExpanded
@@ -93,6 +93,15 @@ export default function RecentsPostsAndCategoriesComponent({
             router={router}
           />
         )}
+        <p
+          className="text-blue text-sm font-semibold hover:underline select-none hover:cursor-pointer 
+          lg:hidden self-center"
+          onClick={() => setExpanded(!isExpanded)}
+        >
+          {!isExpanded
+            ? slice.primary.see_all_text?.toUpperCase()
+            : "ver postagens recentes".toUpperCase()}
+        </p>
       </div>
     </div>
   );

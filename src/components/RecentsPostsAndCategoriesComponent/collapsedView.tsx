@@ -12,7 +12,7 @@ export default function CollapsedView({
   router: AppRouterInstance;
 }) {
   return (
-    <div className="grid grid-cols-3 justify-between gap-10 flex-wrap">
+    <div className="grid grid-cols-1 justify-between gap-5 flex-wrap lg:grid-cols-2 LaptopS:grid-cols-3">
       {postsView?.slice(0, 3).map((pages, i) => {
         return (
           <BlogCard
