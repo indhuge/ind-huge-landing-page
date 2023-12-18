@@ -1,7 +1,7 @@
 import { RecentsPostsAndCategoriesProps } from "@/slices/RecentsPostsAndCategories";
-import { getCategoriesAndPosts } from "./service";
+import { filterByTag, getCategoriesAndPosts, seeAll } from "./service";
 import CircularButton from "../CircularButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlogCard from "../BlogCard";
 import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 
@@ -10,12 +10,25 @@ export default function RecentsPostsAndCategoriesComponent({
 }: RecentsPostsAndCategoriesProps) {
   const [selected, setSelected] = useState(-1);
   const [categories, setCategories] = useState<CategoryDocument<string>[]>();
+  const [postsView, setPostsView] = useState<BlogPostDocument<string>[]>();
   const [posts, setPosts] = useState<BlogPostDocument<string>[]>();
 
-  getCategoriesAndPosts().then((e) => {
-    setCategories(e.categories);
-    setPosts(e.posts);
-  });
+  const filterClick = (index: number) => {
+    setSelected(index);
+    const tmp =
+      index == -1
+        ? seeAll(posts!!)
+        : filterByTag(categories!![index].uid as string, posts!!);
+    setPostsView(tmp);
+  };
+
+  useEffect(() => {
+    getCategoriesAndPosts().then((e) => {
+      setCategories(e.categories);
+      setPosts(e.posts);
+      setPostsView(seeAll(e.posts));
+    });
+  }, []);
 
   if (categories?.length == 0) return <p>Carregando</p>;
 
@@ -26,7 +39,7 @@ export default function RecentsPostsAndCategoriesComponent({
           key={-1}
           text="ver todos"
           onClick={() => {
-            setSelected(-1);
+            filterClick(-1);
           }}
           isSelected={selected == -1}
         />
@@ -35,7 +48,7 @@ export default function RecentsPostsAndCategoriesComponent({
             <CircularButton
               key={i}
               text={e.data.name}
-              onClick={() => setSelected(i)}
+              onClick={() => filterClick(i)}
               isSelected={selected == i}
             />
           );
@@ -51,18 +64,20 @@ export default function RecentsPostsAndCategoriesComponent({
           </p>
         </div>
         <div className="flex flex-row justify-between gap-10 flex-wrap">
-          {posts?.map((e, i) => {
+          {postsView?.slice(0, 3).map((pages, i) => {
             return (
               <BlogCard
                 key={i}
-                className="flex-[1_0_25%]"
+                className="flex-[1_0_25%] max-w-[30%]"
                 post={{
-                  title: e.data.title,
+                  title: pages.data.title,
                   description:
                     "Lorem ipsum dolor sit amet consectetur. Enim vitae porta neque vulputate in eleifend mauris cursus. Proin venenatis.",
-                  date: "12/12/23",
-                  image: null,
-                  tag: "test",
+                  date: pages.data.date?.toString() as string,
+                  image: pages.data.image,
+                  tag: categories!!.filter(
+                    (i) => i.uid == pages.data.category.uid
+                  )[0]?.data.name,
                 }}
               />
             );

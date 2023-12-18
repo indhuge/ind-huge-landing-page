@@ -1,4 +1,5 @@
 import { createClient } from "@/prismicio";
+import { BlogPostDocument } from "../../../prismicio-types";
 
 export async function getCategoriesAndPosts() {
   const client = createClient();
@@ -9,4 +10,17 @@ export async function getCategoriesAndPosts() {
     categories: await c,
     posts: await p,
   };
+}
+
+export function seeAll(
+  posts: BlogPostDocument<string>[]
+): BlogPostDocument<string>[] {
+  return posts.sort(
+    (e, a) =>
+      Date.parse(a.data.date as string) - Date.parse(e.data.date as string)
+  );
+}
+
+export function filterByTag(tagUid: string, posts: BlogPostDocument<string>[]) {
+  return posts.filter((e) => e.data.category.uid == tagUid);
 }

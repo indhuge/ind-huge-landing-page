@@ -1,4 +1,5 @@
 import { ImageField } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import Image from "next/image";
 import CalendarIcon from "public/assets/calendar.svg";
 import TagIcon from "public/assets/tag.svg";
@@ -26,13 +27,7 @@ export default function BlogCard({
         className
       }
     >
-      <Image
-        className="h-1/2 object-cover"
-        alt="Sample"
-        width={1920}
-        height={1080}
-        src={"/benjamin-sow-5hQMCo5qtSs-unsplash.jpg"}
-      />
+      <PrismicNextImage className="h-1/2 object-cover" field={post.image} />
       <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-lg">
         <div className="bg-white text-black text-base flex-grow">
           <h2 className="text-darkblue font-semibold">{post.title}</h2>
