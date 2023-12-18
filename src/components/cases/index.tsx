@@ -3,12 +3,12 @@ import { CasesSliceProps } from "@/slices/CasesSlice";
 import { PrismicNextImage } from "@prismicio/next";
 import { useEffect, useState } from "react";
 
-export default function Cases({ slice }: CasesSliceProps) {
+export default function Cases({ slice }: any) {
   const middleElementIndex = Math.floor(slice.items.length / 2);
   const [selected, setSelected] = useState(middleElementIndex);
   const indexTotal = slice.items.length - 1;
   const [interval, _setInterval] = useState<NodeJS.Timeout | null>();
-
+  
   const MakeTranslation = (value: number) => {
     var e = document.getElementById("cardHolder");
     if (e != null) e.style.transform = `translate(${value}%, 0)`;
@@ -43,7 +43,7 @@ export default function Cases({ slice }: CasesSliceProps) {
   }, [selected]);
 
   return (
-    <div id="casos" className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
+    <div className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
       <div className="flex-col justify-center items-center flex">
         <div className="text-green text-sm font-semibold uppercase tracking-[8.26px]">
           {slice?.primary.subtitle}
@@ -56,7 +56,7 @@ export default function Cases({ slice }: CasesSliceProps) {
         className={`flex-row flex gap-8 transition-all duration-700 transform-gpu`}
         id="cardHolder"
       >
-        {slice.items.map((e, i) => {
+        {slice.items.map((e:any, i:number) => {
           return (
             <div
               key={i}
