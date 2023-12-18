@@ -43,7 +43,7 @@ export default function Cases({ slice }: CasesSliceProps) {
   }, [selected]);
 
   return (
-    <div className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
+    <div id="casos" className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
       <div className="flex-col justify-center items-center flex">
         <div className="text-green text-sm font-semibold uppercase tracking-[8.26px]">
           {slice?.primary.subtitle}
@@ -67,7 +67,8 @@ export default function Cases({ slice }: CasesSliceProps) {
             >
               <div className="w-full h-full overflow-hidden rounded-2xl ">
                 <div className="grid w-auto h-full">
-                  <PrismicNextImage alt=""
+                  <PrismicNextImage
+                    alt=""
                     field={e.image}
                     className="w-full h-full aspect-video Mobile:aspect-square object-fill row-start-1 row-end-2 col-start-1 col-end-2"
                   />
@@ -80,7 +81,8 @@ export default function Cases({ slice }: CasesSliceProps) {
                   >
                     <div className="m-4 flex justify-between">
                       <div>
-                        <PrismicNextImage alt=""
+                        <PrismicNextImage
+                          alt=""
                           field={e.lefticon}
                           className="inline "
                         />
@@ -89,7 +91,8 @@ export default function Cases({ slice }: CasesSliceProps) {
                         </label>
                       </div>
                       <div>
-                        <PrismicNextImage alt=""
+                        <PrismicNextImage
+                          alt=""
                           field={e.rigthicon}
                           className="inline"
                         />
@@ -130,7 +133,7 @@ export default function Cases({ slice }: CasesSliceProps) {
         </button>
         <button
           className="bg-green rounded-full w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-4 flex items-center justify-center focus:outline-none"
-          onClick={toRight}
+          onClick={() => toRight()}
         >
           <span className="text-xl sm:text-2xl">&#10095;</span>
         </button>

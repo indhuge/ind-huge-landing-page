@@ -2,7 +2,6 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import Cases from "@/components/cases";
 
-
 /**
  * Props for `CasesSlice`.
  */
@@ -19,8 +18,7 @@ const CasesSlice = ({ slice }: CasesSliceProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Cases 
-        slice={slice} index={0} slices={[]} context={undefined}      />
+      <Cases slice={slice} index={0} slices={[]} context={undefined} />
     </section>
   );
 };

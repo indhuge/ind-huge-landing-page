@@ -143,5 +143,83 @@
 				]
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "blogCarousel",
+		"primary": {
+			"auto_scroll_interval": {
+				"__TYPE__": "FieldContent",
+				"value": "65",
+				"type": "Number"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+								"width": 3168,
+								"height": 4752
+							},
+							"url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?rect=0%2C1510%2C3168%2C1731&w=796&h=435",
+							"width": 796,
+							"height": 435,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 1510
+								},
+								"background": "transparent"
+							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "having",
+							"type": "Text"
+						}
+					],
+					[
+						"text",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "surface",
+							"type": "Text"
+						}
+					],
+					[
+						"lermaisbutton",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "https://prismic.io"
+							}
+						}
+					],
+					[
+						"buttontext",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "track",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
 	}
 ]

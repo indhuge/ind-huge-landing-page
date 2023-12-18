@@ -1,0 +1,23 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo": {
+				"__TYPE__": "FieldContent",
+				"value": "tight",
+				"type": "Text"
+			},
+			"subtitulo": {
+				"__TYPE__": "FieldContent",
+				"value": "at",
+				"type": "Text"
+			},
+			"tipo": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": []
+	}
+]

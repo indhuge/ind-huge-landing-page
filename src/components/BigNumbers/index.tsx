@@ -7,6 +7,8 @@ import BigNumbersItens from "../BigNumbersItem/";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { KeyTextField } from "@prismicio/client";
 import BigNumbersCarousel from "../BigNumbersCarousel";
+import { funcscroll } from "../header";
+import Link from "next/link";
 
 export default function BigNumbers({ slice }: BigNumbersSliceProps) {
   const [isCarousel, setIsCarousel] = useState(false);
@@ -114,12 +116,13 @@ export default function BigNumbers({ slice }: BigNumbersSliceProps) {
             </>
           )}
           <>
-            <PrismicNextLink
+            <Link
               className="block w-full max-w-xs mx-auto bg-green text-darkblue rounded-full py-3 text-center text-sm font-semibold hover:scale-105 transition duration-300 ease-in-out font-inter uppercase"
-              field={slice.primary.bignumbersslicebuttonlink}
+              href={""}
+              onClick={()=>{funcscroll("contactForm")}}
             >
               {slice.primary.bignumbersslicebuttontext}
-            </PrismicNextLink>
+            </Link>
           </>
         </div>
       </div>

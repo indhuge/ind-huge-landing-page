@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"main_title": {
+				"__TYPE__": "FieldContent",
+				"value": "student",
+				"type": "Text"
+			},
+			"see_all_text": {
+				"__TYPE__": "FieldContent",
+				"value": "student",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

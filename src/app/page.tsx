@@ -5,6 +5,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Banner from "@/components/banner";
 import { pages } from "next/dist/build/templates/app-page";
+import BlogCard from "@/components/BlogCard";
 
 type Params = { uid: "landing_page" };
 
