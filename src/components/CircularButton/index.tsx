@@ -16,10 +16,11 @@ export default function CircularButton({
     "select-none rounded-full bg-transparent px-5 py-2 w-fit text-darkgray transition-all hover:bg-lightgray";
 
   return (
-    <div className={isSelected ? defaultClassSelected : defaultClass}>
-      <p onClick={onClick} className="text-center">
-        {text}
-      </p>
+    <div
+      className={isSelected ? defaultClassSelected : defaultClass}
+      onClick={onClick}
+    >
+      <p className="text-center">{text}</p>
     </div>
   );
 }

@@ -4,6 +4,10 @@ import CircularButton from "../CircularButton";
 import { useEffect, useState } from "react";
 import BlogCard from "../BlogCard";
 import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
+import Link from "next/link";
+import { useMorph } from "react-morph";
+import ExpandedView from "./expandedView";
+import CollapsedView from "./collapsedView";
 
 export default function RecentsPostsAndCategoriesComponent({
   slice,
@@ -12,6 +16,7 @@ export default function RecentsPostsAndCategoriesComponent({
   const [categories, setCategories] = useState<CategoryDocument<string>[]>();
   const [postsView, setPostsView] = useState<BlogPostDocument<string>[]>();
   const [posts, setPosts] = useState<BlogPostDocument<string>[]>();
+  const [isExpanded, setExpanded] = useState(false);
 
   const filterClick = (index: number) => {
     setSelected(index);
@@ -55,34 +60,35 @@ export default function RecentsPostsAndCategoriesComponent({
         })}
       </div>
       <div className="flex flex-col gap-5 mt-10">
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between items-center">
           <h2 className="text-3xl text-darkblue font-bold">
-            {slice.primary.main_title}
+            {!isExpanded
+              ? slice.primary.main_title
+              : selected == -1
+                ? "Todos as postagens"
+                : categories!![selected].data.name}
           </h2>
-          <p className="text-blue text-sm font-semibold">
-            {slice.primary.see_all_text}
+          <p
+            className="text-blue text-sm font-semibold hover:underline select-none hover:cursor-pointer"
+            onClick={() => setExpanded(!isExpanded)}
+          >
+            {!isExpanded
+              ? slice.primary.see_all_text?.toUpperCase()
+              : "ver postagens recentes".toUpperCase()}
           </p>
         </div>
-        <div className="flex flex-row justify-between gap-10 flex-wrap">
-          {postsView?.slice(0, 3).map((pages, i) => {
-            return (
-              <BlogCard
-                key={i}
-                className="flex-[1_0_25%] max-w-[30%]"
-                post={{
-                  title: pages.data.title,
-                  description:
-                    "Lorem ipsum dolor sit amet consectetur. Enim vitae porta neque vulputate in eleifend mauris cursus. Proin venenatis.",
-                  date: pages.data.date?.toString() as string,
-                  image: pages.data.image,
-                  tag: categories!!.filter(
-                    (i) => i.uid == pages.data.category.uid
-                  )[0]?.data.name,
-                }}
-              />
-            );
-          })}
-        </div>
+        {isExpanded && (
+          <ExpandedView
+            postsView={postsView ?? null}
+            categories={categories ?? null}
+          />
+        )}
+        {!isExpanded && (
+          <CollapsedView
+            postsView={postsView ?? null}
+            categories={categories ?? null}
+          />
+        )}
       </div>
     </div>
   );

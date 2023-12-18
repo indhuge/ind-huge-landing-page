@@ -28,7 +28,7 @@ export default function BlogCard({
       }
     >
       <PrismicNextImage className="h-1/2 object-cover" field={post.image} />
-      <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-lg">
+      <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-b-lg">
         <div className="bg-white text-black text-base flex-grow">
           <h2 className="text-darkblue font-semibold">{post.title}</h2>
           <p className="text-darkgray font-light">{post.description}</p>

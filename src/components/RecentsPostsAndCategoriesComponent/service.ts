@@ -24,3 +24,7 @@ export function seeAll(
 export function filterByTag(tagUid: string, posts: BlogPostDocument<string>[]) {
   return posts.filter((e) => e.data.category.uid == tagUid);
 }
+
+export function getNumberOfNPages(posts: any[]) {
+  return Math.ceil(posts.length / 6);
+}
