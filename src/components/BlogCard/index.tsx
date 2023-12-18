@@ -15,17 +15,20 @@ type BlogPost = {
 export default function BlogCard({
   post,
   className,
+  onClick,
 }: {
   post: BlogPost;
   className: string | null;
+  onClick: () => void | null | undefined;
 }) {
   return (
     <div
       className={
-        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg" +
+        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg transition-all" +
         " " +
         className
       }
+      onClick={() => onClick()}
     >
       <PrismicNextImage className="h-1/2 object-cover" field={post.image} />
       <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-b-lg">

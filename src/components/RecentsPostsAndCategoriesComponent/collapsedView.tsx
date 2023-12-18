@@ -1,20 +1,24 @@
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 import BlogCard from "../BlogCard";
 
 export default function CollapsedView({
   postsView,
   categories,
+  router,
 }: {
   postsView: BlogPostDocument<string>[] | null;
   categories: CategoryDocument<string>[] | null;
+  router: AppRouterInstance;
 }) {
   return (
-    <div className="flex flex-row justify-between gap-10 flex-wrap">
+    <div className="grid grid-cols-3 justify-between gap-10 flex-wrap">
       {postsView?.slice(0, 3).map((pages, i) => {
         return (
           <BlogCard
             key={i}
-            className="flex-[1_0_25%] max-w-[30%]"
+            className=""
+            onClick={() => router.push(pages.url as string)}
             post={{
               title: pages.data.title,
               description:

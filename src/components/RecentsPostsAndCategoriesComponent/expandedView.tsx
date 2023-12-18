@@ -3,13 +3,17 @@ import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 import BlogCard from "../BlogCard";
 import { getNumberOfNPages } from "./service";
 import PageNumbers from "./PageNumbers";
+import { NextRouter, useRouter } from "next/router";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 export default function ExpandedView({
   postsView,
   categories,
+  router,
 }: {
   postsView: BlogPostDocument<string>[] | null;
   categories: CategoryDocument<string>[] | null;
+  router: AppRouterInstance;
 }) {
   const [nPage, setNPage] = useState(1);
   const [nMaxPage, setNMaxPage] = useState(0);
@@ -25,6 +29,9 @@ export default function ExpandedView({
           return (
             <BlogCard
               key={i}
+              onClick={() => {
+                router.push(pages.url as string);
+              }}
               post={{
                 title: pages.data.title,
                 description:

@@ -1,3 +1,4 @@
+"use client";
 import { RecentsPostsAndCategoriesProps } from "@/slices/RecentsPostsAndCategories";
 import { filterByTag, getCategoriesAndPosts, seeAll } from "./service";
 import CircularButton from "../CircularButton";
@@ -5,9 +6,9 @@ import { useEffect, useState } from "react";
 import BlogCard from "../BlogCard";
 import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 import Link from "next/link";
-import { useMorph } from "react-morph";
 import ExpandedView from "./expandedView";
 import CollapsedView from "./collapsedView";
+import { useRouter } from "next/navigation";
 
 export default function RecentsPostsAndCategoriesComponent({
   slice,
@@ -17,6 +18,7 @@ export default function RecentsPostsAndCategoriesComponent({
   const [postsView, setPostsView] = useState<BlogPostDocument<string>[]>();
   const [posts, setPosts] = useState<BlogPostDocument<string>[]>();
   const [isExpanded, setExpanded] = useState(false);
+  const router = useRouter();
 
   const filterClick = (index: number) => {
     setSelected(index);
@@ -81,12 +83,14 @@ export default function RecentsPostsAndCategoriesComponent({
           <ExpandedView
             postsView={postsView ?? null}
             categories={categories ?? null}
+            router={router}
           />
         )}
         {!isExpanded && (
           <CollapsedView
             postsView={postsView ?? null}
             categories={categories ?? null}
+            router={router}
           />
         )}
       </div>
