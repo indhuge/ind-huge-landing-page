@@ -16,6 +16,7 @@ export default function PageNumbers({
       {array.map((e, i) => {
         return (
           <p
+            key={i}
             className={
               "text-black p-2 px-4 aspect-square rounded-full " +
               (selected == e ? "bg-green " : " ")

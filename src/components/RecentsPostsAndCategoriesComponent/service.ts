@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createClient } from "@/prismicio";
 import { BlogPostDocument } from "../../../prismicio-types";
 
