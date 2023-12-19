@@ -19,6 +19,7 @@ const RecentsPostsAndCategories = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="bg-white"
     >
       <RecentsPostsAndCategoriesComponent
         slice={slice}

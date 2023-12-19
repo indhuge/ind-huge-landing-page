@@ -8,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      ss_mobile: "321px",
       s_mobile: "445px",
       lg: "1024px",
       md: "768px",
@@ -20,7 +21,8 @@ const config: Config = {
       TabletLandscape: { min: "992px" },
       // => @media (min-width: 992px) { ... }
 
-      Laptop: { min: "923px", max: "1440px" },
+      Laptop: { max: "1440px" },
+      LaptopS: "1200px",
     },
     extend: {
       colors: {
