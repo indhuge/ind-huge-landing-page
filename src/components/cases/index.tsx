@@ -43,7 +43,7 @@ export default function Cases({ slice }: CasesSliceProps) {
   }, [selected]);
 
   return (
-    <div className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
+    <div id="casos" className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
       <div className="flex-col justify-center items-center flex">
         <div className="text-green text-sm font-semibold uppercase tracking-[8.26px]">
           {slice?.primary.subtitle}

@@ -5,8 +5,9 @@ import Image from "next/image";
 import { FooterDocument } from "../../../prismicio-types";
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
-import { FormControlLabel, styled } from "@mui/material";
-import { useState } from "react";
+import { Alert, AlertTitle, FormControlLabel, Snackbar, styled } from "@mui/material";
+import { Dispatch, SetStateAction, useState } from "react";
+import { funcscroll } from "../header";
 
 type Params = { uid: string };
 
@@ -30,11 +31,31 @@ const CssTextField = styled(TextField)({
     },
 });
 
+async function register(email: string, setSucesso: Dispatch<SetStateAction<boolean>>) {
+    const res = await fetch("/api/mailchimp", {
+        body: JSON.stringify({
+            email: email,
+        }),
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "POST"
+    });
+
+    //const {id, emailrec, response} = await res.
+
+    const { error } = await res.json();
+    if (error) console.log(error);
+
+    if (res.status === 200) { setSucesso(true); }
+}
+
 export default function Page(page: any) {
     page = (page?.page) as FooterDocument<string>
     const iconeLocalizacao = require("../../../public/assets/icone-localizacao.svg");
     const [checked, setChecked] = useState(true);
     const [email, setEmail] = useState("");
+    const [sucesso, setSucesso] = useState(false);
 
     return (
         <div
@@ -56,7 +77,7 @@ export default function Page(page: any) {
                     <div className="col-span-2 mx-5 TabletPortrait:col-span-1 TabletPortrait:mb-8">
                         <PrismicNextImage alt="" field={page?.data?.logo} />
                         <p className="my-7 TabletPortrait:w-[70vw]">{page?.data?.descricao_logo}</p>
-                        <button className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
+                        <button onClick={() => { funcscroll("contactForm") }} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
                     </div>
                     <div className="grid grid-cols-1 mx-5">
                         <h5 className="text-lg font-bold">{page?.data?.subtitulo_navegacao}</h5>
@@ -94,16 +115,16 @@ export default function Page(page: any) {
                             inputProps={{ style: { color: "#FFFFFF" } }}
                             InputLabelProps={{ style: { color: "#FFFFFF" } }}
                             value={email}
-                            onChange={(event: React.ChangeEvent<HTMLInputElement>)=>{setEmail(event.target.value); console.log(email)}}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); console.log(email) }}
                             fullWidth
                             required
                         />
                         <div className="flex items-center justify-between Mobile:flex-col">
                             <FormControlLabel
-                                control={<Checkbox checked={checked} onChange={()=>{setChecked(!checked)}} style={{ color: "white" }} />}
+                                control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
                                 label={<span className="text-sm">Concordo em receber e-mails</span>}
                             />
-                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm" type="submit" value="INSCREVER-SE" disabled={!checked} />
+                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm" type="button" onClick={() => { register(email, setSucesso) }} value="INSCREVER-SE" disabled={!checked} />
                         </div>
                     </form>
                 </div>
@@ -126,6 +147,18 @@ export default function Page(page: any) {
                     })}
                 </div>
             </div>
+            {
+                sucesso ?
+                    <Snackbar
+                        open={sucesso}
+                        autoHideDuration={6000}
+                        onClose={()=>setSucesso(false)}
+                    >
+                        <Alert severity="success" onClose={()=>setSucesso(false)} sx={{ width: '100%' }}> <AlertTitle>Obrigado por assinar nosso Newsletter!</AlertTitle>Verifique sua Caixa de Entrada</Alert>
+                    </Snackbar>
+                    :
+                    <></>
+            }
         </div>
     );
 }

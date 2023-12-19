@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "newsletter": {
+              "type": "SharedSlice"
+            },
+            "cases_slice": {
+              "type": "SharedSlice"
+            },
             "recents_posts_and_categories": {
               "type": "SharedSlice"
             }

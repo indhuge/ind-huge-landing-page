@@ -1,6 +1,6 @@
-import { NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export async function POST(req: Request, res: Response, nextres: NextApiResponse) {
+export async function POST(req: Request) {
     const d = new Date();
 
     var { nome, telefone, email, mensagem, newsletter, cookie }: { nome: string, telefone: string, email: string, mensagem: string, newsletter: boolean, cookie: string } = await req.json()
@@ -65,5 +65,5 @@ export async function POST(req: Request, res: Response, nextres: NextApiResponse
         headers: { 'Content-Type': 'application/json' },
         body: jsondados,
         method: 'POST'
-    }).then(()=>nextres.status(200)).catch((err) => console.log(err))
+    }).then((res)=>NextResponse.json(res)).catch((err) => console.log(err))
 }

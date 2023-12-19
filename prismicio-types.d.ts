@@ -120,7 +120,10 @@ interface BannerDocumentData {
 export type BannerDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BannerDocumentData>, "banner", Lang>;
 
-type BlogDocumentDataSlicesSlice = RecentsPostsAndCategoriesSlice;
+type BlogDocumentDataSlicesSlice =
+  | NewsletterSlice
+  | CasesSliceSlice
+  | RecentsPostsAndCategoriesSlice;
 
 /**
  * Content for Blog documents
@@ -1330,7 +1333,7 @@ export interface CasesSliceSliceDefaultItem {
 }
 
 /**
- * Default variation for CasesSlice Slice
+ * CarouselLanding variation for CasesSlice Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -1343,9 +1346,94 @@ export type CasesSliceSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *CasesSlice → Primary*
+ */
+export interface CasesSliceSliceBlogCarouselPrimary {
+  /**
+   * Auto Scroll Interval (s) field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 10
+   * - **API ID Path**: cases_slice.primary.auto_scroll_interval
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  auto_scroll_interval: prismic.NumberField;
+}
+
+/**
+ * Primary content in *CasesSlice → Items*
+ */
+export interface CasesSliceSliceBlogCarouselItem {
+  /**
+   * Image field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * LerMaisButton field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].lermaisbutton
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  lermaisbutton: prismic.LinkField;
+
+  /**
+   * ButtonText field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].buttontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  buttontext: prismic.KeyTextField;
+}
+
+/**
+ * BlogCarousel variation for CasesSlice Slice
+ *
+ * - **API ID**: `blogCarousel`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesSliceSliceBlogCarousel = prismic.SharedSliceVariation<
+  "blogCarousel",
+  Simplify<CasesSliceSliceBlogCarouselPrimary>,
+  Simplify<CasesSliceSliceBlogCarouselItem>
+>;
+
+/**
  * Slice variation for *CasesSlice*
  */
-type CasesSliceSliceVariation = CasesSliceSliceDefault;
+type CasesSliceSliceVariation =
+  | CasesSliceSliceDefault
+  | CasesSliceSliceBlogCarousel;
 
 /**
  * CasesSlice Shared Slice
@@ -1364,6 +1452,26 @@ export type CasesSliceSlice = prismic.SharedSlice<
  */
 export interface ContatoSliceDefaultPrimary {
   /**
+   * Titulo field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * Destaque do Titulo field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.destaque_titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  destaque_titulo: prismic.KeyTextField;
+
+  /**
    * Descrição field in *ContatoSlice → Primary*
    *
    * - **Field Type**: Text
@@ -1372,31 +1480,46 @@ export interface ContatoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   descricao: prismic.KeyTextField;
-}
 
-/**
- * Primary content in *ContatoSlice → Items*
- */
-export interface ContatoSliceDefaultItem {
   /**
-   * Título field in *ContatoSlice → Items*
+   * Logo Whatsapp field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.logo_whatsapp
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_whatsapp: prismic.ImageField<never>;
+
+  /**
+   * Link Whatsapp field in *ContatoSlice → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.items[].titulo
+   * - **API ID Path**: contato.primary.link_whatsapp
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  titulo: prismic.KeyTextField;
+  link_whatsapp: prismic.KeyTextField;
 
   /**
-   * Cor field in *ContatoSlice → Items*
+   * Logo Email field in *ContatoSlice → Primary*
    *
-   * - **Field Type**: Color
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.items[].cor
-   * - **Documentation**: https://prismic.io/docs/field#color
+   * - **API ID Path**: contato.primary.logo_email
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  cor: prismic.ColorField;
+  logo_email: prismic.ImageField<never>;
+
+  /**
+   * Link Email field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.link_email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_email: prismic.KeyTextField;
 }
 
 /**
@@ -1409,7 +1532,7 @@ export interface ContatoSliceDefaultItem {
 export type ContatoSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<ContatoSliceDefaultPrimary>,
-  Simplify<ContatoSliceDefaultItem>
+  never
 >;
 
 /**
@@ -1517,6 +1640,72 @@ type FeaturesSliceSliceVariation = FeaturesSliceSliceDefault;
 export type FeaturesSliceSlice = prismic.SharedSlice<
   "features_slice",
   FeaturesSliceSliceVariation
+>;
+
+/**
+ * Primary content in *NewsletterSlice → Primary*
+ */
+export interface NewsletterSliceDefaultPrimary {
+  /**
+   * Titulo field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * Subtitulo field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitulo: prismic.KeyTextField;
+
+  /**
+   * Tipo field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: newsletter.primary.tipo
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  tipo: prismic.BooleanField;
+}
+
+/**
+ * Default variation for NewsletterSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsletterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NewsletterSlice*
+ */
+type NewsletterSliceVariation = NewsletterSliceDefault;
+
+/**
+ * NewsletterSlice Shared Slice
+ *
+ * - **API ID**: `newsletter`
+ * - **Description**: Newsletter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSlice = prismic.SharedSlice<
+  "newsletter",
+  NewsletterSliceVariation
 >;
 
 /**
@@ -1719,11 +1908,13 @@ declare module "@prismicio/client" {
       CasesSliceSlice,
       CasesSliceSliceDefaultPrimary,
       CasesSliceSliceDefaultItem,
+      CasesSliceSliceBlogCarouselPrimary,
+      CasesSliceSliceBlogCarouselItem,
       CasesSliceSliceVariation,
       CasesSliceSliceDefault,
+      CasesSliceSliceBlogCarousel,
       ContatoSlice,
       ContatoSliceDefaultPrimary,
-      ContatoSliceDefaultItem,
       ContatoSliceVariation,
       ContatoSliceDefault,
       FeaturesSliceSlice,
@@ -1731,6 +1922,10 @@ declare module "@prismicio/client" {
       FeaturesSliceSliceDefaultItem,
       FeaturesSliceSliceVariation,
       FeaturesSliceSliceDefault,
+      NewsletterSlice,
+      NewsletterSliceDefaultPrimary,
+      NewsletterSliceVariation,
+      NewsletterSliceDefault,
       PartnersSliceSlice,
       PartnersSliceSliceDefaultPrimary,
       PartnersSliceSliceDefaultItem,
