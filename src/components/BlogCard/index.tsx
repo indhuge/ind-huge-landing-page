@@ -21,6 +21,7 @@ export default function BlogCard({
   className: string | null;
   onClick: () => void | null | undefined;
 }) {
+  const date = new Date(post.date as string);
   return (
     <div
       className={
@@ -34,7 +35,7 @@ export default function BlogCard({
       <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-b-lg">
         <div className="bg-white text-black text-base ">
           <h2 className="text-darkblue font-semibold">{post.title}</h2>
-          <p className="text-darkgray font-light Laptop:truncate">
+          <p className="text-darkgray font-light LaptopNoMin:truncate">
             {post.description}
           </p>
         </div>
@@ -58,7 +59,9 @@ export default function BlogCard({
               width={20}
               height={20}
             />
-            <p>{post.date}</p>
+            <p>{`${date.getDate()}/${
+              date.getMonth() + 1
+            }/${date.getFullYear()}`}</p>
           </div>
         </div>
       </div>
