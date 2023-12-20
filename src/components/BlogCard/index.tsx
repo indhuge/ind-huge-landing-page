@@ -34,7 +34,7 @@ export default function BlogCard({
       <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-b-lg">
         <div className="bg-white text-black text-base ">
           <h2 className="text-darkblue font-semibold">{post.title}</h2>
-          <p className="text-darkgray font-light Laptop:truncate">
+          <p className="text-darkgray font-light LaptopNoMin:truncate">
             {post.description}
           </p>
         </div>

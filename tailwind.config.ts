@@ -21,8 +21,9 @@ const config: Config = {
       TabletLandscape: { min: "992px" },
       // => @media (min-width: 992px) { ... }
 
-      Laptop: { max: "1440px" },
+      Laptop: { min: "923px", max: "1440px" },
       LaptopS: "1200px",
+      LaptopNoMin: { max: "1440px" },
     },
     extend: {
       colors: {
