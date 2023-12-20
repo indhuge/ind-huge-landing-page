@@ -11,7 +11,8 @@ import CollapsedView from "./collapsedView";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import SkeletonCardView from "./skeletonCardView";
-import { asText } from "@prismicio/client";
+import ArrowIcon from "/public/assets/arrow.svg";
+import Image from "next/image";
 
 export default function RecentsPostsAndCategoriesComponent({
   slice,
@@ -92,22 +93,28 @@ export default function RecentsPostsAndCategoriesComponent({
         <div className="flex flex-col gap-5 mt-10">
           <div className="flex flex-row justify-between items-center text-gray animate-pulse">
             <h2 className="text-3xl font-bold">{slice.primary.main_title}</h2>
-            <p className="text-sm font-semibold hover:underline select-none hover:cursor-pointer hidden lg:block">
-              {slice.primary.see_all_text?.toUpperCase()}
-            </p>
+            <div className="flex-row gap-2 justify-center items-center hover:border-b-1 border-blue select-none hover:cursor-pointer hidden lg:flex">
+              <p
+                className="text-blue text-sm font-semibold"
+                onClick={() => setExpanded(!isExpanded)}
+              >
+                {slice.primary.see_all_text?.toUpperCase()}
+              </p>
+              <Image src={ArrowIcon} width={20} height={20} alt="arrow" />
+            </div>
           </div>
 
           <SkeletonCardView />
 
-          <p
-            className="text-blue text-sm font-semibold hover:underline select-none hover:cursor-pointer 
-          lg:hidden self-center"
-            onClick={() => setExpanded(!isExpanded)}
-          >
-            {!isExpanded
-              ? slice.primary.see_all_text?.toUpperCase()
-              : "ver postagens recentes".toUpperCase()}
-          </p>
+          <div className="flex-row gap-2 justify-center items-center hover:border-b-1 border-blue select-none hover:cursor-pointer flex lg:hidden">
+            <p
+              className="text-blue text-sm font-semibold"
+              onClick={() => setExpanded(!isExpanded)}
+            >
+              {slice.primary.see_all_text?.toUpperCase()}
+            </p>
+            <Image src={ArrowIcon} width={20} height={20} alt="arrow" />
+          </div>
         </div>
       </div>
     );
@@ -149,14 +156,17 @@ export default function RecentsPostsAndCategoriesComponent({
                 ? "Todos as postagens"
                 : categories!![selected].data.name}
           </h2>
-          <p
-            className="text-blue text-sm font-semibold hover:underline select-none hover:cursor-pointer hidden lg:block"
-            onClick={() => setExpanded(!isExpanded)}
-          >
-            {!isExpanded
-              ? slice.primary.see_all_text?.toUpperCase()
-              : "ver postagens recentes".toUpperCase()}
-          </p>
+          <div className="flex-row gap-2 justify-center items-center hover:border-b-1 border-blue select-none hover:cursor-pointer hidden lg:flex">
+            <p
+              className="text-blue text-sm font-semibold"
+              onClick={() => setExpanded(!isExpanded)}
+            >
+              {!isExpanded
+                ? slice.primary.see_all_text?.toUpperCase()
+                : "ver postagens recentes".toUpperCase()}
+            </p>
+            <Image src={ArrowIcon} width={20} height={20} alt="arrow" />
+          </div>
         </div>
         {isExpanded && (
           <ExpandedView
@@ -172,15 +182,17 @@ export default function RecentsPostsAndCategoriesComponent({
             router={router}
           />
         )}
-        <p
-          className="text-blue text-sm font-semibold hover:underline select-none hover:cursor-pointer 
-          lg:hidden self-center"
-          onClick={() => setExpanded(!isExpanded)}
-        >
-          {!isExpanded
-            ? slice.primary.see_all_text?.toUpperCase()
-            : "ver postagens recentes".toUpperCase()}
-        </p>
+        <div className="flex-row gap-2 justify-center items-center hover:border-b-1 border-blue select-none hover:cursor-pointer flex lg:hidden">
+          <p
+            className="text-blue text-sm font-semibold"
+            onClick={() => setExpanded(!isExpanded)}
+          >
+            {!isExpanded
+              ? slice.primary.see_all_text?.toUpperCase()
+              : "ver postagens recentes".toUpperCase()}
+          </p>
+          <Image src={ArrowIcon} width={20} height={20} alt="arrow" />
+        </div>
       </div>
     </motion.div>
   );

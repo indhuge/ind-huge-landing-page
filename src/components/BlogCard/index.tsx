@@ -21,6 +21,7 @@ export default function BlogCard({
   className: string | null;
   onClick: () => void | null | undefined;
 }) {
+  const date = new Date(post.date as string);
   return (
     <div
       className={
@@ -58,7 +59,9 @@ export default function BlogCard({
               width={20}
               height={20}
             />
-            <p>{post.date}</p>
+            <p>{`${date.getDate()}/${
+              date.getMonth() + 1
+            }/${date.getFullYear()}`}</p>
           </div>
         </div>
       </div>
