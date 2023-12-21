@@ -65,14 +65,14 @@ export default function Cases({ slice }: any) {
                     className="w-full h-full Mobile:aspect-square object-fill row-start-1 row-end-2 col-start-1 col-end-2"
                   />
                   <div
-                    className="row-start-1 row-end-2 col-start-1 col-end-2 relative h-109"
+                    className="row-start-1 row-end-2 col-start-1 col-end-2 relative h-109 flex items-center justify-center"
                     style={{
                       backgroundImage:
                         "linear-gradient(180deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.46) 100%);",
                     }}
                   >
-                      <div className=" text-center">
-                        <label className="text-xl Mobile:text-base font-bold uppercase tracking-widest ">
+                      <div className="w-[50%] Mobile:w-[80%] text-center">
+                        <label className="text-3xl Mobile:text-base font-bold ">
                           {e.title}
                         </label>
                         <p className="pt-3 text-base Mobile:p-2 Mobile:text-xs">
