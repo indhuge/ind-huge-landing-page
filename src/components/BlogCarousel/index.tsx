@@ -1,6 +1,6 @@
 "use client";
 import { CasesSliceProps } from "@/slices/CasesSlice";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { useEffect, useState } from "react";
 
 export default function Cases({ slice }: any) {
@@ -41,23 +41,23 @@ export default function Cases({ slice }: any) {
     );
     _setInterval(tmp);
   }, [selected]);
-
+  
   return (
-    <div className="w-full h-fit py-24 flex-col justify-center items-center gap-8 flex bg-white overflow-hidden relative">
+    <div className="w-full h-fit py-24 Mobile:pt-4 Mobile:pb-0 flex-col justify-center items-center gap-8 flex Mobile:gap-0 bg-white overflow-hidden relative">
       <div
-        className={`flex-row flex gap-8 transition-all duration-700 transform-gpu`}
+        className={`w-fit flex-row flex gap-8 Mobile:gap-0 Mobile:pb-8 transition-all duration-700 transform-gpu`}
         id="cardHolder"
       >
         {slice.items.map((e:any, i:number) => {
           return (
-            <div
+            <div 
               key={i}
               className={`${
                 selected == i ? "scale-110" : "blur-sm"
-              } justify-center items-center gap-8 flex w-[80vw] Mobile:w-[87vw] TabletPortrait:w-[87vw] Laptop:w-[60vw] mx-10 transition-all duration-700`}
+              } justify-center items-center gap-8 Mobile:gap-0 flex w-[80vw] Mobile:w-[100vw] Laptop:w-[85vw] mx-10 Mobile:mx-0 transition-all duration-700`}
               id={`card-${i}`}
             >
-              <div className="w-full h-full overflow-hidden rounded-2xl ">
+              <div className="w-full h-full overflow-hidden rounded-2xl Mobile:rounded-none">
                 <div className="grid w-auto h-full">
                   <PrismicNextImage
                     alt=""
@@ -72,12 +72,19 @@ export default function Cases({ slice }: any) {
                     }}
                   >
                       <div className="w-[50%] Mobile:w-[80%] text-center">
-                        <label className="text-3xl Mobile:text-base font-bold ">
+                        <label className="text-3xl Mobile:text-2xl font-bold ">
                           {e.title}
                         </label>
-                        <p className="pt-3 text-base Mobile:p-2 Mobile:text-xs">
+                        <p className="pt-3 text-base Mobile:text-sm pb-6">
                           {e.text}
-                        </p>
+                        </p>                      
+                        <button className="border-1 px-3 py-1.5 rounded-2xl hover:bg-slate-600 transition-all">
+                          <PrismicNextLink field={e.lermaisbutton}>
+                            <p className="uppercase text-base Mobile:text-sm">
+                              {e.buttontext}
+                            </p>
+                          </PrismicNextLink>
+                        </button>      
                       </div>
                     </div>
                   </div>
