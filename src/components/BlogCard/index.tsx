@@ -1,4 +1,5 @@
 import { ImageField } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import Image from "next/image";
 import CalendarIcon from "public/assets/calendar.svg";
 import TagIcon from "public/assets/tag.svg";
@@ -14,29 +15,29 @@ type BlogPost = {
 export default function BlogCard({
   post,
   className,
+  onClick,
 }: {
   post: BlogPost;
   className: string | null;
+  onClick: () => void | null | undefined;
 }) {
+  const date = new Date(post.date as string);
   return (
     <div
       className={
-        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg" +
+        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg transition-all" +
         " " +
         className
       }
+      onClick={() => onClick()}
     >
-      <Image
-        className="h-1/2 object-cover"
-        alt="Sample"
-        width={1920}
-        height={1080}
-        src={"/benjamin-sow-5hQMCo5qtSs-unsplash.jpg"}
-      />
-      <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-lg">
-        <div className="bg-white text-black text-base flex-grow">
+      <PrismicNextImage className="h-1/2 object-cover" field={post.image} />
+      <div className="p-6 flex flex-col justify-between h-1/2 border-x border-b border-lightgray rounded-b-lg">
+        <div className="bg-white text-black text-base ">
           <h2 className="text-darkblue font-semibold">{post.title}</h2>
-          <p className="text-darkgray font-light">{post.description}</p>
+          <p className="text-darkgray font-light LaptopNoMin:truncate">
+            {post.description}
+          </p>
         </div>
         <div className="bg-darkgray h-[0.1rem] w-full"></div>
         <div className="pt-6 flex justify-between text-darkgray font-normal">
@@ -58,7 +59,9 @@ export default function BlogCard({
               width={20}
               height={20}
             />
-            <p>{post.date}</p>
+            <p>{`${date.getDate()}/${
+              date.getMonth() + 1
+            }/${date.getFullYear()}`}</p>
           </div>
         </div>
       </div>

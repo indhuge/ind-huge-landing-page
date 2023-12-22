@@ -8,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      ss_mobile: "321px",
       s_mobile: "445px",
       lg: "1024px",
       md: "768px",
@@ -21,6 +22,8 @@ const config: Config = {
       // => @media (min-width: 992px) { ... }
 
       Laptop: { min: "923px", max: "1440px" },
+      LaptopS: "1200px",
+      LaptopNoMin: { max: "1440px" },
     },
     extend: {
       colors: {
@@ -44,6 +47,7 @@ const config: Config = {
       transitionTimingFunction: {
         "circular-0-0-0-1": "cubic-bezier(0, 0, 0, 1)",
       },
+      borderWidth: { "1": "1px" },
     },
   },
   plugins: [],
