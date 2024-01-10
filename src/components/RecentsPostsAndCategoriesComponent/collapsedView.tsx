@@ -26,7 +26,7 @@ export default function CollapsedView({
             >
               <BlogCard
                 key={i}
-                className=""
+                className="hover:cursor-pointer"
                 onClick={() => router.push(pages.url as string)}
                 post={{
                   title: pages.data.title ?? "",

@@ -1,5 +1,6 @@
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { asText } from "@prismicio/client";
 
 /**
  * Props for `BlogParagraphSlice`.
@@ -8,7 +9,7 @@ export type BlogParagraphSliceProps =
   SliceComponentProps<Content.BlogParagraphSliceSlice>;
 
 /**
- * Component for "BlogParagraphSlice" Slices.
+ * Component for "BlogParagraphSlice" Sli<PrismicRichText field={slice.primary.paragraph} />ces.
  */
 const BlogParagraphSlice = ({
   slice,
@@ -18,8 +19,9 @@ const BlogParagraphSlice = ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for blog_paragraph_slice (variation:{" "}
-      {slice.variation}) Slices
+      <div className="text-darkgray text-base text-justify font-light">
+        <PrismicRichText field={slice.primary.paragraph} />
+      </div>
     </section>
   );
 };

@@ -185,6 +185,7 @@ export type BlogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
 type BlogPostDocumentDataSlicesSlice =
+  | NewsletterSlice
   | BlogImageSliceSlice
   | BlogParagraphSliceSlice;
 
