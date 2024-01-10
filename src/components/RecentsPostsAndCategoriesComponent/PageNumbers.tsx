@@ -10,7 +10,7 @@ export default function PageNumbers({
   onClick: (n: number) => void;
 }) {
   const array = new Array(n);
-  for (var i = 1; i <= n; i++) array.push(i);
+  for (let i = 1; i <= n; i++) array.push(i);
   return (
     <div className={"flex flex-row gap-2 justify-end " + className}>
       {array.map((e, i) => {
@@ -18,7 +18,7 @@ export default function PageNumbers({
           <p
             key={i}
             className={
-              "text-black p-2 px-4 aspect-square rounded-full " +
+              "text-black p-2 px-4 aspect-square rounded-full select-none hover:cursor-pointer " +
               (selected == e ? "bg-green " : " ")
             }
             onClick={() => onClick(e)}
