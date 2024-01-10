@@ -70,14 +70,11 @@ export default function Cases({ slice }: any) {
                   <PrismicNextImage
                     alt=""
                     field={e.image}
-                    className="w-full h-full aspect-video Mobile:aspect-square object-fill row-start-1 row-end-2 col-start-1 col-end-2"
+                    className="w-full h-full aspect-video Mobile:aspect-square object-fill
+                     row-start-1 row-end-2 col-start-1 col-end-2"
                   />
                   <div
-                    className="row-start-1 row-end-2 col-start-1 col-end-2 relative h-109"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(180deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.46) 100%);",
-                    }}
+                    className="row-start-1 row-end-2 col-start-1 col-end-2 relative h-109 bg-black bg-opacity-50"            
                   >
                     <div className="m-4 flex justify-between">
                       <div>
@@ -102,17 +99,13 @@ export default function Cases({ slice }: any) {
                       </div>
                     </div>
                     <div
-                      className="w-full absolute bottom-0"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(180deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%);",
-                      }}
+                      className="w-full absolute bottom-0 bg-black bg-opacity-60"
                     >
-                      <div className=" text-center">
+                      <div className="pt-2 text-center">
                         <label className="text-xl Mobile:text-base font-bold uppercase tracking-widest ">
                           {e.title}
                         </label>
-                        <p className="pt-3 text-base Mobile:p-2 Mobile:text-xs">
+                        <p className="pt-2 text-base Mobile:p-2 Mobile:text-xs">
                           {e.text}
                         </p>
                       </div>
