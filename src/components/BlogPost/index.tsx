@@ -9,6 +9,7 @@ import Newsletter from "@/components/Newsletter/basic";
 import RelatedPosts from "../RelatedPosts";
 import Link from "next/link";
 import { Facebook, LinkedIn, WhatsApp } from "@mui/icons-material";
+import HighlightedPosts from "../HighlightedPosts";
 
 export default function BlogPost({
   post,
@@ -82,12 +83,13 @@ export default function BlogPost({
         />
       </div>
       <div>
-        <div className="sticky top-20 mt-10">
+        <div className="sticky top-20 mt-10 pl-8">
           <Newsletter
             titulo="Indhuge Newsletter"
             subtitulo="Lorem ipsum dolor sit amet consectetur. A integer est eget."
             type={true}
           />
+          <HighlightedPosts />
         </div>
       </div>
     </div>

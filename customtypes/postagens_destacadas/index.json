@@ -1,0 +1,27 @@
+{
+  "id": "postagens_destacadas",
+  "label": "Postagens destacadas",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "posts": {
+        "type": "Group",
+        "config": {
+          "label": "Posts",
+          "fields": {
+            "data": {
+              "type": "Link",
+              "config": {
+                "label": "Post a ser destacado:",
+                "select": "document",
+                "customtypes": ["blog_post"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

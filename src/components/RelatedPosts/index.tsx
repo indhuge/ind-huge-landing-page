@@ -2,10 +2,11 @@
 import { useEffect, useState } from "react";
 import BlogCard from "../BlogCard";
 import { getRelatedPosts } from "./service";
-import { BlogPostDocument } from "../../../prismicio-types";
+import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 import Link from "next/link";
 import BlogCardSkeleton from "../BlogCard/skeleton";
 import { motion, AnimatePresence } from "framer-motion";
+import { GetCategories } from "@/app/blog/[id]/service";
 
 export default function RelatedPosts({
   uid,
@@ -15,13 +16,25 @@ export default function RelatedPosts({
   categoryUID: string;
 }) {
   const [posts, setPosts] = useState<BlogPostDocument<string>[]>();
+  const [categories, setCategories] = useState<CategoryDocument<string>[]>();
   const [isLoading, setIsLoading] = useState(true);
+
+  const trySetIsLoading = () => {
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     getRelatedPosts(uid, categoryUID).then((e) => {
       setPosts(e);
       setTimeout(() => {
-        setIsLoading(false);
+        trySetIsLoading();
+      }, 1000);
+    });
+
+    GetCategories().then((e) => {
+      setCategories(e);
+      setTimeout(() => {
+        trySetIsLoading();
       }, 1000);
     });
   }, []);
@@ -61,7 +74,7 @@ export default function RelatedPosts({
           Posts Relacionados
         </h2>
         <div className="flex gap-5">
-          {posts.map((e, i) => {
+          {posts?.map((e, i) => {
             return (
               <Link href={e.url!!}>
                 <BlogCard
@@ -73,8 +86,10 @@ export default function RelatedPosts({
                     description: e.data.description as string,
                     date: e.data.date?.toString() as string,
                     image: e.data.image,
-                    // @ts-expect-error
-                    tag: e.data.category.uid,
+                    tag:
+                      // @ts-expect-error
+                      categories?.find((f) => f.uid == e.data.category.uid)
+                        ?.data.name ?? "",
                   }}
                 />
               </Link>

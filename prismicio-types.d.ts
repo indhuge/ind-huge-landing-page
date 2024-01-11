@@ -970,6 +970,53 @@ export type LandingPageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Postagens destacadas → Posts*
+ */
+export interface PostagensDestacadasDocumentDataPostsItem {
+  /**
+   * Post a ser destacado: field in *Postagens destacadas → Posts*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: postagens_destacadas.posts[].data
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  data: prismic.ContentRelationshipField<"blog_post">;
+}
+
+/**
+ * Content for Postagens destacadas documents
+ */
+interface PostagensDestacadasDocumentData {
+  /**
+   * Posts field in *Postagens destacadas*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: postagens_destacadas.posts[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  posts: prismic.GroupField<Simplify<PostagensDestacadasDocumentDataPostsItem>>;
+}
+
+/**
+ * Postagens destacadas document from Prismic
+ *
+ * - **API ID**: `postagens_destacadas`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PostagensDestacadasDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<PostagensDestacadasDocumentData>,
+    "postagens_destacadas",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | BannerDocument
   | BlogDocument
@@ -978,7 +1025,8 @@ export type AllDocumentTypes =
   | FaqDocument
   | FooterDocument
   | HeaderDocument
-  | LandingPageDocument;
+  | LandingPageDocument
+  | PostagensDestacadasDocument;
 
 /**
  * Primary content in *BigNumbersSlice → Primary*
@@ -1892,6 +1940,9 @@ declare module "@prismicio/client" {
       LandingPageDocument,
       LandingPageDocumentData,
       LandingPageDocumentDataSlicesSlice,
+      PostagensDestacadasDocument,
+      PostagensDestacadasDocumentData,
+      PostagensDestacadasDocumentDataPostsItem,
       AllDocumentTypes,
       BigNumbersSliceSlice,
       BigNumbersSliceSliceDefaultPrimary,

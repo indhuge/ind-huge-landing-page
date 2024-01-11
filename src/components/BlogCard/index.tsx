@@ -4,7 +4,7 @@ import Image from "next/image";
 import CalendarIcon from "public/assets/calendar.svg";
 import TagIcon from "public/assets/tag.svg";
 
-type BlogPost = {
+export type BlogPost = {
   image: ImageField<never> | null;
   title: String;
   description: String;
