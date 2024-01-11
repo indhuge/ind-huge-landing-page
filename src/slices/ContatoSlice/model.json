@@ -1,0 +1,76 @@
+{
+  "id": "contato",
+  "type": "SharedSlice",
+  "name": "ContatoSlice",
+  "description": "Contato",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo": {
+          "type": "Text",
+          "config": {
+            "label": "Titulo",
+            "placeholder": ""
+          }
+        },
+        "destaque_titulo": {
+          "type": "Text",
+          "config": {
+            "label": "Destaque do Titulo",
+            "placeholder": ""
+          }
+        },
+        "descricao": {
+          "type": "Text",
+          "config": {
+            "label": "Descrição",
+            "placeholder": ""
+          }
+        },
+        "logo_whatsapp": {
+          "type": "Image",
+          "config": {
+            "label": "Logo Whatsapp",
+            "constraint": {
+              "width": 16,
+              "height": 16
+            },
+            "thumbnails": []
+          }
+        },
+        "link_whatsapp": {
+          "type": "Text",
+          "config": {
+            "label": "Link Whatsapp",
+            "placeholder": ""
+          }
+        },
+        "logo_email": {
+          "type": "Image",
+          "config": {
+            "label": "Logo Email",
+            "constraint": {
+              "width": 16,
+              "height": 16
+            },
+            "thumbnails": []
+          }
+        },
+        "link_email": {
+          "type": "Text",
+          "config": {
+            "label": "Link Email",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

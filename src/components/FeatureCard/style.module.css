@@ -1,0 +1,16 @@
+.pai:hover .filho {
+  border-color: theme(colors.blue);
+}
+
+.pai img {
+  filter: invert(56%) sepia(90%) saturate(373%) hue-rotate(98deg)
+    brightness(100%) contrast(91%);
+}
+
+.pai:hover img {
+  /*
+  filter: invert(13%) sepia(78%) saturate(1213%) hue-rotate(175deg)
+    brightness(95%) contrast(104%); */
+  filter: invert(15%) sepia(74%) saturate(1866%) hue-rotate(188deg)
+    brightness(98%) contrast(105%);
+}

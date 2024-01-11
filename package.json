@@ -10,23 +10,33 @@
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "@mui/icons-material": "^5.15.0",
+    "@mui/material": "^5.14.18",
     "@prismicio/client": "^7.3.1",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.3",
+    "dotenv": "^16.3.1",
+    "framer-motion": "^10.16.16",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-cookie": "^6.1.1",
+    "react-dom": "^18",
+    "react-loading-skeleton": "^3.3.1",
+    "react-scroll-parallax": "^3.4.5"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.24",
-    "@types/node": "^20",
+    "@slicemachine/adapter-next": "^0.3.25",
+    "@types/node": "^20.10.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "postcss": "^8",
-    "slice-machine-ui": "^1.19.2",
+    "slice-machine-ui": "^1.20.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

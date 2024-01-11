@@ -1,0 +1,223 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "fireplace",
+				"type": "Text"
+			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"value": "living",
+				"type": "Text"
+			},
+			"auto_scroll_interval": {
+				"__TYPE__": "FieldContent",
+				"value": "52",
+				"type": "Number"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+								"width": 5616,
+								"height": 3744
+							},
+							"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?rect=0%2C337%2C5616%2C3069&w=796&h=435",
+							"width": 796,
+							"height": 435,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 337
+								},
+								"background": "transparent"
+							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "program",
+							"type": "Text"
+						}
+					],
+					[
+						"text",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "official",
+							"type": "Text"
+						}
+					],
+					[
+						"client",
+						{
+							"__TYPE__": "BooleanContent",
+							"value": false
+						}
+					],
+					[
+						"lefticon",
+						{
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+								"width": 2747,
+								"height": 4120
+							},
+							"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+							"width": 2747,
+							"height": 4120,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					],
+					[
+						"lefticontext",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "composed",
+							"type": "Text"
+						}
+					],
+					[
+						"rigthicon",
+						{
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+								"width": 4480,
+								"height": 4480
+							},
+							"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+							"width": 4480,
+							"height": 4480,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					],
+					[
+						"rigthicontext",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "influence",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "blogCarousel",
+		"primary": {
+			"auto_scroll_interval": {
+				"__TYPE__": "FieldContent",
+				"value": "65",
+				"type": "Number"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"__TYPE__": "ImageContent",
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51",
+								"width": 2545,
+								"height": 2545
+							},
+							"url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?rect=0%2C815%2C2545%2C914&w=1200&h=431",
+							"width": 1200,
+							"height": 431,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 815
+								},
+								"background": "transparent"
+							},
+							"thumbnails": {}
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "having",
+							"type": "Text"
+						}
+					],
+					[
+						"text",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "surface",
+							"type": "Text"
+						}
+					],
+					[
+						"lermaisbutton",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "https://prismic.io"
+							}
+						}
+					],
+					[
+						"buttontext",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "track",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

@@ -1,0 +1,201 @@
+{
+  "id": "footer",
+  "label": "Footer",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "descricao_logo": {
+        "type": "Text",
+        "config": {
+          "label": "Descrição Logo",
+          "placeholder": ""
+        }
+      },
+      "cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "CTA Label",
+          "placeholder": ""
+        }
+      },
+      "subtitulo_navegacao": {
+        "type": "Text",
+        "config": {
+          "label": "Subtítulo Navegação",
+          "placeholder": ""
+        }
+      },
+      "links": {
+        "type": "Group",
+        "config": {
+          "label": "Links Navegação",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Text",
+              "config": {
+                "label": "Link",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "subtitulo_contato": {
+        "type": "Text",
+        "config": {
+          "label": "Subtítulo Contato",
+          "placeholder": ""
+        }
+      },
+      "labels_contato": {
+        "type": "Group",
+        "config": {
+          "label": "Labels Contato",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "botoes_contato": {
+        "type": "Group",
+        "config": {
+          "label": "Botões Contato",
+          "fields": {
+            "icone": {
+              "type": "Image",
+              "config": {
+                "label": "Icone",
+                "constraint": {
+                  "width": 15,
+                  "height": 15
+                },
+                "thumbnails": []
+              }
+            },
+            "link": {
+              "type": "Text",
+              "config": {
+                "label": "Link",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "subtitulo_newsletter": {
+        "type": "Text",
+        "config": {
+          "label": "Subtítulo Newsletter",
+          "placeholder": ""
+        }
+      },
+      "descricao_newsletter": {
+        "type": "Text",
+        "config": {
+          "label": "Descrição Newsletter",
+          "placeholder": ""
+        }
+      },
+      "direitos": {
+        "type": "Text",
+        "config": {
+          "label": "Direitos",
+          "placeholder": ""
+        }
+      },
+      "endereco": {
+        "type": "Text",
+        "config": {
+          "label": "Endereço",
+          "placeholder": ""
+        }
+      },
+      "redes_sociais": {
+        "type": "Group",
+        "config": {
+          "label": "Redes Sociais",
+          "fields": {
+            "icone": {
+              "type": "Image",
+              "config": {
+                "label": "Icone",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "link": {
+              "type": "Text",
+              "config": {
+                "label": "Link",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "big_numbers_slice",
+  "type": "SharedSlice",
+  "name": "BigNumbersSlice",
+  "description": "BigNumbersSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "bignumberstitle": {
+          "type": "Text",
+          "config": {
+            "label": "BigNumbersTitle",
+            "placeholder": ""
+          }
+        },
+        "bignumberstitlehighlights": {
+          "type": "Text",
+          "config": {
+            "label": "BigNumbersTitleHighlights",
+            "placeholder": "Palavras para destacar"
+          }
+        },
+        "bignumbersslicebuttontext": {
+          "type": "Text",
+          "config": {
+            "label": "BigNumbersSliceButtontext",
+            "placeholder": ""
+          }
+        },
+        "bignumbersslicebuttonlink": {
+          "type": "Link",
+          "config": {
+            "label": "BigNumbersSliceButtonLink",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "bignumbersimage": {
+          "type": "Image",
+          "config": {
+            "label": "BigNumbersImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "bignumbersimagevisibility": {
+          "type": "Boolean",
+          "config": {
+            "label": "BigNumbersImageVisibility",
+            "placeholder_false": "NotVisible",
+            "placeholder_true": "Visible",
+            "default_value": true
+          }
+        }
+      },
+      "items": {
+        "bignumberslicetriggertitle": {
+          "type": "Text",
+          "config": {
+            "label": "BigNumberSliceTriggerTitle",
+            "placeholder": ""
+          }
+        },
+        "bignumberslicetriggernumber": {
+          "type": "Number",
+          "config": {
+            "label": "BigNumberSliceTriggerNumber",
+            "placeholder": ""
+          }
+        },
+        "bignumberslicetriggernumberfraction": {
+          "type": "Boolean",
+          "config": {
+            "label": "BigNumberSliceTriggerNumberFraction",
+            "placeholder_false": "isNotFraction",
+            "placeholder_true": "Fraction",
+            "default_value": false
+          }
+        }
+      }
+    }
+  ]
+}
