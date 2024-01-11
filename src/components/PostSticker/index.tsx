@@ -5,7 +5,7 @@ export default function PostSticker({ post }: { post: BlogPost }) {
   const date = new Date(post.date as string);
 
   return (
-    <div className="grid grid-cols-2 justify-items-center items-center justify-center gap-3">
+    <div className="grid grid-cols-2 items-center justify-center gap-3 MaxLg:grid-cols-[1fr_2fr]">
       <div className="w-full h-28 self-center">
         <PrismicNextImage
           className="w-full h-full rounded-lg object-cover"

@@ -9,9 +9,12 @@ const config: Config = {
   theme: {
     screens: {
       ss_mobile: "321px",
+      MaxS_mobile: { max: "320px" },
       s_mobile: "445px",
       lg: "1024px",
-      md: "768px",
+      MaxLg: { max: "1024px" },
+      md: "769px",
+      MaxMd: { max: "768px" },
       Mobile: { max: "575px" },
       // => @media (max-width: 575px) { ... }
 
@@ -24,6 +27,7 @@ const config: Config = {
       Laptop: { min: "923px", max: "1440px" },
       LaptopS: "1200px",
       LaptopNoMin: { max: "1440px" },
+      LaptopMin: { min: "1440px" },
     },
     extend: {
       colors: {

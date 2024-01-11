@@ -168,7 +168,7 @@ export default function Newsletter({
             backgroundImage:
               "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)",
           }}
-          className="grid grid-cols-1 w-[90%] rounded-lg px-[2vw] py-[3vh]"
+          className="grid grid-cols-1 w-[100%] rounded-lg px-[2vw] py-[3vh]"
         >
           <div className="grid grid-cols-1">
             <label className="text-2xl font-bold">{titulo}</label>
