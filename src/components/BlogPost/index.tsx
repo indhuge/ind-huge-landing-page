@@ -7,6 +7,8 @@ import tag from "/public/assets/tag.svg";
 import { ResolvingMetadata } from "next";
 import Newsletter from "@/components/Newsletter/basic";
 import RelatedPosts from "../RelatedPosts";
+import Link from "next/link";
+import { Facebook, LinkedIn, WhatsApp } from "@mui/icons-material";
 
 export default function BlogPost({
   post,
@@ -51,9 +53,24 @@ export default function BlogPost({
           <div className="bg-gray h-[0.05rem] w-full"></div>
           <div className="flex gap-2 items-center">
             <p className="font-light text-darkgray">Compartilhar</p>
-            <div className="aspect-square w-8 rounded-full border-1 border-darkblue"></div>
-            <div className="aspect-square w-8 rounded-full border-1 border-darkblue"></div>
-            <div className="aspect-square w-8 rounded-full border-1 border-darkblue"></div>
+            <Link
+              href={`https://api.whatsapp.com/send?text=teste`}
+              className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+            >
+              <WhatsApp className="fill-darkblue" />
+            </Link>
+            <Link
+              href={`https://api.whatsapp.com/send?text=teste`}
+              className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+            >
+              <Facebook className="fill-darkblue" />
+            </Link>
+            <Link
+              href={`https://api.whatsapp.com/send?text=teste`}
+              className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+            >
+              <LinkedIn className="fill-darkblue" />
+            </Link>
           </div>
         </div>
         <RelatedPosts
