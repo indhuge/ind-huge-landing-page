@@ -76,7 +76,7 @@ export default function RelatedPosts({
         <div className="flex gap-5 MaxMd:grid MaxMd:grid-cols-1 MaxMd:justify-center MaxMd:items-center">
           {posts?.map((e, i) => {
             return (
-              <Link href={e.url!!}>
+              <Link href={e.url!!} key={i}>
                 <BlogCard
                   key={i}
                   className="max-h-[30rem]"

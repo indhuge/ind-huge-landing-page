@@ -9,3 +9,11 @@ export function getLinkedInShareLink(title: string, pageUrl: string) {
 export function getWhatsappShareLink(pageUrl: string) {
   return `https://api.whatsapp.com/send?text=${getHost() + pageUrl}`;
 }
+
+export function getFacebookShareLink(pageUrl: string) {
+  return `https://www.facebook.com/dialog/share?app_id=${
+    process.env.FACEBOOK_APP_ID
+  }&display=popup&href=${getHost() + pageUrl}&redirect_uri=${
+    getHost() + pageUrl
+  }`;
+}

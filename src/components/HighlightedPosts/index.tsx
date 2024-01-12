@@ -38,7 +38,7 @@ export default function HighlightedPosts({
           </h2>
           <div className="flex flex-col gap-5">
             {[1, 2, 3].map((e, i) => {
-              return <PostStickerSkeleton />;
+              return <PostStickerSkeleton key={i} />;
             })}
           </div>
         </motion.div>

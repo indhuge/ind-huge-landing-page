@@ -11,7 +11,11 @@ import Link from "next/link";
 import { Facebook, LinkedIn, WhatsApp } from "@mui/icons-material";
 import HighlightedPosts from "../HighlightedPosts";
 import Clock from "/public/assets/Clock.svg";
-import { getLinkedInShareLink, getWhatsappShareLink } from "./service";
+import {
+  getFacebookShareLink,
+  getLinkedInShareLink,
+  getWhatsappShareLink,
+} from "./service";
 import { getHost } from "@/host";
 
 export default function BlogPost({
@@ -72,10 +76,9 @@ export default function BlogPost({
               <WhatsApp className="fill-darkblue" />
             </Link>
             <Link
-              href={`https://www.facebook.com/dialog/share?app_id=1396622270963643&display=popup&href=${
-                getHost() + post.url ?? ""
-              }&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`}
+              href={getFacebookShareLink(post.url ?? "")}
               className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+              target="_blank"
             >
               <Facebook className="fill-darkblue" />
             </Link>
