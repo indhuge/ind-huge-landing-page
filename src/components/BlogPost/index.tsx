@@ -8,7 +8,9 @@ import { ResolvingMetadata } from "next";
 import Newsletter from "@/components/Newsletter/basic";
 import RelatedPosts from "../RelatedPosts";
 import Link from "next/link";
-import { Facebook, LinkedIn, WhatsApp } from "@mui/icons-material";
+import Facebook from "/public/assets/share/logo-facebook.svg";
+import Linkedin from "/public/assets/share/logo-linkedin.svg";
+import Whatsapp from "/public/assets/share/logo-whatsapp.svg";
 import HighlightedPosts from "../HighlightedPosts";
 import Clock from "/public/assets/Clock.svg";
 import {
@@ -16,7 +18,6 @@ import {
   getLinkedInShareLink,
   getWhatsappShareLink,
 } from "./service";
-import { getHost } from "@/host";
 
 export default function BlogPost({
   post,
@@ -70,27 +71,39 @@ export default function BlogPost({
             <p className="font-light text-darkgray">Compartilhar</p>
             <Link
               href={getWhatsappShareLink(post.url ?? "")}
-              className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+              className="aspect-square w-11 rounded-full border-1 border-darkblue flex items-center justify-center px-2 transition-all duration-500 hover:px-0 hover:border-transparent"
               target="_blank"
             >
-              <WhatsApp className="fill-darkblue" />
+              <Image
+                src={Whatsapp}
+                alt="Whatsapp logo"
+                className="fill-darkblue h-full w-full"
+              />
             </Link>
             <Link
               href={getFacebookShareLink(post.url ?? "")}
-              className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+              className="aspect-square w-11 rounded-full border-1 border-darkblue flex items-center justify-center px-2 transition-all duration-500 hover:px-0 hover:border-transparent"
               target="_blank"
             >
-              <Facebook className="fill-darkblue" />
+              <Image
+                src={Facebook}
+                alt="Facebook logo"
+                className="fill-darkblue h-full w-full"
+              />
             </Link>
             <Link
               href={getLinkedInShareLink(
                 post.data.title as string,
                 post.url ?? ""
               )}
-              className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+              className="aspect-square w-11 rounded-full border-1 border-darkblue flex items-center justify-center px-2 transition-all duration-500 hover:px-0 hover:border-transparent"
               target="_blank"
             >
-              <LinkedIn className="fill-darkblue" />
+              <Image
+                src={Linkedin}
+                alt="LinkedIn logo"
+                className="fill-darkblue h-full w-full"
+              />
             </Link>
           </div>
         </div>
