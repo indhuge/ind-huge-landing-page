@@ -11,6 +11,8 @@ import Link from "next/link";
 import { Facebook, LinkedIn, WhatsApp } from "@mui/icons-material";
 import HighlightedPosts from "../HighlightedPosts";
 import Clock from "/public/assets/Clock.svg";
+import { getLinkedInShareLink, getWhatsappShareLink } from "./service";
+import { getHost } from "@/host";
 
 export default function BlogPost({
   post,
@@ -63,20 +65,27 @@ export default function BlogPost({
           <div className="flex gap-2 items-center">
             <p className="font-light text-darkgray">Compartilhar</p>
             <Link
-              href={`https://api.whatsapp.com/send?text=teste`}
+              href={getWhatsappShareLink(post.url ?? "")}
               className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+              target="_blank"
             >
               <WhatsApp className="fill-darkblue" />
             </Link>
             <Link
-              href={`https://api.whatsapp.com/send?text=teste`}
+              href={`https://www.facebook.com/dialog/share?app_id=1396622270963643&display=popup&href=${
+                getHost() + post.url ?? ""
+              }&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer`}
               className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
             >
               <Facebook className="fill-darkblue" />
             </Link>
             <Link
-              href={`https://api.whatsapp.com/send?text=teste`}
+              href={getLinkedInShareLink(
+                post.data.title as string,
+                post.url ?? ""
+              )}
               className="aspect-square w-8 rounded-full border-1 border-darkblue flex items-center justify-center px-5"
+              target="_blank"
             >
               <LinkedIn className="fill-darkblue" />
             </Link>
