@@ -68,6 +68,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "newsletter": {
+              "type": "SharedSlice"
+            },
             "blog_image_slice": {
               "type": "SharedSlice"
             },
