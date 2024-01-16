@@ -5,6 +5,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {
@@ -26,6 +27,8 @@ const config: Config = {
 
       Laptop: { min: "923px", max: "1440px" },
       LaptopS: "1200px",
+      MaxBlogGrid: { max: "1250px" },
+      BlogGrid: { min: "992px", max: "1250px" },
       LaptopNoMin: { max: "1440px" },
       LaptopMin: { min: "1440px" },
     },
