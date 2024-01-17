@@ -6,6 +6,10 @@
   @apply bg-gradient-to-bl from-[#001E71] to-[#36FB7B];
 }
 
+.gradient-green {
+  background: linear-gradient(94deg, #00d272 0%, #1eef8f 100%);
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

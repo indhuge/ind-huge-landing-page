@@ -11,6 +11,7 @@ export const components = {
   features_slice: dynamic(() => import("./FeaturesSlice")),
   newsletter: dynamic(() => import("./NewsletterSlice")),
   partners_slice: dynamic(() => import("./PartnersSlice")),
+  recent_posts: dynamic(() => import("./RecentPosts")),
   recents_posts_and_categories: dynamic(
     () => import("./RecentsPostsAndCategories"),
   ),

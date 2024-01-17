@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"main_title": {
+				"__TYPE__": "FieldContent",
+				"value": "usual",
+				"type": "Text"
+			},
+			"call_to_action_text": {
+				"__TYPE__": "FieldContent",
+				"value": "direct",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

@@ -913,6 +913,7 @@ export type HeaderDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
 
 type LandingPageDocumentDataSlicesSlice =
+  | RecentPostsSlice
   | BigNumbersSliceSlice
   | PartnersSliceSlice
   | ContatoSlice
@@ -1830,6 +1831,61 @@ export type PartnersSliceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *RecentPosts → Primary*
+ */
+export interface RecentPostsSliceDefaultPrimary {
+  /**
+   * Main Title field in *RecentPosts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recent_posts.primary.main_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  main_title: prismic.KeyTextField;
+
+  /**
+   * Call To Action Text field in *RecentPosts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recent_posts.primary.call_to_action_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  call_to_action_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for RecentPosts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecentPostsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RecentPostsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *RecentPosts*
+ */
+type RecentPostsSliceVariation = RecentPostsSliceDefault;
+
+/**
+ * RecentPosts Shared Slice
+ *
+ * - **API ID**: `recent_posts`
+ * - **Description**: RecentPosts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecentPostsSlice = prismic.SharedSlice<
+  "recent_posts",
+  RecentPostsSliceVariation
+>;
+
+/**
  * Primary content in *RecentsPostsAndCategories → Primary*
  */
 export interface RecentsPostsAndCategoriesSliceDefaultPrimary {
@@ -1995,6 +2051,10 @@ declare module "@prismicio/client" {
       PartnersSliceSliceDefaultItem,
       PartnersSliceSliceVariation,
       PartnersSliceSliceDefault,
+      RecentPostsSlice,
+      RecentPostsSliceDefaultPrimary,
+      RecentPostsSliceVariation,
+      RecentPostsSliceDefault,
       RecentsPostsAndCategoriesSlice,
       RecentsPostsAndCategoriesSliceDefaultPrimary,
       RecentsPostsAndCategoriesSliceVariation,
