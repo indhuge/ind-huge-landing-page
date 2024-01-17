@@ -18,6 +18,15 @@
           "label": "Name",
           "placeholder": ""
         }
+      },
+      "is_visible": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is visible",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": true
+        }
       }
     }
   }

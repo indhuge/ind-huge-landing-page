@@ -8,7 +8,9 @@ export async function getCategoriesAndPosts() {
   const p = client.getAllByType("blog_post");
 
   return {
-    categories: await c,
+    categories: (await c).filter(
+      (e) => e.data.is_visible == true || e.data.is_visible == undefined
+    ),
     posts: await p,
   };
 }
