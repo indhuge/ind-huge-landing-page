@@ -50,7 +50,7 @@ export default function RelatedPosts({
           <h2 className="text-darkblue text-2xl font-bold mb-4">
             Posts Relacionados
           </h2>
-          <div className="flex gap-5 MaxMd:grid MaxMd:grid-cols-1 MaxMd:justify-center MaxMd:items-center">
+          <div className="flex gap-5 TabletPortrait:grid TabletPortrait:grid-cols-1 TabletPortrait:justify-center TabletPortrait:items-center">
             {[1, 2].map((e, i) => {
               return (
                 <BlogCardSkeleton key={i} className="animate-pulse h-[30rem]" />
@@ -73,7 +73,7 @@ export default function RelatedPosts({
         <h2 className="text-darkblue text-2xl font-bold mb-4">
           Posts Relacionados
         </h2>
-        <div className="flex gap-5 MaxMd:grid MaxMd:grid-cols-1 MaxMd:justify-center MaxMd:items-center">
+        <div className="flex gap-5 TabletPortrait:grid TabletPortrait:grid-cols-1 TabletPortrait:justify-center TabletPortrait:items-center">
           {posts?.map((e, i) => {
             return (
               <Link href={e.url!!} key={i}>

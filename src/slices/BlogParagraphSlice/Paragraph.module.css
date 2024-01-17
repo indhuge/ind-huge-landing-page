@@ -1,0 +1,7 @@
+.wrapper {
+  @apply text-darkgray text-base text-justify font-light;
+}
+
+.wrapper h2 {
+  @apply text-xl font-bold text-darkblue;
+}

@@ -1,6 +1,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { asText } from "@prismicio/client";
+import Style from "./Paragraph.module.css";
 
 /**
  * Props for `BlogParagraphSlice`.
@@ -19,7 +20,7 @@ const BlogParagraphSlice = ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="text-darkgray text-base text-justify font-light">
+      <div className={Style.wrapper}>
         <PrismicRichText field={slice.primary.paragraph} />
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 
 /**
@@ -15,9 +16,17 @@ const BlogImageSlice = ({ slice }: BlogImageSliceProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="pb-5"
     >
-      Placeholder component for blog_image_slice (variation: {slice.variation})
-      Slices
+      <div className="flex flex-col">
+        <PrismicNextImage
+          className="object-cover rounded-lg w-3/2"
+          width={924}
+          height={320}
+          field={slice.primary.image}
+        />
+        <p className="text-darkgray">{slice.primary.legenda}</p>
+      </div>
     </section>
   );
 };
