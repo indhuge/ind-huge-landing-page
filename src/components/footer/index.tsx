@@ -150,6 +150,7 @@ export default function Page(page: any) {
             {
                 sucesso ?
                     <Snackbar
+                        anchorOrigin={{ vertical:"bottom", horizontal:"right" }}
                         open={sucesso}
                         autoHideDuration={6000}
                         onClose={()=>setSucesso(false)}
