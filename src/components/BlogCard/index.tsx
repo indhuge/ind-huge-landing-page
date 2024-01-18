@@ -25,7 +25,7 @@ export default function BlogCard({
   return (
     <div
       className={
-        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg transition-all" +
+        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg transition-all hover:drop-shadow-black" +
         " " +
         className
       }

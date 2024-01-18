@@ -1,14 +1,29 @@
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { BlogPost } from "../BlogCard";
 import { PrismicNextImage } from "@prismicio/next";
+import Style from "./PostSticker.module.css";
 
-export default function PostSticker({ post }: { post: BlogPost }) {
+export default function PostSticker({
+  post,
+  router,
+  postUrl,
+}: {
+  post: BlogPost;
+  postUrl: string;
+  router: AppRouterInstance;
+}) {
   const date = new Date(post.date as string);
 
   return (
-    <div className="grid grid-cols-2 items-center justify-center gap-3 MaxLg:grid-cols-[1fr_2fr]">
-      <div className="w-full h-28 self-center">
+    <div
+      className={`grid grid-cols-2 items-center justify-center gap-3 MaxLg:grid-cols-[1fr_2fr] bg-white rounded-lg hover:cursor-pointer hover:scale-105 transition-all duration-500 ${Style.wrapper}`}
+      onClick={() => {
+        router.push(postUrl, { fetch: true });
+      }}
+    >
+      <div className="w-full h-28 self-center overflow-hidden rounded-lg">
         <PrismicNextImage
-          className="w-full h-full rounded-lg object-cover"
+          className={`w-full h-full object-cover transition-all duration-300 ${Style.img}`}
           field={post.image}
         />
       </div>

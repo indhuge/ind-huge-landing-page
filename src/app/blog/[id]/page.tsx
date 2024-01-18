@@ -8,12 +8,7 @@ import { Metadata, ResolvingMetadata } from "next";
 export default async function BlogPage({ params }: { params: { id: string } }) {
   const tPage = GetBlogPage(params.id);
   const tCategories = GetCategories();
-  return (
-    <BlogPost
-      post={await tPage}
-      categories={await tCategories}
-    />
-  );
+  return <BlogPost post={await tPage} categories={await tCategories} />;
 }
 
 export async function generateMetadata(
