@@ -7,6 +7,7 @@ import PostSticker from "../PostSticker";
 import { BlogPost } from "../BlogCard";
 import PostStickerSkeleton from "../PostSticker/skeleton";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function HighlightedPosts({
   className,
@@ -15,6 +16,7 @@ export default function HighlightedPosts({
 }) {
   const [pages, setPages] = useState<BlogPostDocument<string>[]>();
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     getHighlightedPosts().then((e) => {
@@ -66,7 +68,14 @@ export default function HighlightedPosts({
               date: e.data.date?.toString() as string,
             };
 
-            return <PostSticker post={bp} key={i} />;
+            return (
+              <PostSticker
+                post={bp}
+                key={i}
+                postUrl={e.url ?? ""}
+                router={router}
+              />
+            );
           })}
         </div>
       </motion.div>

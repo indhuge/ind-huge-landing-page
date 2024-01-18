@@ -45,6 +45,7 @@ const config: Config = {
       },
       dropShadow: {
         base: "0 0 25px #26D07C",
+        black: "0 0 10px #AAAAAA",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
