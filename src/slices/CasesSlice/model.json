@@ -159,6 +159,89 @@
           }
         }
       }
+    },
+    {
+      "id": "newsSection",
+      "name": "NewsSection",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 796,
+              "height": 435
+            },
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        },
+        "client": {
+          "type": "Boolean",
+          "config": {
+            "label": "Client",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "lefticontext": {
+          "type": "Text",
+          "config": {
+            "label": "LeftIconText",
+            "placeholder": ""
+          }
+        },
+        "rigthicon": {
+          "type": "Image",
+          "config": {
+            "label": "RigthIcon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "rigthicontext": {
+          "type": "Text",
+          "config": {
+            "label": "RigthIconText",
+            "placeholder": ""
+          }
+        },
+        "lefticon": {
+          "type": "Image",
+          "config": {
+            "label": "LeftIcon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      }
     }
   ]
 }

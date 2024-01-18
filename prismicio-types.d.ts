@@ -1491,11 +1491,126 @@ export type CasesSliceSliceBlogCarousel = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *CasesSlice → Primary*
+ */
+export interface CasesSliceSliceNewsSectionPrimary {
+  /**
+   * Title field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *CasesSlice → Items*
+ */
+export interface CasesSliceSliceNewsSectionItem {
+  /**
+   * Image field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Client field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: cases_slice.items[].client
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  client: prismic.BooleanField;
+
+  /**
+   * LeftIconText field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].lefticontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lefticontext: prismic.KeyTextField;
+
+  /**
+   * RigthIcon field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].rigthicon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  rigthicon: prismic.ImageField<never>;
+
+  /**
+   * RigthIconText field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].rigthicontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  rigthicontext: prismic.KeyTextField;
+
+  /**
+   * LeftIcon field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].lefticon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  lefticon: prismic.ImageField<never>;
+}
+
+/**
+ * NewsSection variation for CasesSlice Slice
+ *
+ * - **API ID**: `newsSection`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CasesSliceSliceNewsSection = prismic.SharedSliceVariation<
+  "newsSection",
+  Simplify<CasesSliceSliceNewsSectionPrimary>,
+  Simplify<CasesSliceSliceNewsSectionItem>
+>;
+
+/**
  * Slice variation for *CasesSlice*
  */
 type CasesSliceSliceVariation =
   | CasesSliceSliceDefault
-  | CasesSliceSliceBlogCarousel;
+  | CasesSliceSliceBlogCarousel
+  | CasesSliceSliceNewsSection;
 
 /**
  * CasesSlice Shared Slice
@@ -2030,9 +2145,12 @@ declare module "@prismicio/client" {
       CasesSliceSliceDefaultItem,
       CasesSliceSliceBlogCarouselPrimary,
       CasesSliceSliceBlogCarouselItem,
+      CasesSliceSliceNewsSectionPrimary,
+      CasesSliceSliceNewsSectionItem,
       CasesSliceSliceVariation,
       CasesSliceSliceDefault,
       CasesSliceSliceBlogCarousel,
+      CasesSliceSliceNewsSection,
       ContatoSlice,
       ContatoSliceDefaultPrimary,
       ContatoSliceVariation,
