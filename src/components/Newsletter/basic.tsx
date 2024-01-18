@@ -219,6 +219,8 @@ export default function Newsletter({
         </div>
         {sucesso ? (
           <Snackbar
+            anchorOrigin={{ vertical:"top", horizontal:"right" }}
+            style={{top: "15vh"}}
             open={sucesso}
             autoHideDuration={6000}
             onClose={() => setSucesso(false)}
