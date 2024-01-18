@@ -25,10 +25,18 @@ export function funcscroll(id: string) {
     var elemento = document.getElementById(id);
     console.log(window.location.href);
     if (id.includes("/")) {
-        window.location.replace(id)
+        if (window.location.href.includes("/blog")){
+            window.location.href = "../"+id
+        }
+        else{
+            window.location.href = id
+        }
     }
     else {
-        if (window.location.href.includes("/?spos=")) {
+        if (window.location.href.includes("/blog")){
+            window.location.href = `../?spos=${id}`;
+        }
+        else if (window.location.href.includes("/?spos=")) {
             window.scrollTo({ top: elemento?.offsetTop, behavior: "smooth" });
         }
         else {
