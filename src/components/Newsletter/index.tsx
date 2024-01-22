@@ -85,6 +85,7 @@ export default function Newsletter(slice: NewsletterProps) {
                 </div>
                 {sucesso ?
                     <Snackbar
+                        anchorOrigin={{ vertical:"bottom", horizontal:"center" }}
                         open={sucesso}
                         autoHideDuration={6000}
                         onClose={() => setSucesso(false)}
@@ -130,6 +131,7 @@ export default function Newsletter(slice: NewsletterProps) {
                 </div>
                 {sucesso ?
                     <Snackbar
+                        anchorOrigin={{ vertical:"top", horizontal:"right" }}
                         open={sucesso}
                         autoHideDuration={6000}
                         onClose={() => setSucesso(false)}
