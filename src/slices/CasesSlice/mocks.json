@@ -352,6 +352,24 @@
 							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
+					],
+					[
+						"buttonlink",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "http://google.com"
+							}
+						}
+					],
+					[
+						"buttontext",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "discovery",
+							"type": "Text"
+						}
 					]
 				]
 			}

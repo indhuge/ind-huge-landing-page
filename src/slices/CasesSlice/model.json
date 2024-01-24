@@ -240,6 +240,21 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "buttonlink": {
+          "type": "Link",
+          "config": {
+            "label": "ButtonLink",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "buttontext": {
+          "type": "Text",
+          "config": {
+            "label": "ButtonText",
+            "placeholder": ""
+          }
         }
       }
     }

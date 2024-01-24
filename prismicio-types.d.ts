@@ -1589,6 +1589,26 @@ export interface CasesSliceSliceNewsSectionItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   lefticon: prismic.ImageField<never>;
+
+  /**
+   * ButtonLink field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].buttonlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  buttonlink: prismic.LinkField;
+
+  /**
+   * ButtonText field in *CasesSlice → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.items[].buttontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  buttontext: prismic.KeyTextField;
 }
 
 /**
