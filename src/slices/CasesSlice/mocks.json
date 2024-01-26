@@ -279,13 +279,6 @@
 						}
 					],
 					[
-						"client",
-						{
-							"__TYPE__": "BooleanContent",
-							"value": false
-						}
-					],
-					[
 						"lefticontext",
 						{
 							"__TYPE__": "FieldContent",

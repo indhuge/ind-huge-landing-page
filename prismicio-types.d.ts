@@ -1540,17 +1540,6 @@ export interface CasesSliceSliceNewsSectionItem {
   text: prismic.KeyTextField;
 
   /**
-   * Client field in *CasesSlice → Items*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: cases_slice.items[].client
-   * - **Documentation**: https://prismic.io/docs/field#boolean
-   */
-  client: prismic.BooleanField;
-
-  /**
    * LeftIconText field in *CasesSlice → Items*
    *
    * - **Field Type**: Text

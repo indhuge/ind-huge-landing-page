@@ -202,15 +202,6 @@
             "placeholder": ""
           }
         },
-        "client": {
-          "type": "Boolean",
-          "config": {
-            "label": "Client",
-            "default_value": false,
-            "placeholder_true": "true",
-            "placeholder_false": "false"
-          }
-        },
         "lefticontext": {
           "type": "Text",
           "config": {
