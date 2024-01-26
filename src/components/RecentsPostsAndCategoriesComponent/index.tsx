@@ -46,9 +46,11 @@ export default function RecentsPostsAndCategoriesComponent({
       setPostsView(seeAll(e.posts));
       const cat = searchParams.get("category");
       if (cat != undefined) {
-        const tmp = e.categories.findIndex((e) => e.data.name == cat);
+        const tmp = e.categories.findIndex((e) => e.uid == cat);
         console.log(cat, tmp);
         filterClick(tmp ?? -1, e.categories, e.posts);
+        const el = document.getElementById("RecentPosts");
+        el?.scrollIntoView();
       }
       setTimeout(() => setIsLoading(false), 1000);
     });
