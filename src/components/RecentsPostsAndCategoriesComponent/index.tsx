@@ -50,7 +50,7 @@ export default function RecentsPostsAndCategoriesComponent({
         console.log(cat, tmp);
         filterClick(tmp ?? -1, e.categories, e.posts);
         const el = document.getElementById("RecentPosts");
-        el?.scrollIntoView();
+        el?.scrollIntoView({ behavior: "smooth" });
       }
       setTimeout(() => setIsLoading(false), 1000);
     });
