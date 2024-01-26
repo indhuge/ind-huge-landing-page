@@ -32,7 +32,7 @@ export default function Cases({ slice }: any) {
               <h2 className="text-white text-2xl TabletPortrait:text-xl">
                 {item.title}
               </h2>
-              <p className="text-white text-m Laptop:pb-10 Mobile:pb-8 TabletPortrait:text-sm TabletPortrait:pb-12 ">
+              <p className="text-white text-m pb-14 Laptop:pb-10 Mobile:pb-8 TabletPortrait:text-sm TabletPortrait:pb-12 ">
                 {item.text}
               </p>
               <div className="flex flex-row">
