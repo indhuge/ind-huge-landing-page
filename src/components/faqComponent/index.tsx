@@ -19,7 +19,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
 
     var limitador = 0
 
-    categorias?.map((i, index) => { console.log(i?.data?.name) });
+    categorias?.map((i, index) => { console.log(i?.data?.name, i?.data?.is_visible) });
 
     const [topico, setTopico] = useState('');
 
@@ -56,11 +56,13 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                                 onChange={mudaTopico}
                                 sx={{ color: blue[900] }}
                             >
-                                <MenuItem value={""} >Nenhum</MenuItem>
+                                <MenuItem value={""}>Nenhum</MenuItem>
                                 {categorias?.map((i, index) => {
-                                    return (
-                                        <MenuItem key={index} value={i?.uid} >{i?.data.name}</MenuItem>
-                                    );
+                                    if (i?.data?.is_visible){
+                                        return (
+                                            <MenuItem key={index} value={i?.uid} >{i?.data?.name}</MenuItem>
+                                        );
+                                    }
                                 })}
                             </Select>
                         </FormControl>
@@ -92,7 +94,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                                 limitador++;
                                 return (
                                     <Link key={index} href={`./blog/${i?.uid}`}>
-                                        <div  className="grid grid-cols-2 mt-2 TabletPortrait:grid-cols-3">
+                                        <div className="grid grid-cols-2 mt-2 TabletPortrait:grid-cols-3">
                                             <PrismicNextImage field={i?.data.image} alt="" className="h-[15vh] w-full ml-5 rounded-2xl TabletPortrait:ml-0" />
                                             <div className="ml-8 mt-2 TabletPortrait:col-span-2 TabletPortrait:ml-2">
                                                 <label className="text-blue text-sm font-bold">{i?.data?.title}</label>
@@ -105,7 +107,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                             }
                         }
                     })}
-                    <button className="bg-green py-2 rounded-full text-darkblue font-bold hover:scale-105 Mobile:text-sm w-[90%] ml-5 mt-5 mb-16 TabletPortrait:ml-[5%]" type="button" onClick={() => { router.push("./blog") }}>VER MAIS ARTIGOS &#10140;</button>
+                    <button className="bg-green py-2 rounded-full text-darkblue font-bold hover:scale-105 Mobile:text-sm w-[90%] ml-5 mt-5 mb-16 TabletPortrait:ml-[5%]" type="button" onClick={() => { router.push(`./blog?category=${topico}`) }}>VER MAIS ARTIGOS &#10140;</button>
                 </div>
             </div>
         </>
