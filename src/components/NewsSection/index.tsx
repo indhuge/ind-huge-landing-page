@@ -16,6 +16,7 @@ export default function Cases({ slice }: any) {
           return(
             <div 
             style={style}
+            key={i}
             className={`flex flex-col p-4 bg-blend-overlay bg-black bg-opacity-50 bg-center bg-cover 
             rounded-xl overflow-hidden relative  ${isLastRow ? 'row-span-2' : 'h-[200px]'}`}>
               <div className={`${isLastRow ? 'flex-1' : 'hidden'}`}>
