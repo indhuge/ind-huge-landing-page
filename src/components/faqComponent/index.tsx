@@ -107,7 +107,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                             }
                         }
                     })}
-                    <button className="bg-green py-2 rounded-full text-darkblue font-bold hover:scale-105 Mobile:text-sm w-[90%] ml-5 mt-5 mb-16 TabletPortrait:ml-[5%]" type="button" onClick={() => { router.push("./blog") }}>VER MAIS ARTIGOS &#10140;</button>
+                    <button className="bg-green py-2 rounded-full text-darkblue font-bold hover:scale-105 Mobile:text-sm w-[90%] ml-5 mt-5 mb-16 TabletPortrait:ml-[5%]" type="button" onClick={() => { router.push(`./blog?category=${topico}`) }}>VER MAIS ARTIGOS &#10140;</button>
                 </div>
             </div>
         </>
