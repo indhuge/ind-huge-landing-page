@@ -27,7 +27,7 @@ export default function BlogPost({
   categories: CategoryDocument<string>[];
 }) {
   const date = new Date(post.data.date as string);
-
+  console.log(post.data.title)
   return (
     <div className="bg-white flex items-center justify-center">
       <div className="LaptopS:container px-5 LaptopS:px-0 py-16 grid grid-cols-[3fr_1fr] MaxBlogGrid:grid-cols-1 gap-10">
