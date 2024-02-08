@@ -34,7 +34,7 @@ export default function RecentsPostsAndCategoriesComponent({
     setSelected(index);
     const tmp =
       index == -1
-        ? seeAll(posts)
+        ? seeAll(posts, cats)
         : filterByTag(cats[index].uid as string, posts);
     setPostsView(tmp);
   };
@@ -43,7 +43,7 @@ export default function RecentsPostsAndCategoriesComponent({
     getCategoriesAndPosts().then((e) => {
       setCategories(e.categories);
       setPosts(e.posts);
-      setPostsView(seeAll(e.posts));
+      setPostsView(seeAll(e.posts, e.categories));
       const cat = searchParams.get("category");
       if (cat != undefined) {
         const tmp = e.categories.findIndex((e) => e.uid == cat);
