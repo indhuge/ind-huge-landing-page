@@ -28,7 +28,7 @@ export default function RecentsPostsComponent({ slice }: RecentPostsProps) {
   useEffect(() => {
     getCategoriesAndPosts().then((e) => {
       setCategories(e.categories);
-      setPosts(seeAll(e.posts));
+      setPosts(seeAll(e.posts, e.categories));
       setTimeout(() => setIsLoading(false), 1000);
     });
   }, []);
