@@ -8,7 +8,7 @@ import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 import Link from "next/link";
 import ExpandedView from "./expandedView";
 import CollapsedView from "./collapsedView";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import SkeletonCardView from "./skeletonCardView";
 import ArrowIcon from "/public/assets/arrow.svg";
@@ -24,13 +24,18 @@ export default function RecentsPostsAndCategoriesComponent({
   const [posts, setPosts] = useState<BlogPostDocument<string>[]>();
   const [isExpanded, setExpanded] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const filterClick = (index: number) => {
+  const filterClick = (
+    index: number,
+    cats: CategoryDocument<string>[],
+    posts: BlogPostDocument<string>[]
+  ) => {
     setSelected(index);
     const tmp =
       index == -1
-        ? seeAll(posts!!)
-        : filterByTag(categories!![index].uid as string, posts!!);
+        ? seeAll(posts, cats)
+        : filterByTag(cats[index].uid as string, posts);
     setPostsView(tmp);
   };
 
@@ -38,14 +43,25 @@ export default function RecentsPostsAndCategoriesComponent({
     getCategoriesAndPosts().then((e) => {
       setCategories(e.categories);
       setPosts(e.posts);
-      setPostsView(seeAll(e.posts));
+      setPostsView(seeAll(e.posts, e.categories));
+      const cat = searchParams.get("category");
+      if (cat != undefined) {
+        const tmp = e.categories.findIndex((e) => e.uid == cat);
+        console.log(cat, tmp);
+        filterClick(tmp ?? -1, e.categories, e.posts);
+        const el = document.getElementById("RecentPosts");
+        el?.scrollIntoView({ behavior: "smooth" });
+      }
       setTimeout(() => setIsLoading(false), 1000);
     });
   }, []);
 
   if (isLoading)
     return (
-      <div className="bg-white flex flex-col py-10 px-2 ss_mobile:px-10 md:px-36">
+      <div
+        className="bg-white flex flex-col py-10 px-2 ss_mobile:px-10 md:px-36"
+        id="RecentPosts"
+      >
         <div className="flex justify-center items-center flex-wrap">
           <CircularButton
             text=""
@@ -124,13 +140,14 @@ export default function RecentsPostsAndCategoriesComponent({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="bg-white flex flex-col py-10 px-2 ss_mobile:px-10 md:px-36"
+      id="RecentPosts"
     >
       <div className="flex justify-center items-center flex-wrap">
         <CircularButton
           key={-1}
           text="ver todos"
           onClick={() => {
-            filterClick(-1);
+            filterClick(-1, categories!!, posts!!);
           }}
           isSelected={selected == -1}
           className={null}
@@ -140,7 +157,7 @@ export default function RecentsPostsAndCategoriesComponent({
             <CircularButton
               key={i}
               text={e.data.name as string}
-              onClick={() => filterClick(i)}
+              onClick={() => filterClick(i, categories!!, posts!!)}
               isSelected={selected == i}
               className={null}
             />

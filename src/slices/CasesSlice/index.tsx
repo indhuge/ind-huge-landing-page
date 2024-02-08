@@ -2,6 +2,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import Cases from "@/components/cases";
 import BlogCarousel from "@/components/BlogCarousel";
+import NewsSection from "@/components/NewsSection";
 
 /**
  * Props for `CasesSlice`.
@@ -24,6 +25,9 @@ const CasesSlice = ({ slice }: CasesSliceProps): JSX.Element => {
       )}
       {slice.variation === "blogCarousel" && (
       <BlogCarousel slice={slice} index={0} slices={[]} context={undefined} />
+      )}
+      {slice.variation === "newsSection" && (
+      <NewsSection slice={slice} index={0} slices={[]} context={undefined} />
       )}
     </section>
   );

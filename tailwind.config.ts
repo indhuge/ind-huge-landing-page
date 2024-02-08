@@ -5,13 +5,17 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {
       ss_mobile: "321px",
+      MaxS_mobile: { max: "320px" },
       s_mobile: "445px",
       lg: "1024px",
-      md: "768px",
+      MaxLg: { max: "1024px" },
+      md: "769px",
+      MaxMd: { max: "768px" },
       Mobile: { max: "575px" },
       // => @media (max-width: 575px) { ... }
 
@@ -23,7 +27,10 @@ const config: Config = {
 
       Laptop: { min: "923px", max: "1440px" },
       LaptopS: "1200px",
+      MaxBlogGrid: { max: "1250px" },
+      BlogGrid: { min: "992px", max: "1250px" },
       LaptopNoMin: { max: "1440px" },
+      LaptopMin: { min: "1440px" },
     },
     extend: {
       colors: {
@@ -38,6 +45,7 @@ const config: Config = {
       },
       dropShadow: {
         base: "0 0 25px #26D07C",
+        black: "0 0 10px #AAAAAA",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

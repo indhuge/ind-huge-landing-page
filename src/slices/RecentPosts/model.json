@@ -1,0 +1,33 @@
+{
+  "id": "recent_posts",
+  "type": "SharedSlice",
+  "name": "RecentPosts",
+  "description": "RecentPosts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "main_title": {
+          "type": "Text",
+          "config": {
+            "label": "Main Title",
+            "placeholder": ""
+          }
+        },
+        "call_to_action_text": {
+          "type": "Text",
+          "config": {
+            "label": "Call To Action Text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

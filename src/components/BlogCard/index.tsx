@@ -4,7 +4,7 @@ import Image from "next/image";
 import CalendarIcon from "public/assets/calendar.svg";
 import TagIcon from "public/assets/tag.svg";
 
-type BlogPost = {
+export type BlogPost = {
   image: ImageField<never> | null;
   title: String;
   description: String;
@@ -25,7 +25,7 @@ export default function BlogCard({
   return (
     <div
       className={
-        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg transition-all" +
+        "aspect-[395/432] flex flex-col bg-white overflow-clip rounded-lg transition-all hover:drop-shadow-black" +
         " " +
         className
       }

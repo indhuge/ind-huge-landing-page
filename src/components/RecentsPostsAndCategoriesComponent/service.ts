@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { createClient } from "@/prismicio";
-import { BlogPostDocument } from "../../../prismicio-types";
+import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 
 export async function getCategoriesAndPosts() {
   const client = createClient();
@@ -8,15 +8,18 @@ export async function getCategoriesAndPosts() {
   const p = client.getAllByType("blog_post");
 
   return {
-    categories: await c,
+    categories: (await c).filter(
+      (e) => e.data.is_visible == true || e.data.is_visible == undefined
+    ),
     posts: await p,
   };
 }
 
 export function seeAll(
-  posts: BlogPostDocument<string>[]
+  posts: BlogPostDocument<string>[],
+  categories : CategoryDocument<string>[]
 ): BlogPostDocument<string>[] {
-  return posts.sort(
+  return posts.filter((p) => categories.find((e) => e.uid == p.data.category.uid)?.data.is_visible).sort(
     (e, a) =>
       Date.parse(a.data.date as string) - Date.parse(e.data.date as string)
   );
