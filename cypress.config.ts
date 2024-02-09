@@ -7,8 +7,8 @@ module.exports = defineConfig({
   e2e: {
     specPattern: "**/*.feature",
     chromeWebSecurity: false,
-    // baseUrl: "http://localhost:3000/",
-    baseUrl: "https://indhuge.com",
+    baseUrl: "http://localhost:3000/",
+    // baseUrl: "https://indhuge.com",
     async setupNodeEvents(
       on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions

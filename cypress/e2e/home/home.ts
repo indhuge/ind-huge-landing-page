@@ -5,7 +5,7 @@ Given("I am on empty home page", () => {
 });
 
 When("I see the Title", () => {
-  cy.contains("Título Header");
+  cy.get('#inicio').should('be.visible');
 });
 
 Then("I click on the pta", () => {

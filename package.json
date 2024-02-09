@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "cypress run",
+    "test:open": "cypress open",
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
