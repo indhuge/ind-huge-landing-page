@@ -1,13 +1,14 @@
 'use client'
 import borda from "../../../public/assets/bordaVideo.svg";
 import TextField from "@mui/material/TextField";
-import { Checkbox, FormControlLabel, Link, styled } from "@mui/material";
+import { Checkbox, FormControlLabel, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { ContatoProps } from "@/slices/ContatoSlice";
 import { KeyTextField } from "@prismicio/client";
 import Image from "next/image";
 import { PrismicNextImage } from "@prismicio/next";
+import Link from "next/link";
 
 type Params = { uid: string };
 
