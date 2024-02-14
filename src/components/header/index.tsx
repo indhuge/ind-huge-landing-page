@@ -106,7 +106,7 @@ export default function Page(page: any) {
     );
 
     return (
-        <div
+        <div id="header"
             className={`
                 fixed top-0 left-0 right-0
                 w-[100vw] h-[60px]
