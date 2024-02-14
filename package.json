@@ -7,9 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "ci:serve": "npm run build && npm run start",
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mailchimp/mailchimp_marketing": "^3.0.80",

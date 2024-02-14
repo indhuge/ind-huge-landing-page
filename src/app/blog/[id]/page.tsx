@@ -1,14 +1,16 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BlogPostDocument } from "../../../../prismicio-types";
-import { GetBlogPage, GetCategories } from "./service";
+import { GetBlogPage, GetCategories, GetNewsletter } from "./service";
 import BlogPost from "@/components/BlogPost";
 import { Metadata, ResolvingMetadata } from "next";
+import { NewsletterProps } from "@/slices/NewsletterSlice";
 
 export default async function BlogPage({ params }: { params: { id: string } }) {
   const tPage = GetBlogPage(params.id);
   const tCategories = GetCategories();
-  return <BlogPost post={await tPage} categories={await tCategories} />;
+  const newsletterInfo = GetNewsletter()
+  return <BlogPost post={await tPage} categories={await tCategories} newsletter={(await newsletterInfo)!!}/>;
 }
 
 export async function generateMetadata(
