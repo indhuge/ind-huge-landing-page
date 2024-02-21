@@ -63,13 +63,6 @@
           "placeholder": ""
         }
       },
-      "carouselbutton": {
-        "type": "Text",
-        "config": {
-          "label": "carouselbutton",
-          "placeholder": ""
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

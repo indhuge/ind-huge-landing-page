@@ -271,17 +271,6 @@ interface BlogPostDocumentData {
   description: prismic.KeyTextField;
 
   /**
-   * carouselbutton field in *Blog Post*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blog_post.carouselbutton
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  carouselbutton: prismic.KeyTextField;
-
-  /**
    * Slice Zone field in *Blog Post*
    *
    * - **Field Type**: Slice Zone
