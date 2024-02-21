@@ -89,8 +89,8 @@ export default function Page(page: any) {
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <PrismicNextImage alt="" className="hover:scale-105 TabletLandscape:hidden float-left my-[12px] ml-[12px] h-[40px] w-[40px]" field={page?.data?.logo_menu_aberto} />
-            <Button className="hover:scale-105 TabletLandscape:hidden float-right h-[64px]" onClick={toggleDrawer(anchor, false)}><Image src={iconeFechar} alt="Menu" /></Button>
+            <PrismicNextImage alt="" className="hover:scale-105 float-left my-[12px] ml-[12px] h-[40px] w-[40px]" field={page?.data?.logo_menu_aberto} />
+            <Button className="hover:scale-105 float-right h-[64px]" onClick={toggleDrawer(anchor, false)}><Image src={iconeFechar} alt="Menu" /></Button>
             <List>
                 {page?.data?.links.map((i: any, index: undefined) => (
                     <ListItem key={index} disablePadding>
@@ -99,14 +99,14 @@ export default function Page(page: any) {
                         </ListItemButton>
                     </ListItem>
                 ))}
-                <ListItem><Button variant="outlined" className="hover:scale-105 border-green border-2 px-6 py-2 rounded-full text-green font-bold w-[90%] ml-[5%] mt-4">{page?.data?.label_entrar}</Button></ListItem>
-                <ListItem><Button onClick={() => { funcscroll("contactForm") }} className="hover:scale-105 bg-green px-6 py-2 rounded-full font-bold text-darkblue w-[90%] ml-[5%]">{page?.data?.label_cta}</Button></ListItem>
+                <ListItem><input type="button" value={page?.data?.label_entrar} className="hover:scale-105 border-green border-2 px-6 py-2 rounded-full text-green font-bold w-[90%] ml-[5%] mt-4"/></ListItem>
+                <ListItem><input type="button" value={page?.data?.label_cta} onClick={() => { funcscroll("contactForm") }} className="hover:scale-105 bg-green px-6 py-2 rounded-full font-bold text-darkblue w-[90%] ml-[5%]"/></ListItem>
             </List>
         </Box>
     );
 
     return (
-        <div
+        <div id="header"
             className={`
                 fixed top-0 left-0 right-0
                 w-[100vw] h-[60px]
@@ -131,7 +131,7 @@ export default function Page(page: any) {
                 <button onClick={() => { funcscroll("contactForm") }} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 TabletPortrait:hidden">{page?.data?.label_cta}</button>
                 {(['right'] as const).map((anchor) => (
                     <React.Fragment key={anchor}>
-                        <Button className="hover:scale-105 TabletLandscape:hidden" onClick={toggleDrawer(anchor, true)}><Image src={botaoMenu} alt="Menu" /></Button>
+                        <Button className="hover:scale-105 TabletLandscape:scale-0" onClick={toggleDrawer(anchor, true)}><Image src={botaoMenu} alt="Menu" /></Button>
                         <SwipeableDrawer
                             anchor={anchor}
                             open={state[anchor]}

@@ -84,7 +84,7 @@ export default function Page(page: any) {
                         {page?.data?.links.map((i: any, index: undefined) => {
                             let link = i?.link as string
                             return (
-                                <Link key={index} href={link} className="text-white text-sm TabletPortrait:text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4">{i?.label}</Link>
+                                <Link key={index} href={""} onClick={() => { funcscroll(link) }} className="text-white text-sm TabletPortrait:text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4 hover:font-bold">{i?.label}</Link>
                             );
                         })}
                     </div>
@@ -99,7 +99,7 @@ export default function Page(page: any) {
                             {page?.data?.botoes_contato.map((i: any, index: undefined) => {
                                 let link = i?.link as string
                                 return (
-                                    <Link key={index} href={link} className="text-white p-2 mr-3 rounded-full border-solid border"><PrismicNextImage alt="" field={i?.icone} /></Link>
+                                    <Link key={index} href={link} className="text-white p-2 mr-3 rounded-full border-solid border hover:border-2"><PrismicNextImage alt="" field={i?.icone} /></Link>
                                 );
                             })}
                         </div>
@@ -142,7 +142,7 @@ export default function Page(page: any) {
                     {page?.data?.redes_sociais.map((i: any, index: undefined) => {
                         let link = i?.link as string
                         return (
-                            <Link key={index} href={link} className="text-white ml-4 scale-125"><PrismicNextImage alt="" field={i?.icone} /></Link>
+                            <Link key={index} href={link} className="text-white ml-4 scale-125 hover:scale-150"><PrismicNextImage alt="" field={i?.icone} /></Link>
                         );
                     })}
                 </div>

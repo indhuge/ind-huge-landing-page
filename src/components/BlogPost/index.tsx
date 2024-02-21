@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
+import { BlogDocumentDataSlicesSlice, BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
@@ -22,9 +22,11 @@ import {
 export default function BlogPost({
   post,
   categories,
+  newsletter
 }: {
   post: BlogPostDocument<string>;
   categories: CategoryDocument<string>[];
+  newsletter: BlogDocumentDataSlicesSlice;
 }) {
   const date = new Date(post.data.date as string);
   console.log(post.data.title)
@@ -121,8 +123,10 @@ export default function BlogPost({
         <div>
           <div className="sticky top-20 mt-10 TabletPortrait:grid-cols-1 BlogGrid:grid BlogGrid:grid-cols-2 BlogGrid:pl-0 gap-7">
             <Newsletter
-              titulo="Indhuge Newsletter"
-              subtitulo="Lorem ipsum dolor sit amet consectetur. A integer est eget."
+              //@ts-expect-error
+              titulo={newsletter.primary.titulo}
+              //@ts-expect-error
+              subtitulo={newsletter.primary.subtitulo}
               type={true}
             />
             <HighlightedPosts />
