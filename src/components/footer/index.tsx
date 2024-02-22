@@ -75,7 +75,7 @@ export default function Page(page: any) {
             >
                 <div className="grid grid-cols-7 my-12 text-sm TabletPortrait:grid-cols-1">
                     <div className="col-span-2 mx-5 TabletPortrait:col-span-1 TabletPortrait:mb-8">
-                        <PrismicNextImage alt="" field={page?.data?.logo} />
+                        <Link href={"https://www.indhuge.com"}><PrismicNextImage alt="" field={page?.data?.logo} /></Link>
                         <p className="my-7 TabletPortrait:w-[70vw]">{page?.data?.descricao_logo}</p>
                         <button onClick={() => { funcscroll("contactForm") }} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
                     </div>
