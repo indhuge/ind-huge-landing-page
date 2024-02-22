@@ -17,7 +17,6 @@ export default function Page(page: any) {
     page = (page?.page) as BannerDocument<string>
     const router = useRouter();
     const detalhe = require("../../../public/assets/detalheBanner.png");
-    
     return (
         <div id="inicio" style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="vw-[100vw]">
             <div
@@ -35,7 +34,7 @@ export default function Page(page: any) {
                     <div className="mt-8 mb-24"><button onClick={()=>{funcscroll("funcionalidades")}} className="text-[1vw] TabletPortrait:text-xl flex-initial font-bold bg-green px-6 py-2 rounded-full text-darkblue hover:scale-105 Mobile:text-sm">{page?.data?.label_cta} &#10140;</button></div>
                 </div>
                 <div className={`flex items-center flex-shrink justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat mt-20 w-[80%] aspect-video TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: `url(${borda.src})` }}>
-                    <iframe className="w-[90%] aspect-video rounded-lg" src={page?.data?.video as string} allow="autoplay" />
+                    <iframe className="w-[90%] aspect-video rounded-lg" src={page?.data?.video as string} title="Indhuge - Apresentação" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </div>
             </div>
             <Image className="flex-initial pl-1 pb-1 TabletPortrait:hidden TabletPortrait:pb-0" src={detalhe} alt="Detalhe Banner" />
