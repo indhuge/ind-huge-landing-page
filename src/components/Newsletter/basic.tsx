@@ -11,6 +11,7 @@ import {
   styled,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
+import rmAutoStyle from "../contato/removeAutocomplete.module.css"
 
 type Params = { uid: string };
 
@@ -75,7 +76,7 @@ export default function Newsletter({
 
   if (!type) {
     return (
-      <div className="bg-white w-full h-fit pb-8">
+      <div className={`bg-white w-full h-fit pb-8 ${rmAutoStyle.wrapper}`}>
         <div
           style={{
             backgroundImage:
@@ -159,7 +160,7 @@ export default function Newsletter({
     return (
       <div
         className={
-          `h-fit pb-8 TabletPortrait:static TabletPortrait:bg-white TabletPortrait:w-full ` +
+          `h-fit pb-8 TabletPortrait:static TabletPortrait:bg-white TabletPortrait:w-full` +
           className
         }
       >
@@ -174,7 +175,7 @@ export default function Newsletter({
             <label className="text-2xl font-bold">{titulo}</label>
             <p className="text-sm mt-1 w-[88%]">{subtitulo}</p>
           </div>
-          <form className="mx-0 col-span-1 mt-2 w-full">
+          <form className={`mx-0 col-span-1 mt-2 w-full ${rmAutoStyle.wrapper}`}>
             <CssTextField
               className="my-4 w-[100%]"
               id="email"
