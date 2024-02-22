@@ -9,7 +9,7 @@ When("I see the header", () => {
 });
 
 Then("I click on the Blog", () => {
-  cy.contains("Blog").click();
+  cy.contains("Mãos à obra").click();
 });
 
 Then("I should go to the Blog page", () => {
