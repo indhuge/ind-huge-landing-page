@@ -20,11 +20,6 @@ env:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        environment: 
-          - local
-          - production
 
     steps:
       - name: Checkout code
@@ -43,29 +38,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
-        run: npm run build
-
-      - name: Start server (if applicable)
-        run: npm start  
-
       - name: Run Cypress tests (prod)
         uses: cypress-io/github-action@v6.6.1
         if: ${{ github.ref_name == 'main' }}
         with:
           command: npx cypress run --config baseUrl=${{ env.INDHUGE_PROD_URL }}
-        
+          
       - name: Run Cypress tests (local)
         uses: cypress-io/github-action@v6.6.1
         if: ${{ github.ref_name != 'main' }}
         with:
+          build: npm run build
+          start: npm start
           command: npx cypress run --config baseUrl=${{ env.INDHUGE_LOCAL_URL }}
-
-
-      # - name: Upload test results
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: cypress-test-results-${{ matrix.environment }}
-      #     path: cypress/results/**/*.xml
-      #     retention-days: 7
-          
