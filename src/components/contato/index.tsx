@@ -9,6 +9,7 @@ import { KeyTextField } from "@prismicio/client";
 import Image from "next/image";
 import { PrismicNextImage } from "@prismicio/next";
 import Link from "next/link";
+import Styles from "./removeAutocomplete.module.css"
 
 type Params = { uid: string };
 
@@ -90,7 +91,7 @@ export default function Contato(slice: ContatoProps) {
     );
 
     return (
-        <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="vw-[100vw]">
+        <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className={`vw-[100vw] ${Styles.wrapper}`}>
             <div
                 id="contactForm"
                 className={`
