@@ -1,0 +1,65 @@
+name: Unified End-to-End Tests
+
+on:
+  push:
+    branches:
+      - feature/*
+      - bugfix/*
+      - hotfix/*
+  pull_request:
+    branches:
+      - dev
+      - main
+      - hmg
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: 
+          - local
+          - production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+
+      - name: Cache project dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Prepare environment variables
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0  
+        env:
+          BASE_URL: ${{ !contains(matrix.environment, 'production') && secrets.INDHUGE_LOCAL_URL || secrets.INDHUGE_PROD_URL }}
+
+      - name: Start server (if applicable)
+        run: npm start  
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6.6.1
+        with:
+          command: npx cypress run --config baseUrl=${{ env.BASE_URL }}
+
+      # - name: Upload test results
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: cypress-test-results-${{ matrix.environment }}
+      #     path: cypress/results/**/*.xml
+      #     retention-days: 7
+          

@@ -1,0 +1,15 @@
+name: End-to-end test in production
+on: 
+  workflow_dispatch:
+  pull_request: 
+    branches:  main, hmg
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cypress run
+        uses: cypress-io/github-action@v6.6.1
+        with:
+          build: npm run build
+          start: npm start
+          command: npx cypress run --config baseUrl=https://indhuge.com 
