@@ -16,14 +16,14 @@ export default async function Faq({ params }: { params: Params }) {
     categorias: await client.getAllByType("category"),
     blogPosts: await client.getAllByType("blog_post")
   }
-  const metaimage = require(dados?.page?.data?.meta_image as string)
+  //const metaimage = require(dados?.page?.data?.meta_image as string)
   return (
     <>
       <Head>
         <title>{dados?.page?.data?.meta_title}</title>
         <meta name="description" content={dados?.page?.data?.meta_description as string} />
-        <meta property="og:image" content={metaimage} />
-        <meta property="image" content={metaimage} />
+        {/*<meta property="og:image" content={metaimage} />
+        <meta property="image" content={metaimage} />*/}
         <meta property="og:description" content={dados?.page?.data?.meta_description as string} />
         <meta property="og:title" content={dados?.page?.data?.meta_title as string} />
       </Head>

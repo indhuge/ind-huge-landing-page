@@ -5,14 +5,14 @@ import Head from "next/head";
 
 export default async function BlogPage() {
   const page = await getBlogPage();
-  const metaimage = require(page?.data?.meta_image as string)
+  //const metaimage = require(page?.data?.meta_image as string)
   return (
     <>
       <Head>
         <title>{page?.data?.meta_title}</title>
         <meta name="description" content={page?.data?.meta_description as string} />
-        <meta property="og:image" content={metaimage} />
-        <meta property="image" content={metaimage} />
+        {/*<meta property="og:image" content={metaimage} />
+        <meta property="image" content={metaimage} />*/}
         <meta property="og:description" content={page?.data?.meta_description as string} />
         <meta property="og:title" content={page?.data?.meta_title as string} />
       </Head>

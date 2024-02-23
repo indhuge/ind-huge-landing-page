@@ -11,14 +11,14 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
   const tPage = await GetBlogPage(params.id);
   const tCategories = GetCategories();
   const newsletterInfo = GetNewsletter()
-  const metaimage = require(tPage?.data?.meta_image as string)
+  //const metaimage = require(tPage?.data?.meta_image as string)
   return (
     <>
       <Head>
         <title>{tPage?.data?.meta_title}</title>
         <meta name="description" content={tPage?.data?.meta_description as string} />
-        <meta property="og:image" content={metaimage} />
-        <meta property="image" content={metaimage} />
+        {/*<meta property="og:image" content={metaimage} />
+        <meta property="image" content={metaimage} />*/}
         <meta property="og:description" content={tPage?.data?.meta_description as string} />
         <meta property="og:title" content={tPage?.data?.meta_title as string} />
       </Head>
