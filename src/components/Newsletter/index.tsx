@@ -3,6 +3,7 @@
 import { NewsletterProps } from "@/slices/NewsletterSlice";
 import { Alert, AlertTitle, Checkbox, FormControlLabel, Snackbar, TextField, styled } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
+import rmAutoStyle from "../contato/removeAutocomplete.module.css"
 
 type Params = { uid: string };
 
@@ -57,7 +58,7 @@ export default function Newsletter(slice: NewsletterProps) {
 
     if (!slice?.slice?.primary?.tipo) {
         return (
-            <div className="bg-white w-full h-fit pb-8">
+            <div className={`bg-white w-full h-fit pb-8 ${rmAutoStyle.wrapper}`}>
                 <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="grid grid-cols-2 w-[90vw] rounded-lg ml-[3vw] px-[2vw] py-[7vh] TabletPortrait:grid-cols-1">
                     <div className="grid grid-cols-1">
                         <label className="text-[3vw] TabletPortrait:text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
@@ -129,7 +130,7 @@ export default function Newsletter(slice: NewsletterProps) {
     }
     else {
         return (
-            <div className="w-[30%] h-fit pb-8 fixed top-[65px] right-2 TabletPortrait:static TabletPortrait:bg-white TabletPortrait:w-full">
+            <div className={`w-[30%] h-fit pb-8 fixed top-[65px] right-2 TabletPortrait:static TabletPortrait:bg-white TabletPortrait:w-full ${rmAutoStyle.wrapper}`}>
                 <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="grid grid-cols-1 w-[90%] rounded-lg ml-[3vw] px-[2vw] py-[3vh]">
                     <div className="grid grid-cols-1">
                         <label className="text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>

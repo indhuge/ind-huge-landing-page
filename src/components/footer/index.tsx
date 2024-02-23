@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { Alert, AlertTitle, FormControlLabel, Snackbar, styled } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { funcscroll } from "../header";
+import rmAutoStyle from "../contato/removeAutocomplete.module.css"
 
 type Params = { uid: string };
 
@@ -66,6 +67,7 @@ export default function Page(page: any) {
             className={`
                 text-white       
                 bg-gradient-to-br from-[#01666C] via-[#014E6C] to-[#01916B]
+                ${rmAutoStyle.wrapper}
             `}
         >
 
