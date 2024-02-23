@@ -17,15 +17,16 @@ export default async function Page({ params }: { params: Params }) {
     .getByUID("banner", "banner")
     .catch(() => notFound());
   // console.log(page.data.slices);
+  const metaimage = require(page?.data?.meta_image as string)
   return (
     <>
       <Head>
-        <title>ind[huge]</title>
-        <meta name="description" content="Landing Page - indhuge" />
-        <meta property="og:image" content="./assets/card-image.svg" />
-        <meta property="image" content="./assets/card-image.svg" />
-        <meta property="og:description" content="Landing Page - indhuge" />
-        <meta property="og:title" content="indhuge" />
+        <title>{page?.data?.meta_title}</title>
+        <meta name="description" content={page?.data?.meta_description as string} />
+        <meta property="og:image" content={metaimage} />
+        <meta property="image" content={metaimage} />
+        <meta property="og:description" content={page?.data?.meta_description as string} />
+        <meta property="og:title" content={page?.data?.meta_title as string} />
       </Head>
       {/*Script Hubspot*/}
       <script
