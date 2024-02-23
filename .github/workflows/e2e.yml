@@ -1,23 +1,31 @@
-name: End-to-end tests
-on: 
-  workflow_dispatch: 
-  push: 
-    branches: 
+name: End-to-End Tests
+run-name:  Run on branch -> ${{ github.ref_name }}  
+
+on:
+  push:
+    branches:
       - feature/*
       - bugfix/*
       - hotfix/*
   pull_request:
     branches:
       - dev
+      - main
       - hmg
+
+env:
+  INDHUGE_LOCAL_URL: http://localhost:3000
+  INDHUGE_PROD_URL: https://indhuge.com
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4.1.1
-      - name: Chache test
+       
+      - name: Cache project dependencies
         uses: actions/cache@v3
         with:
           path: |
@@ -26,9 +34,20 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      - name: Cypress run
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests (prod)
         uses: cypress-io/github-action@v6.6.1
+        if: ${{ github.ref_name == 'main' }}
+        with:
+          command: npx cypress run --config baseUrl=${{ env.INDHUGE_PROD_URL }}
+          
+      - name: Run Cypress tests (local)
+        uses: cypress-io/github-action@v6.6.1
+        if: ${{ github.ref_name != 'main' }}
         with:
           build: npm run build
           start: npm start
-          command: npm test
+          command: npx cypress run --config baseUrl=${{ env.INDHUGE_LOCAL_URL }}
