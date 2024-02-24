@@ -19,14 +19,16 @@ export default async function Faq({ params }: { params: Params }) {
   //const metaimage = require(dados?.page?.data?.meta_image as string)
   return (
     <>
+     {/*
       <Head>
         <title>{dados?.page?.data?.meta_title}</title>
         <meta name="description" content={dados?.page?.data?.meta_description as string} />
         {/*<meta property="og:image" content={metaimage} />
-        <meta property="image" content={metaimage} />*/}
+        <meta property="image" content={metaimage} />}
         <meta property="og:description" content={dados?.page?.data?.meta_description as string} />
         <meta property="og:title" content={dados?.page?.data?.meta_title as string} />
       </Head>
+      */}
       {/*Script Hubspot*/}
       <script
         type="text/javascript"
@@ -48,7 +50,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getByUID("faq", "faq")
+    .getSingle("faq")
     .catch(() => notFound());
 
   return {
