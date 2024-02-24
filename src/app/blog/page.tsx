@@ -33,7 +33,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getByUID("landing_page", "landing_page")
+    .getByUID("blog", "blog")
     .catch(() => notFound());
 
   return {
