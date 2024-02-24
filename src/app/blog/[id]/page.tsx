@@ -27,6 +27,7 @@ export async function generateMetadata(
       title: tPage?.data?.meta_title as string,
       description: tPage?.data?.meta_title as string,
       images: [tPage.data.meta_image.url ?? ""],
+      url: tPage.data.meta_url as string,
     },
   };
 }

@@ -50,6 +50,7 @@ export async function generateMetadata({
       title: page?.data?.meta_title as string,
       description: page?.data?.meta_title as string,
       images: [page.data.meta_image.url ?? ""],
+      url: page.data.meta_url as string,
     },
   };
 }
