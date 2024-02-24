@@ -33,10 +33,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const tPage = await GetBlogPage(params.id);
   return {
-    title: tPage.data.title,
+    title: tPage?.data?.meta_title,
+    description: tPage?.data?.meta_description,
     openGraph: {
+      title: tPage?.data?.meta_title as string,
+      description: tPage?.data?.meta_title as string,
       images: [tPage.data.meta_image.url ?? ""],
     },
-    description: tPage.data.meta_description,
   };
 }

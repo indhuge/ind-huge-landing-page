@@ -11,19 +11,7 @@ type Params = { uid: "blog" };
 export default async function BlogPage({ params }: { params: Params }) {
   const page = await getBlogPage();
   //const metaimage = require(page?.data?.meta_image as string)
-  return (
-    <>{/*
-      <Head>
-        <title>{page?.data?.meta_title}</title>
-        <meta name="description" content={page?.data?.meta_description as string} />
-        {/*<meta property="og:image" content={metaimage} />
-        <meta property="image" content={metaimage} />}
-        <meta property="og:description" content={page?.data?.meta_description as string} />
-        <meta property="og:title" content={page?.data?.meta_title as string} />
-      </Head>*/}
-      <SliceZone slices={page.data.slices} components={components} />
-    </>
-  );
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
 
 export async function generateMetadata({
@@ -39,5 +27,10 @@ export async function generateMetadata({
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
+    openGraph: {
+      title: page?.data?.meta_title as string,
+      description: page?.data?.meta_title as string,
+      images: [page.data.meta_image.url ?? ""],
+    },
   };
 }

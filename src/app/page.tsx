@@ -16,8 +16,6 @@ export default async function Page({ params }: { params: Params }) {
   const banner = await client
     .getByUID("banner", "banner")
     .catch(() => notFound());
-  // console.log(page.data.slices);
-  //const metaimage = require(page?.data?.meta_image as string)
   return (
     <>
       {/*Script Hubspot*/}
@@ -47,6 +45,11 @@ export async function generateMetadata({
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
+    openGraph: {
+      title: page?.data?.meta_title as string,
+      description: page?.data?.meta_title as string,
+      images: [page.data.meta_image.url ?? ""],
+    },
   };
 }
 

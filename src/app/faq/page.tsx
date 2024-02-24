@@ -19,16 +19,6 @@ export default async function Faq({ params }: { params: Params }) {
   //const metaimage = require(dados?.page?.data?.meta_image as string)
   return (
     <>
-     {/*
-      <Head>
-        <title>{dados?.page?.data?.meta_title}</title>
-        <meta name="description" content={dados?.page?.data?.meta_description as string} />
-        {/*<meta property="og:image" content={metaimage} />
-        <meta property="image" content={metaimage} />}
-        <meta property="og:description" content={dados?.page?.data?.meta_description as string} />
-        <meta property="og:title" content={dados?.page?.data?.meta_title as string} />
-      </Head>
-      */}
       {/*Script Hubspot*/}
       <script
         type="text/javascript"
@@ -56,6 +46,11 @@ export async function generateMetadata({
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
+    openGraph: {
+      title: page?.data?.meta_title as string,
+      description: page?.data?.meta_title as string,
+      images: [page.data.meta_image.url ?? ""],
+    },
   };
 }
 
