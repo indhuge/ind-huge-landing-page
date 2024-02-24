@@ -3,7 +3,9 @@ import { getBlogPage } from "./service";
 import { components } from "@/slices";
 import Head from "next/head";
 
-export default async function BlogPage() {
+type Params = { uid: "blog" };
+
+export default async function BlogPage({ params }: { params: Params }) {
   const page = await getBlogPage();
   //const metaimage = require(page?.data?.meta_image as string)
   return (
