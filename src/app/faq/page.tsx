@@ -5,6 +5,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
 import FaqComponent from "@/components/faqComponent";
+import Head from "next/head";
 
 type Params = { uid: "faq" };
 
@@ -18,6 +19,14 @@ export default async function Faq({ params }: { params: Params }) {
 
   return (
     <>
+      <Head>
+        <title>FAQ - ind[huge]</title>
+        <meta name="description" content="FAQ - indhuge" />
+        <meta property="og:image" content="https://indhuge.com/assets/card-image.svg" />
+        <meta property="image" content="https://indhuge.com/assets/card-image.svg" />
+        <meta property="og:description" content="FAQ - indhuge" />
+        <meta property="og:title" content="FAQ - ind[huge]" />
+      </Head>
       {/*Script Hubspot*/}
       <script
         type="text/javascript"

@@ -35,10 +35,7 @@ const CssTextField = styled(TextField)({
   },
 });
 
-async function register(
-  email: string,
-  setSucesso: Dispatch<SetStateAction<boolean>>
-) {
+async function register(email: string, setSucesso: Dispatch<SetStateAction<boolean>>, setFalha: Dispatch<SetStateAction<boolean>>, setRegistrado: Dispatch<SetStateAction<boolean>>) {
   const res = await fetch("/api/mailchimp", {
     body: JSON.stringify({
       email: email,
@@ -46,7 +43,7 @@ async function register(
     headers: {
       "Content-Type": "application/json",
     },
-    method: "POST",
+    method: "POST"
   });
 
   //const {id, emailrec, response} = await res.
@@ -54,9 +51,9 @@ async function register(
   const { error } = await res.json();
   if (error) console.log(error);
 
-  if (res.status === 200) {
-    setSucesso(true);
-  }
+  if (res.status === 200) { setSucesso(true); }
+  else if (res.status === 400) { setRegistrado(true); }
+  else setFalha(true);
 }
 
 export default function Newsletter({
@@ -73,6 +70,8 @@ export default function Newsletter({
   const [email, setEmail] = useState("");
   const [checked, setChecked] = useState(true);
   const [sucesso, setSucesso] = useState(false);
+  const [registrado, setRegistrado] = useState(false);
+  const [falha, setFalha] = useState(false);
 
   if (!type) {
     return (
@@ -127,7 +126,7 @@ export default function Newsletter({
                 className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0"
                 type="button"
                 onClick={() => {
-                  register(email, setSucesso);
+                  register(email, setSucesso, setFalha, setRegistrado);
                 }}
                 value="INSCREVER-SE"
                 disabled={!checked}
@@ -154,6 +153,32 @@ export default function Newsletter({
         ) : (
           <></>
         )}
+        {
+                registrado ?
+                    <Snackbar
+                        anchorOrigin={{ vertical:"bottom", horizontal:"right" }}
+                        open={registrado}
+                        autoHideDuration={6000}
+                        onClose={()=>setRegistrado(false)}
+                    >
+                        <Alert severity="warning" onClose={()=>setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
+                    </Snackbar>
+                    :
+                    <></>
+            }
+            {
+                falha ?
+                    <Snackbar
+                        anchorOrigin={{ vertical:"bottom", horizontal:"right" }}
+                        open={falha}
+                        autoHideDuration={6000}
+                        onClose={()=>setFalha(false)}
+                    >
+                        <Alert severity="error" onClose={()=>setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
+                    </Snackbar>
+                    :
+                    <></>
+            }
       </div>
     );
   } else {
@@ -210,7 +235,7 @@ export default function Newsletter({
                 className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm :m-0"
                 type="button"
                 onClick={() => {
-                  register(email, setSucesso);
+                  register(email, setSucesso, setFalha, setRegistrado);
                 }}
                 value="INSCREVER-SE"
                 disabled={!checked}
@@ -220,8 +245,8 @@ export default function Newsletter({
         </div>
         {sucesso ? (
           <Snackbar
-            anchorOrigin={{ vertical:"top", horizontal:"right" }}
-            style={{top: "15vh"}}
+            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            style={{ top: "15vh" }}
             open={sucesso}
             autoHideDuration={6000}
             onClose={() => setSucesso(false)}
@@ -238,7 +263,36 @@ export default function Newsletter({
           </Snackbar>
         ) : (
           <></>
-        )}
+        )
+        }
+        {
+          registrado ?
+            <Snackbar
+              anchorOrigin={{ vertical: "top", horizontal: "right" }}
+              style={{ top: "15vh" }}
+              open={registrado}
+              autoHideDuration={6000}
+              onClose={() => setRegistrado(false)}
+            >
+              <Alert severity="warning" onClose={() => setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
+            </Snackbar>
+            :
+            <></>
+        }
+        {
+          falha ?
+            <Snackbar
+              anchorOrigin={{ vertical: "top", horizontal: "right" }}
+              style={{ top: "15vh" }}
+              open={falha}
+              autoHideDuration={6000}
+              onClose={() => setFalha(false)}
+            >
+              <Alert severity="error" onClose={() => setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
+            </Snackbar>
+            :
+            <></>
+        }
       </div>
     );
   }
