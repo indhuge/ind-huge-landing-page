@@ -8,12 +8,12 @@ import { notFound } from "next/navigation";
 import { PrismicPreview } from "@prismicio/next";
 
 const inter = Inter({ subsets: ["latin"] });
-
+/*
 export const metadata: Metadata = {
   title: "ind[huge]",
   description: "ind[huge]",
 };
-
+*/
 export default async function RootLayout({
   children,
 }: {

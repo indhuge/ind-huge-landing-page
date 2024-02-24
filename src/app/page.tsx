@@ -16,17 +16,8 @@ export default async function Page({ params }: { params: Params }) {
   const banner = await client
     .getByUID("banner", "banner")
     .catch(() => notFound());
-  // console.log(page.data.slices);
   return (
     <>
-      <Head>
-        <title>ind[huge]</title>
-        <meta name="description" content="Landing Page - indhuge" />
-        <meta property="og:image" content="./assets/card-image.svg" />
-        <meta property="image" content="./assets/card-image.svg" />
-        <meta property="og:description" content="Landing Page - indhuge" />
-        <meta property="og:title" content="indhuge" />
-      </Head>
       {/*Script Hubspot*/}
       <script
         type="text/javascript"
@@ -54,6 +45,12 @@ export async function generateMetadata({
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
+    openGraph: {
+      title: page?.data?.meta_title as string,
+      description: page?.data?.meta_title as string,
+      images: [page.data.meta_image.url ?? ""],
+      url: page.data.meta_url as string,
+    },
   };
 }
 
