@@ -118,8 +118,8 @@ export default function Page(page: any) {
             style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }}
         >
             <div className="flex-auto">
-                <PrismicNextImage alt="" className="TabletPortrait:hidden" field={page?.data?.logo} />
-                <PrismicNextImage alt="" className="TabletLandscape:hidden" field={page?.data?.logo_mobile} />
+                <Link href={"https://www.indhuge.com"}><PrismicNextImage alt="" className="TabletPortrait:hidden" field={page?.data?.logo} /></Link>
+                <Link href={"https://www.indhuge.com"}><PrismicNextImage alt="" className="TabletLandscape:hidden" field={page?.data?.logo_mobile} /></Link>
             </div>
             <div className="flex-none flex space-x-4 justify-center TabletPortrait:hidden">
                 {page?.data?.links.map((i: any, index: undefined) => {

@@ -6,6 +6,7 @@ import { components } from "@/slices";
 import Banner from "@/components/banner";
 import { pages } from "next/dist/build/templates/app-page";
 import BlogCard from "@/components/BlogCard";
+import Head from "next/head";
 
 type Params = { uid: "landing_page" };
 
@@ -18,6 +19,14 @@ export default async function Page({ params }: { params: Params }) {
   // console.log(page.data.slices);
   return (
     <>
+      <Head>
+        <title>ind[huge]</title>
+        <meta name="description" content="Landing Page - indhuge" />
+        <meta property="og:image" content="./assets/card-image.svg" />
+        <meta property="image" content="./assets/card-image.svg" />
+        <meta property="og:description" content="Landing Page - indhuge" />
+        <meta property="og:title" content="indhuge" />
+      </Head>
       {/*Script Hubspot*/}
       <script
         type="text/javascript"
