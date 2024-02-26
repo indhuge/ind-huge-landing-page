@@ -25,15 +25,6 @@
             "label": "Subtitulo",
             "placeholder": ""
           }
-        },
-        "tipo": {
-          "type": "Boolean",
-          "config": {
-            "label": "Tipo",
-            "placeholder_false": "Blog",
-            "placeholder_true": "Blog Post",
-            "default_value": false
-          }
         }
       },
       "items": {}

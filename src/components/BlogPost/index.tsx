@@ -127,7 +127,6 @@ export default function BlogPost({
               titulo={newsletter.primary.titulo}
               //@ts-expect-error
               subtitulo={newsletter.primary.subtitulo}
-              type={true}
             />
             <HighlightedPosts />
           </div>
