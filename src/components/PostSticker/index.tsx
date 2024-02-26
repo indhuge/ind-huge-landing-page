@@ -12,7 +12,8 @@ export default function PostSticker({
   postUrl: string;
   router: AppRouterInstance;
 }) {
-  const date = new Date(post.date as string);
+  //const date = new Date(post.date as string);
+  const date = post.date.split("-");
 
   return (
     <div
@@ -34,9 +35,9 @@ export default function PostSticker({
         <p className="text-darkgray font-light text-sm line-clamp-2 mb-4">
           {post.description}
         </p>
-        <p className="text-darkgray font-light text-sm">{`${date.getDate()}/${
-          date.getMonth() + 1
-        }/${date.getFullYear()}`}</p>
+        <p className="text-darkgray font-light text-sm">{`${date.at(2)}/${
+          date.at(1)
+        }/${date.at(0)}`}</p>
       </div>
     </div>
   );

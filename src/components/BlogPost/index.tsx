@@ -28,8 +28,9 @@ export default function BlogPost({
   categories: CategoryDocument<string>[];
   newsletter: BlogDocumentDataSlicesSlice;
 }) {
-  const date = new Date(post.data.date as string);
-  console.log(post.data.title)
+  // const date = new Date(post.data.date as string);
+  const date = post.data.date?.split("-");
+  console.log(post.data.date)
   return (
     <div className="bg-white flex items-center justify-center">
       <div className="LaptopS:container px-5 LaptopS:px-0 py-16 grid grid-cols-[3fr_1fr] MaxBlogGrid:grid-cols-1 gap-10">
@@ -48,9 +49,9 @@ export default function BlogPost({
           <div className="flex justify-between items-center text-darkgray mb-8 MaxS_mobile:flex-col">
             <div className="flex gap-5">
               <p className="font-bold">{post.data.autor}</p>
-              <p>{`${date.getDate()}/${
-                date.getMonth() + 1
-              }/${date.getFullYear()}`}</p>
+              <p>{`${date?.at(2)}/${
+                date?.at(1)
+              }/${date?.at(0)}`}</p>
             </div>
             <div className="flex gap-5">
               <div className="flex gap-2 MaxMd:hidden">
