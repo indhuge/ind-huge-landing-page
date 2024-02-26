@@ -3,6 +3,7 @@
 import { NewsletterProps } from "@/slices/NewsletterSlice";
 import { Alert, AlertTitle, Checkbox, FormControlLabel, Snackbar, TextField, styled } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
+import rmAutoStyle from "../contato/removeAutocomplete.module.css"
 
 type Params = { uid: string };
 
@@ -26,7 +27,7 @@ const CssTextField = styled(TextField)({
     },
 });
 
-async function register(email: string, setSucesso: Dispatch<SetStateAction<boolean>>) {
+async function register(email: string, setSucesso: Dispatch<SetStateAction<boolean>>, setFalha: Dispatch<SetStateAction<boolean>>, setRegistrado: Dispatch<SetStateAction<boolean>>) {
     const res = await fetch("/api/mailchimp", {
         body: JSON.stringify({
             email: email,
@@ -43,6 +44,8 @@ async function register(email: string, setSucesso: Dispatch<SetStateAction<boole
     if (error) console.log(error);
 
     if (res.status === 200) { setSucesso(true); }
+    else if (res.status === 400) { setRegistrado(true); }
+    else setFalha(true);
 }
 
 export default function Newsletter(slice: NewsletterProps) {
@@ -50,11 +53,12 @@ export default function Newsletter(slice: NewsletterProps) {
     const [email, setEmail] = useState("");
     const [checked, setChecked] = useState(true);
     const [sucesso, setSucesso] = useState(false);
-
+    const [registrado, setRegistrado] = useState(false);
+    const [falha, setFalha] = useState(false);
 
     if (!slice?.slice?.primary?.tipo) {
         return (
-            <div className="bg-white w-full h-fit pb-8">
+            <div className={`bg-white w-full h-fit pb-8 ${rmAutoStyle.wrapper}`}>
                 <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="grid grid-cols-2 w-[90vw] rounded-lg ml-[3vw] px-[2vw] py-[7vh] TabletPortrait:grid-cols-1">
                     <div className="grid grid-cols-1">
                         <label className="text-[3vw] TabletPortrait:text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
@@ -78,14 +82,14 @@ export default function Newsletter(slice: NewsletterProps) {
                                 control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
                                 label={<span className="text-sm">Concordo em receber e-mails</span>}
                             />
-                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setSucesso) }} value="INSCREVER-SE" disabled={!checked} />
+                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
                         </div>
                     </form>
 
                 </div>
                 {sucesso ?
                     <Snackbar
-                        anchorOrigin={{ vertical:"bottom", horizontal:"center" }}
+                        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                         open={sucesso}
                         autoHideDuration={6000}
                         onClose={() => setSucesso(false)}
@@ -95,12 +99,38 @@ export default function Newsletter(slice: NewsletterProps) {
                     :
                     <></>
                 }
+                {
+                    registrado ?
+                        <Snackbar
+                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                            open={registrado}
+                            autoHideDuration={6000}
+                            onClose={() => setRegistrado(false)}
+                        >
+                            <Alert severity="warning" onClose={() => setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
+                        </Snackbar>
+                        :
+                        <></>
+                }
+                {
+                    falha ?
+                        <Snackbar
+                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                            open={falha}
+                            autoHideDuration={6000}
+                            onClose={() => setFalha(false)}
+                        >
+                            <Alert severity="error" onClose={() => setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
+                        </Snackbar>
+                        :
+                        <></>
+                }
             </div>
         );
     }
-    else{
+    else {
         return (
-            <div className="w-[30%] h-fit pb-8 fixed top-[65px] right-2 TabletPortrait:static TabletPortrait:bg-white TabletPortrait:w-full">
+            <div className={`w-[30%] h-fit pb-8 fixed top-[65px] right-2 TabletPortrait:static TabletPortrait:bg-white TabletPortrait:w-full ${rmAutoStyle.wrapper}`}>
                 <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="grid grid-cols-1 w-[90%] rounded-lg ml-[3vw] px-[2vw] py-[3vh]">
                     <div className="grid grid-cols-1">
                         <label className="text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
@@ -124,14 +154,14 @@ export default function Newsletter(slice: NewsletterProps) {
                                 control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
                                 label={<span className="text-sm">Concordo em receber e-mails</span>}
                             />
-                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm :m-0" type="button" onClick={() => { register(email, setSucesso) }} value="INSCREVER-SE" disabled={!checked} />
+                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm :m-0" type="button" onClick={() => { register(email, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
                         </div>
                     </form>
 
                 </div>
                 {sucesso ?
                     <Snackbar
-                        anchorOrigin={{ vertical:"top", horizontal:"right" }}
+                        anchorOrigin={{ vertical: "top", horizontal: "right" }}
                         open={sucesso}
                         autoHideDuration={6000}
                         onClose={() => setSucesso(false)}
@@ -140,6 +170,32 @@ export default function Newsletter(slice: NewsletterProps) {
                     </Snackbar>
                     :
                     <></>
+                }
+                {
+                    registrado ?
+                        <Snackbar
+                            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                            open={registrado}
+                            autoHideDuration={6000}
+                            onClose={() => setRegistrado(false)}
+                        >
+                            <Alert severity="warning" onClose={() => setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
+                        </Snackbar>
+                        :
+                        <></>
+                }
+                {
+                    falha ?
+                        <Snackbar
+                            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                            open={falha}
+                            autoHideDuration={6000}
+                            onClose={() => setFalha(false)}
+                        >
+                            <Alert severity="error" onClose={() => setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
+                        </Snackbar>
+                        :
+                        <></>
                 }
             </div>
         );
