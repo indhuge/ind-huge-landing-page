@@ -56,151 +56,74 @@ export default function Newsletter(slice: NewsletterProps) {
     const [registrado, setRegistrado] = useState(false);
     const [falha, setFalha] = useState(false);
 
-    if (!slice?.slice?.primary?.tipo) {
-        return (
-            <div className={`bg-white w-full h-fit pb-8 ${rmAutoStyle.wrapper}`}>
-                <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="grid grid-cols-2 w-[90vw] rounded-lg ml-[3vw] px-[2vw] py-[7vh] TabletPortrait:grid-cols-1">
-                    <div className="grid grid-cols-1">
-                        <label className="text-[3vw] TabletPortrait:text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
-                        <p className="text-[1.2vw] TabletPortrait:text-lg mt-8 TabletPortrait:w-[88vw]">{slice?.slice?.primary?.subtitulo}</p>
-                    </div>
-                    <form className="mx-5 TabletPortrait:col-span-1 TabletPortrait:mt-8 TabletPortrait:w-fit">
-                        <CssTextField
-                            className="my-4 TabletPortrait:w-[75vw]"
-                            id="email"
-                            type="email"
-                            label="E-mail"
-                            inputProps={{ style: { color: "#FFFFFF" } }}
-                            InputLabelProps={{ style: { color: "#FFFFFF" } }}
-                            value={email}
-                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); console.log(email) }}
-                            fullWidth
-                            required
-                        />
-                        <div className="flex items-center justify-between Mobile:flex-col">
-                            <FormControlLabel
-                                control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
-                                label={<span className="text-sm">Concordo em receber e-mails</span>}
-                            />
-                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
-                        </div>
-                    </form>
-
+    return (
+        <div className={`bg-white w-full h-fit pb-8 ${rmAutoStyle.wrapper}`}>
+            <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="grid grid-cols-2 w-[90vw] rounded-lg ml-[3vw] px-[2vw] py-[7vh] TabletPortrait:grid-cols-1">
+                <div className="grid grid-cols-1">
+                    <label className="text-[3vw] TabletPortrait:text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
+                    <p className="text-[1.2vw] TabletPortrait:text-lg mt-8 TabletPortrait:w-[88vw]">{slice?.slice?.primary?.subtitulo}</p>
                 </div>
-                {sucesso ?
+                <form className="mx-5 TabletPortrait:col-span-1 TabletPortrait:mt-8 TabletPortrait:w-fit">
+                    <CssTextField
+                        className="my-4 TabletPortrait:w-[75vw]"
+                        id="email"
+                        type="email"
+                        label="E-mail"
+                        inputProps={{ style: { color: "#FFFFFF" } }}
+                        InputLabelProps={{ style: { color: "#FFFFFF" } }}
+                        value={email}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); console.log(email) }}
+                        fullWidth
+                        required
+                    />
+                    <div className="flex items-center justify-between Mobile:flex-col">
+                        <FormControlLabel
+                            control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
+                            label={<span className="text-sm">Concordo em receber e-mails</span>}
+                        />
+                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
+                    </div>
+                </form>
+
+            </div>
+            {sucesso ?
+                <Snackbar
+                    anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                    open={sucesso}
+                    autoHideDuration={6000}
+                    onClose={() => setSucesso(false)}
+                >
+                    <Alert severity="success" onClose={() => setSucesso(false)} sx={{ width: '100%' }}> <AlertTitle>Obrigado por assinar nosso Newsletter!</AlertTitle>Verifique sua Caixa de Entrada</Alert>
+                </Snackbar>
+                :
+                <></>
+            }
+            {
+                registrado ?
                     <Snackbar
                         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                        open={sucesso}
+                        open={registrado}
                         autoHideDuration={6000}
-                        onClose={() => setSucesso(false)}
+                        onClose={() => setRegistrado(false)}
                     >
-                        <Alert severity="success" onClose={() => setSucesso(false)} sx={{ width: '100%' }}> <AlertTitle>Obrigado por assinar nosso Newsletter!</AlertTitle>Verifique sua Caixa de Entrada</Alert>
+                        <Alert severity="warning" onClose={() => setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
                     </Snackbar>
                     :
                     <></>
-                }
-                {
-                    registrado ?
-                        <Snackbar
-                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                            open={registrado}
-                            autoHideDuration={6000}
-                            onClose={() => setRegistrado(false)}
-                        >
-                            <Alert severity="warning" onClose={() => setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
-                        </Snackbar>
-                        :
-                        <></>
-                }
-                {
-                    falha ?
-                        <Snackbar
-                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                            open={falha}
-                            autoHideDuration={6000}
-                            onClose={() => setFalha(false)}
-                        >
-                            <Alert severity="error" onClose={() => setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
-                        </Snackbar>
-                        :
-                        <></>
-                }
-            </div>
-        );
-    }
-    else {
-        return (
-            <div className={`w-[30%] h-fit pb-8 fixed top-[65px] right-2 TabletPortrait:static TabletPortrait:bg-white TabletPortrait:w-full ${rmAutoStyle.wrapper}`}>
-                <div style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="grid grid-cols-1 w-[90%] rounded-lg ml-[3vw] px-[2vw] py-[3vh]">
-                    <div className="grid grid-cols-1">
-                        <label className="text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
-                        <p className="text-sm mt-1 w-[88%]">{slice?.slice?.primary?.subtitulo}</p>
-                    </div>
-                    <form className="mx-0 col-span-1 mt-2 w-full">
-                        <CssTextField
-                            className="my-4 w-[100%]"
-                            id="email"
-                            type="email"
-                            label="E-mail"
-                            inputProps={{ style: { color: "#FFFFFF" } }}
-                            InputLabelProps={{ style: { color: "#FFFFFF" } }}
-                            value={email}
-                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value); console.log(email) }}
-                            fullWidth
-                            required
-                        />
-                        <div className="flex items-center justify-between flex-col">
-                            <FormControlLabel
-                                control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
-                                label={<span className="text-sm">Concordo em receber e-mails</span>}
-                            />
-                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm :m-0" type="button" onClick={() => { register(email, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
-                        </div>
-                    </form>
-
-                </div>
-                {sucesso ?
+            }
+            {
+                falha ?
                     <Snackbar
-                        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                        open={sucesso}
+                        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                        open={falha}
                         autoHideDuration={6000}
-                        onClose={() => setSucesso(false)}
+                        onClose={() => setFalha(false)}
                     >
-                        <Alert severity="success" onClose={() => setSucesso(false)} sx={{ width: '100%' }}> <AlertTitle>Obrigado por assinar nosso Newsletter!</AlertTitle>Verifique sua Caixa de Entrada</Alert>
+                        <Alert severity="error" onClose={() => setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
                     </Snackbar>
                     :
                     <></>
-                }
-                {
-                    registrado ?
-                        <Snackbar
-                            anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                            open={registrado}
-                            autoHideDuration={6000}
-                            onClose={() => setRegistrado(false)}
-                        >
-                            <Alert severity="warning" onClose={() => setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
-                        </Snackbar>
-                        :
-                        <></>
-                }
-                {
-                    falha ?
-                        <Snackbar
-                            anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                            open={falha}
-                            autoHideDuration={6000}
-                            onClose={() => setFalha(false)}
-                        >
-                            <Alert severity="error" onClose={() => setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
-                        </Snackbar>
-                        :
-                        <></>
-                }
-            </div>
-        );
-    }
-
-    return <></>
-
+            }
+        </div>
+    );
 }

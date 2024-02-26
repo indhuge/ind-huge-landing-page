@@ -1895,17 +1895,6 @@ export interface NewsletterSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitulo: prismic.KeyTextField;
-
-  /**
-   * Tipo field in *NewsletterSlice → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: newsletter.primary.tipo
-   * - **Documentation**: https://prismic.io/docs/field#boolean
-   */
-  tipo: prismic.BooleanField;
 }
 
 /**

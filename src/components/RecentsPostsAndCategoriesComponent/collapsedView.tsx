@@ -31,7 +31,7 @@ export default function CollapsedView({
                 post={{
                   title: pages.data.title ?? "",
                   description: pages.data.description,
-                  date: pages.data.date?.toString() as string,
+                  date: pages.data.date as string,
                   image: pages.data.image,
                   tag:
                     categories!!.filter(
