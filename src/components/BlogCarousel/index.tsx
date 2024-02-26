@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { BlogPost } from "../BlogCard";
 import { getHighlightedPosts } from "../HighlightedPosts/service";
 import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
+import { LinkField } from "@prismicio/client";
+import Link from "next/link";
 
 export default function Cases({ slice }: any) {
   const middleElementIndex = Math.floor(slice.items.length / 2);
@@ -53,6 +55,8 @@ export default function Cases({ slice }: any) {
     );
     _setInterval(tmp);
   }, [selected]);
+
+  console.log(pages);
   
   return (
     <div className="w-full h-fit py-24 Mobile:pt-4 Mobile:pb-0 flex-col justify-center items-center gap-8 flex Mobile:gap-0 bg-white overflow-hidden relative">
@@ -60,7 +64,7 @@ export default function Cases({ slice }: any) {
         className={`w-fit h-fit flex-row flex gap-8 Mobile:gap-0 Mobile:pb-8 transition-all duration-700 transform-gpu`}
         id="cardHolder"
       >
-        {pages?.map((e:any, i:number) => {
+        {pages?.map((e:BlogPostDocument<string>, i:number) => {
           return (
             <div 
               key={i}
@@ -72,7 +76,7 @@ export default function Cases({ slice }: any) {
               <PrismicNextImage
                 alt=""
                 field={e.data.image}
-                className="object-cover h-full Mobile:aspect-square absolute -z-10"
+                className="object-cover h-full w-full Mobile:aspect-square absolute -z-10"
               />
               <div
                 className="flex grow items-center justify-center bg-black bg-opacity-50">
@@ -84,11 +88,11 @@ export default function Cases({ slice }: any) {
                       {e.data.description}
                     </p>                      
                     <button className="border-1 px-3 py-1.5 rounded-2xl hover:bg-slate-600 transition-all">
-                      <PrismicNextLink field={e.data.uid}>
+                      <Link href={`/blog/${e.uid}`}>
                         <p className="uppercase text-base Mobile:text-sm">
-                          {e.buttontext ||"Ler Mais"}
+                          {e.data.carouselbutton ||"Ler Mais"}
                         </p>
-                      </PrismicNextLink>
+                      </Link>
                     </button>      
                   </div>
                 </div>
