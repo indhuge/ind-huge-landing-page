@@ -1,0 +1,16 @@
+/* Change Autocomplete styles in Chrome*/
+
+.wrapper input:-webkit-autofill,
+.wrapper input:-webkit-autofill:hover, 
+.wrapper input:-webkit-autofill:focus,
+.wrapper textarea:-webkit-autofill,
+.wrapper textarea:-webkit-autofill:hover,
+.wrapper textarea:-webkit-autofill:focus,
+.wrapper select:-webkit-autofill,
+.wrapper select:-webkit-autofill:hover,
+.wrapper select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}

@@ -21,7 +21,10 @@ export async function POST(req: Request) {
         );
         return NextResponse.json({ id: response.id, response: response }, {status: 200})
     } catch (err: any) {
-        return NextResponse.json(JSON.parse(err.response.text), {status: 400});
+        if (JSON.parse(err.response.text).title === "Member Exists"){
+            return NextResponse.json(JSON.parse(err.response.text), {status: 400});
+        }
+        else return NextResponse.json(JSON.parse(err.response.text), {status: 500});
     }
 
 }
