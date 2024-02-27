@@ -63,9 +63,10 @@ export default function Newsletter(slice: NewsletterProps) {
                     <label className="text-[3vw] TabletPortrait:text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
                     <p className="text-[1.2vw] TabletPortrait:text-lg mt-8 TabletPortrait:w-[88vw]">{slice?.slice?.primary?.subtitulo}</p>
                 </div>
-                <form className="mx-5 TabletPortrait:col-span-1 TabletPortrait:mt-8 TabletPortrait:w-fit">
+                <form className="mx-[10%] TabletPortrait:col-span-1 TabletPortrait:mt-8 w-[80%]">
                     <CssTextField
-                        className="my-4 TabletPortrait:w-[75vw]"
+                        //className="my-4 TabletPortrait:w-[75vw]"
+                        style={{margin: "1rem 0", width: "100%"}}
                         id="email"
                         type="email"
                         label="E-mail"
