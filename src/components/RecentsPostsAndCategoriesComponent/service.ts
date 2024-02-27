@@ -21,7 +21,7 @@ export function seeAll(
 ): BlogPostDocument<string>[] {
   return posts.filter((p) => categories.find((e) => e.uid == p.data.category.uid)?.data.is_visible).sort(
     (e, a) =>
-      Date.parse(a.data.date as string) - Date.parse(e.data.date as string)
+      Date.parse(a.last_publication_date as string) - Date.parse(e.last_publication_date as string)
   );
 }
 
