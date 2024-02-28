@@ -7,11 +7,40 @@ import BigNumbersItens from "../BigNumbersItem/";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { KeyTextField } from "@prismicio/client";
 import BigNumbersCarousel from "../BigNumbersCarousel";
-import { funcscroll } from "../header";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function BigNumbers({ slice }: BigNumbersSliceProps) {
   const [isCarousel, setIsCarousel] = useState(false);
+
+  const [lingua, setLingua] = useState('');
+    const [linguaLink, setLinguaLink] = useState('');
+
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        if (window.location.href.includes("/pt")) {
+            document.location.href = "../"
+        }
+        else if (window.location.href.includes("/en")) {
+            setLingua("en");
+            setLinguaLink("en");
+        }
+        else if (window.location.href.includes("/es")) {
+            setLingua("es");
+            setLinguaLink("es");
+        }
+        else {
+            setLingua("pt");
+            setLinguaLink("");
+        }
+
+        const pos = searchParams.get("spos");
+        if (pos != undefined) {
+            const e = document.getElementById(pos);
+            e?.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [searchParams])
 
   useEffect(() => {
     const handleResize = () => {
@@ -119,7 +148,7 @@ export default function BigNumbers({ slice }: BigNumbersSliceProps) {
             <Link
               className="block w-full max-w-xs mx-auto bg-green text-darkblue rounded-full py-3 text-center text-sm font-semibold hover:scale-105 transition duration-300 ease-in-out font-inter uppercase"
               href={""}
-              onClick={()=>{funcscroll("contactForm")}}
+              onClick={()=>{window.location.href = `../${linguaLink}/?spos=contactForm`}}
             >
               {slice.primary.bignumbersslicebuttontext}
             </Link>
