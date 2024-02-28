@@ -6,9 +6,9 @@ import { FooterDocument } from "../../../prismicio-types";
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import { Alert, AlertTitle, FormControlLabel, Snackbar, styled } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
-import { funcscroll } from "../header";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import rmAutoStyle from "../contato/removeAutocomplete.module.css"
+import { useSearchParams } from "next/navigation";
 
 type Params = { uid: string };
 
@@ -62,6 +62,35 @@ export default function Page(page: any) {
     const [registrado, setRegistrado] = useState(false);
     const [falha, setFalha] = useState(false);
 
+    const [lingua, setLingua] = useState('');
+    const [linguaLink, setLinguaLink] = useState('');
+
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        if (window.location.href.includes("/pt")) {
+            document.location.href = "../"
+        }
+        else if (window.location.href.includes("/en")) {
+            setLingua("en");
+            setLinguaLink("en");
+        }
+        else if (window.location.href.includes("/es")) {
+            setLingua("es");
+            setLinguaLink("es");
+        }
+        else {
+            setLingua("pt");
+            setLinguaLink("");
+        }
+
+        const pos = searchParams.get("spos");
+      if (pos != undefined) {
+        const e = document.getElementById(pos);
+        e?.scrollIntoView({ behavior: "smooth" });
+      }
+    }, [searchParams])
+
     return (
         <div
             className={`
@@ -83,14 +112,14 @@ export default function Page(page: any) {
                     <div className="col-span-2 mx-5 TabletPortrait:col-span-1 TabletPortrait:mb-8">
                         <Link href={"https://www.indhuge.com"}><PrismicNextImage alt="" field={page?.data?.logo} /></Link>
                         <p className="my-7 TabletPortrait:w-[70vw]">{page?.data?.descricao_logo}</p>
-                        <button onClick={() => { funcscroll("contactForm") }} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
+                        <button onClick={()=>{window.location.href = `../${linguaLink}/?spos=contactForm`}} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
                     </div>
                     <div className="grid grid-cols-1 mx-5">
                         <h5 className="text-lg font-bold">{page?.data?.subtitulo_navegacao}</h5>
                         {page?.data?.links.map((i: any, index: undefined) => {
                             let link = i?.link as string
                             return (
-                                <Link key={index} href={""} onClick={() => { funcscroll(link) }} className="text-white text-sm TabletPortrait:text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4 hover:font-bold">{i?.label}</Link>
+                                <Link key={index} href={`../${linguaLink}/${link}`} className="text-white text-sm TabletPortrait:text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4 hover:font-bold">{i?.label}</Link>
                             );
                         })}
                     </div>
