@@ -33,16 +33,38 @@ const CssTextField = styled(TextField)({
     },
 });
 
-export async function mandaForm(dados: any) {
+export async function mandaForm(
+    formDados:{
+        nome: string;
+        telefone: string;
+        email: string;
+        mensagem: string;
+        newsletter: boolean;
+        cookie: any;
+    },
+    setFormDados: React.Dispatch<React.SetStateAction<{
+        nome: string;
+        telefone: string;
+        email: string;
+        mensagem: string;
+        newsletter: boolean;
+        cookie: any;
+    }>>) {
 
-    dados = JSON.stringify(dados)
+    const dados = await JSON.stringify(formDados)
 
     fetch("/api/formularioContato", {
         headers: { "Content-Type": "application/json" },
         body: dados,
         method: "POST"
     })
-
+    setFormDados({
+        ...formDados,
+        nome: "",
+        telefone: "",
+        email: "",
+        mensagem: ""
+    })
     alert("Formulario Enviado com Sucesso!");
 }
 
@@ -181,7 +203,7 @@ export default function Contato(slice: ContatoProps) {
                             }
                             label={<span className="text-sm Mobile:text-[4vw]">Concordo em receber e-mails</span>}
                         />
-                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="button" onClick={() => { mandaForm(formDados) }} value="ENVIAR MENSAGEM" />
+                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="button" onClick={() => { mandaForm(formDados, setFormDados) }} value="ENVIAR MENSAGEM" />
                     </div>
                 </form>
             </div>
