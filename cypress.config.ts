@@ -8,7 +8,8 @@ module.exports = defineConfig({
     specPattern: "**/*.feature",
     chromeWebSecurity: false,
     baseUrl: "http://localhost:3000/",
-    // baseUrl: "https://indhuge.com",
+    viewportHeight: 1000,
+    viewportWidth: 1800,
     async setupNodeEvents(
       on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions

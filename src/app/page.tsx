@@ -6,6 +6,7 @@ import { components } from "@/slices";
 import Banner from "@/components/banner";
 import { pages } from "next/dist/build/templates/app-page";
 import BlogCard from "@/components/BlogCard";
+import Head from "next/head";
 
 type Params = { uid: "landing_page" };
 
@@ -15,7 +16,6 @@ export default async function Page({ params }: { params: Params }) {
   const banner = await client
     .getByUID("banner", "banner")
     .catch(() => notFound());
-  // console.log(page.data.slices);
   return (
     <>
       {/*Script Hubspot*/}
@@ -45,6 +45,12 @@ export async function generateMetadata({
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
+    openGraph: {
+      title: page?.data?.meta_title as string,
+      description: page?.data?.meta_title as string,
+      images: [page.data.meta_image.url ?? ""],
+      url: page.data.meta_url as string,
+    },
   };
 }
 
