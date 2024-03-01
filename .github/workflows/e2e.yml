@@ -4,10 +4,6 @@ on:
   workflow_dispatch: 
   deployment_status: 
   push:
-    branches:
-      - feature/*
-      - bugfix/*
-      - hotfix/*
   pull_request:
     branches:
       - dev
