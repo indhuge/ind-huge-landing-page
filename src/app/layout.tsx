@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description: "ind[huge]",
 };
 */
+
 export default async function RootLayout({
   children,
 }: {
@@ -27,6 +28,7 @@ export default async function RootLayout({
   const footer = await client
     .getByUID("footer", "footer")
     //.catch(() => notFound());
+
 
   return (
     <html lang="en">

@@ -1,7 +1,7 @@
 'use client'
 import borda from "../../../public/assets/bordaVideo.svg";
 import TextField from "@mui/material/TextField";
-import { Checkbox, FormControlLabel, styled } from "@mui/material";
+import { Alert, AlertTitle, Checkbox, FormControlLabel, Snackbar, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { ContatoProps } from "@/slices/ContatoSlice";
@@ -33,17 +33,66 @@ const CssTextField = styled(TextField)({
     },
 });
 
-export async function mandaForm(dados: any) {
+export async function mandaForm(
+    formDados: {
+        nome: string;
+        telefone: string;
+        email: string;
+        mensagem: string;
+        newsletter: boolean;
+        cookie: any;
+    },
+    setFormDados: React.Dispatch<React.SetStateAction<{
+        nome: string;
+        telefone: string;
+        email: string;
+        mensagem: string;
+        newsletter: boolean;
+        cookie: any;
+    }>>,
+    setSucesso: React.Dispatch<React.SetStateAction<boolean>>,
+    setErro: React.Dispatch<React.SetStateAction<boolean>>,
+    setTipoErro: React.Dispatch<React.SetStateAction<string>>
+    ) {
 
-    dados = JSON.stringify(dados)
+    if (!formDados.nome) {
+        setTipoErro(`O Campo "Nome" não pode estar vazio!`);
+        setErro(true);
+    }
+    else if (!formDados.telefone) {
+        setTipoErro(`O Campo "Telefone" não pode estar vazio!`);
+        setErro(true);
+    }
+    else if (!/^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/.test(formDados.telefone)) {
+        setTipoErro(`O Telefone informado é invalido!`);
+        setErro(true);
+    }
+    else if (!formDados.email) {
+        setTipoErro(`O Campo "Email" não pode estar vazio!`);
+        setErro(true);
+    }
+    else if (!/\S+@\S+\.\S+/.test(formDados.email)) {
+        setTipoErro(`O Email informado é invalido!`);
+        setErro(true);
+    }
+    
+    else {
+        const dados = await JSON.stringify(formDados)
 
-    fetch("/api/formularioContato", {
-        headers: { "Content-Type": "application/json" },
-        body: dados,
-        method: "POST"
-    })
-
-    alert("Formulario Enviado com Sucesso!");
+        const resp = await fetch("/api/formularioContato", {
+            headers: { "Content-Type": "application/json" },
+            body: dados,
+            method: "POST"
+        })
+        setFormDados({
+            ...formDados,
+            nome: "",
+            telefone: "",
+            email: "",
+            mensagem: ""
+        })
+        setSucesso(true)
+    }
 }
 
 export default function Contato(slice: ContatoProps) {
@@ -53,6 +102,9 @@ export default function Contato(slice: ContatoProps) {
     const [cookies] = useCookies(["hubspotutk"]);
     const email = require("../../../public/assets/emailicone.svg");
     const whatsapp = require("../../../public/assets/whatsappicone.svg");
+    const [sucesso, setSucesso] = useState(false);
+    const [erro, setErro] = useState(false);
+    const [tipoErro, setTipoErro] = useState("");
 
     const [formDados, setFormDados] = useState({
         "nome": "",
@@ -107,8 +159,8 @@ export default function Contato(slice: ContatoProps) {
                     </div>
                     <p className="mx-[2vw] mb-[2vh] text-[1.5vw] TabletPortrait:text-[4vw] TabletPortrait:mx-6">{slice?.slice?.primary?.descricao}</p>
                     <div className="flex flex-row] TabletPortrait:mb-[2vh]">
-                        <Link href={slice?.slice?.primary?.link_whatsapp as string} className="bg-green p-[1vw] mr-3 ml-[2vw] rounded-full TabletPortrait:mx-6 TabletPortrait:p-[3vw] hover:border-2"><PrismicNextImage field={slice?.slice?.primary?.logo_whatsapp} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
-                        <Link href={slice?.slice?.primary?.link_email as string} className="bg-green p-[1vw] mr-3 rounded-full TabletPortrait:p-[3vw] hover:border-2"><PrismicNextImage field={slice?.slice?.primary?.logo_email} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]"/></Link>
+                        <Link href={slice?.slice?.primary?.link_whatsapp as string} className="bg-green p-[1vw] mr-3 ml-[2vw] rounded-full TabletPortrait:mx-6 TabletPortrait:p-[3vw] hover:border-2"><PrismicNextImage field={slice?.slice?.primary?.logo_whatsapp} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]" /></Link>
+                        <Link href={slice?.slice?.primary?.link_email as string} className="bg-green p-[1vw] mr-3 rounded-full TabletPortrait:p-[3vw] hover:border-2"><PrismicNextImage field={slice?.slice?.primary?.logo_email} alt="" className="w-[1.5vw] aspect-square TabletPortrait:w-[5vw]" /></Link>
                     </div>
                 </div>
                 <form className={`flex flex-col items-start space-y-4 justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat p-6 w-[80%] rounded TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: "linear-gradient(118deg, #003973 0%, #016C6B 100%)" }}>
@@ -181,10 +233,36 @@ export default function Contato(slice: ContatoProps) {
                             }
                             label={<span className="text-sm Mobile:text-[4vw]">Concordo em receber e-mails</span>}
                         />
-                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="button" onClick={() => { mandaForm(formDados) }} value="ENVIAR MENSAGEM" />
+                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="button" onClick={() => { mandaForm(formDados, setFormDados, setSucesso, setErro, setTipoErro) }} value="ENVIAR MENSAGEM" />
                     </div>
                 </form>
             </div>
+            {
+                sucesso ?
+                    <Snackbar
+                        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                        open={sucesso}
+                        autoHideDuration={6000}
+                        onClose={() => setSucesso(false)}
+                    >
+                        <Alert severity="success" onClose={() => setSucesso(false)} sx={{ width: '100%' }}> <AlertTitle>Formulário enviado com Sucesso!</AlertTitle>Em breve ele será verificado pela nossa equipe!</Alert>
+                    </Snackbar>
+                    :
+                    <></>
+            }
+            {
+                erro ?
+                    <Snackbar
+                        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                        open={erro}
+                        autoHideDuration={6000}
+                        onClose={() => setErro(false)}
+                    >
+                        <Alert severity="warning" onClose={() => setErro(false)} sx={{ width: '100%' }}> <AlertTitle>O Formulário não pode ser enviado!</AlertTitle>{tipoErro}</Alert>
+                    </Snackbar>
+                    :
+                    <></>
+            }
         </div>
     );
 }

@@ -7,10 +7,10 @@ on:
       - feature/*
       - bugfix/*
       - hotfix/*
+      - main
   pull_request:
     branches:
       - dev
-      - main
       - hmg
 
 env:

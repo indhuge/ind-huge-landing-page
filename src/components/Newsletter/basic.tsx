@@ -35,7 +35,7 @@ const CssTextField = styled(TextField)({
   },
 });
 
-async function register(email: string, setSucesso: Dispatch<SetStateAction<boolean>>, setFalha: Dispatch<SetStateAction<boolean>>, setRegistrado: Dispatch<SetStateAction<boolean>>) {
+async function register(email: string, setEmail: Dispatch<SetStateAction<string>>, setSucesso: Dispatch<SetStateAction<boolean>>, setFalha: Dispatch<SetStateAction<boolean>>, setRegistrado: Dispatch<SetStateAction<boolean>>) {
   const res = await fetch("/api/mailchimp", {
     body: JSON.stringify({
       email: email,
@@ -51,7 +51,7 @@ async function register(email: string, setSucesso: Dispatch<SetStateAction<boole
   const { error } = await res.json();
   if (error) console.log(error);
 
-  if (res.status === 200) { setSucesso(true); }
+  if (res.status === 200) { setEmail(""); setSucesso(true); }
   else if (res.status === 400) { setRegistrado(true); }
   else setFalha(true);
 }
@@ -124,7 +124,7 @@ export default function Newsletter({
               className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm :m-0"
               type="button"
               onClick={() => {
-                register(email, setSucesso, setFalha, setRegistrado);
+                register(email, setEmail, setSucesso, setFalha, setRegistrado);
               }}
               value="INSCREVER-SE"
               disabled={!checked}
