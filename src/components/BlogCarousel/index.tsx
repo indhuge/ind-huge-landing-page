@@ -32,6 +32,7 @@ export default function Cases({ slice }: any) {
     (middleElementIndex - value) * Math.ceil(100 / slice.items.length);
 
   const toRight = (isAuto: Boolean = false) => {
+    clearTimeout(interval!!)
     const value = selected == indexTotal ? 0 : selected + 1;
     setSelected(value);
     MakeTranslation(CalcTranslation(value));
@@ -41,6 +42,7 @@ export default function Cases({ slice }: any) {
   };
 
   const toLeft = () => {
+    clearTimeout(interval!!)
     const value = selected == 0 ? 2 : selected - 1;
     setSelected(value);
     MakeTranslation(CalcTranslation(value));
