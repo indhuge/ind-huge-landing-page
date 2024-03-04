@@ -36,8 +36,6 @@ export default function Page(page: any) {
   const [lingua, setLingua] = useState("");
   const [linguaLink, setLinguaLink] = useState("");
 
-  console.log(pathname);
-
   useEffect(() => {
     if (window.location.href.includes("/pt")) {
       document.location.href = "../";
@@ -157,7 +155,9 @@ export default function Page(page: any) {
             type="button"
             value={page?.data?.label_cta}
             onClick={() => {
-              window.location.href = `../${linguaLink}/?spos=contactForm`;
+                if (pathname == "/") {
+                    scrollToElement("contactForm");
+                  } else router.push(`../${linguaLink}/?spos=contactForm`);
             }}
             className="hover:scale-105 bg-green px-6 py-2 rounded-full font-bold text-darkblue w-[90%] ml-[5%]"
           />
