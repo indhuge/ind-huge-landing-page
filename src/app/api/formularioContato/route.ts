@@ -61,9 +61,11 @@ export async function POST(req: Request) {
 
     var jsondados = await JSON.stringify(form)
     //console.log(jsondados);
-    fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTALID}/${process.env.HUBSPOT_FORMGUID}`, {
+    const res = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTALID}/${process.env.HUBSPOT_FORMGUID}`, {
         headers: { 'Content-Type': 'application/json' },
         body: jsondados,
         method: 'POST'
-    }).then((res)=>NextResponse.json(res)).catch((err) => console.log(err))
+    })
+    console.log(res);
+    return NextResponse.json({status: res.status}, {status: res.status})
 }
