@@ -3,9 +3,8 @@ import { createClient } from "@/prismicio";
 import Image from "next/image";
 import borda from "../../../public/assets/bordaVideo.svg";
 import { BannerDocument } from "../../../prismicio-types";
-import { useRouter } from "next/navigation";
-import { funcscroll } from "../header";
-
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Params = { uid: string };
 
@@ -15,8 +14,36 @@ type Params = { uid: string };
 
 export default function Page(page: any) {
     page = (page?.page) as BannerDocument<string>
-    const router = useRouter();
     const detalhe = require("../../../public/assets/detalheBanner.png");
+
+    const [lingua, setLingua] = useState('');
+    const [linguaLink, setLinguaLink] = useState('');
+
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        if (window.location.href.includes("/pt")) {
+            document.location.href = "../"
+        }
+        else if (window.location.href.includes("/en")) {
+            setLingua("en");
+            setLinguaLink("en");
+        }
+        else if (window.location.href.includes("/es")) {
+            setLingua("es");
+            setLinguaLink("es");
+        }
+        else {
+            setLingua("pt");
+            setLinguaLink("");
+        }
+
+        const pos = searchParams.get("spos");
+        if (pos != undefined) {
+            const e = document.getElementById(pos);
+            e?.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [searchParams])
     
     return (
         <div id="inicio" style={{ backgroundImage: "linear-gradient(90deg, #01666C 0%, #014E6C 31.25%, #01506B 53.65%, #01916B 100%)" }} className="vw-[100vw]">
@@ -32,16 +59,16 @@ export default function Page(page: any) {
                     <label className="text-[1vw] TabletPortrait:text-xl mt-28 tracking-widest text-green TabletPortrait:mt-0 TabletPortrait:ml-[5vw]">{page?.data?.subtitulo}</label>
                     <label className="text-[3vw] TabletPortrait:text-3xl font-bold">{page?.data?.titulo}</label>
                     <p className="text-[1vw] TabletPortrait:text-xl mt-8 TabletPortrait:w-[90vw]">{page?.data?.texto}</p>
-                    <div className="mt-8 mb-24"><button onClick={()=>{funcscroll("funcionalidades")}} className="text-[1vw] TabletPortrait:text-xl flex-initial font-bold bg-green px-6 py-2 rounded-full text-darkblue hover:scale-105 Mobile:text-sm">{page?.data?.label_cta} &#10140;</button></div>
+                    <div className="mt-8 mb-24"><button onClick={() => { window.location.href = `../${linguaLink}/?spos=funcionalidades` }} className="text-[1vw] TabletPortrait:text-xl flex-initial font-bold bg-green px-6 py-2 rounded-full text-darkblue hover:scale-105 Mobile:text-sm">{page?.data?.label_cta} &#10140;</button></div>
                 </div>
                 <div className={`flex items-center flex-shrink justify-center col-span-5 bg-[length:100%_100%] bg-no-repeat mt-20 w-[80%] aspect-video TabletPortrait:w-[90vw] TabletPortrait:h-fit TabletPortrait:mb-[5vh]`} style={{ backgroundImage: `url(${borda.src})` }}>
-                <iframe 
-                    className="w-[90%] aspect-video rounded-lg" 
-                    src={page?.data?.video as string} 
-                    title="Indhuge - Apresentação" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowFullScreen
-                ></iframe>
+                    <iframe
+                        className="w-[90%] aspect-video rounded-lg"
+                        src={page?.data?.video as string}
+                        title="Indhuge - Apresentação"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                    ></iframe>
                 </div>
             </div>
             <Image className="flex-initial pl-1 pb-1 TabletPortrait:hidden TabletPortrait:pb-0" src={detalhe} alt="Detalhe Banner" />
