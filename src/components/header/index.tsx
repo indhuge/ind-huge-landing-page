@@ -125,7 +125,7 @@ export default function Page(page: any) {
                         </ListItemButton>
                     </ListItem>
                 ))}
-                <ListItem><input type="button" value={page?.data?.label_entrar} className="hover:scale-105 border-green border-2 px-6 py-2 rounded-full text-green font-bold w-[90%] ml-[5%] mt-4" /></ListItem>
+                {/*<ListItem><input type="button" value={page?.data?.label_entrar} className="hover:scale-105 border-green border-2 px-6 py-2 rounded-full text-green font-bold w-[90%] ml-[5%] mt-4" /></ListItem>*/}
                 <ListItem><input type="button" value={page?.data?.label_cta} onClick={()=>{window.location.href = `../${linguaLink}/?spos=contactForm`}} className="hover:scale-105 bg-green px-6 py-2 rounded-full font-bold text-darkblue w-[90%] ml-[5%]" /></ListItem>
             </List>
         </Box>
