@@ -155,9 +155,10 @@ export default function Page(page: any) {
             type="button"
             value={page?.data?.label_cta}
             onClick={() => {
-                if (pathname == "/") {
-                    scrollToElement("contactForm");
-                  } else router.push(`../${linguaLink}/?spos=contactForm`);
+              if (pathname == "/") {
+                scrollToElement("contactForm");
+                window.location.hash = "contactForm";
+              } else router.push(`../${linguaLink}/?spos=contactForm`);
             }}
             className="hover:scale-105 bg-green px-6 py-2 rounded-full font-bold text-darkblue w-[90%] ml-[5%]"
           />
@@ -256,6 +257,7 @@ export default function Page(page: any) {
           onClick={() => {
             if (pathname == "/") {
               scrollToElement("contactForm");
+              window.location.hash = "contactForm";
             } else router.push(`../${linguaLink}/?spos=contactForm`);
           }}
           className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 TabletPortrait:hidden"
