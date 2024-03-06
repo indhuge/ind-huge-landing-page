@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { BlogDocumentDataSlicesSlice, BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
+import {
+  BlogDocumentDataSlicesSlice,
+  BlogPostDocument,
+  CategoryDocument,
+} from "../../../prismicio-types";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
@@ -18,11 +22,12 @@ import {
   getLinkedInShareLink,
   getWhatsappShareLink,
 } from "./service";
+import Style from "./hoverEffect.module.css";
 
 export default function BlogPost({
   post,
   categories,
-  newsletter
+  newsletter,
 }: {
   post: BlogPostDocument<string>;
   categories: CategoryDocument<string>[];
@@ -30,7 +35,7 @@ export default function BlogPost({
 }) {
   // const date = new Date(post.data.date as string);
   const date = post.data.date?.split("-");
-  console.log(post.data.date)
+  console.log(post.data.date);
   return (
     <div className="bg-white flex items-center justify-center">
       <div className="LaptopS:container px-5 LaptopS:px-0 py-16 grid grid-cols-[3fr_1fr] MaxBlogGrid:grid-cols-1 gap-10">
@@ -42,16 +47,31 @@ export default function BlogPost({
             <Image src={Clock} alt="Clock icon" />
             <p className="text-darkgray">{`Leitura de ${post.data.time_of_reading} minutos`}</p>
           </div>
-          <PrismicNextImage
-            className="h-80 w-full object-cover rounded-lg my-3"
-            field={post.data.image}
-          />
+          <div
+            className={
+              "grid grid-cols-1 grid-rows-1 overflow-hidden h-fit my-3 " +
+              Style.wrapper
+            }
+          >
+            <PrismicNextImage
+              className="h-80 w-full object-cover rounded-lg row-start-1 row-end-2 col-start-1 col-end-2"
+              field={post.data.image}
+            />
+            {post.data.image.alt && (
+              <div
+                className={
+                  "bg-darkgray row-start-1 row-end-2 col-start-1 col-end-2 h-fit self-end opacity-0 translate-y-4 transition-all " +
+                  Style.target
+                }
+              >
+                <p className="text-white p-2">{post.data.image.alt}</p>
+              </div>
+            )}
+          </div>
           <div className="flex justify-between items-center text-darkgray mb-8 MaxS_mobile:flex-col">
             <div className="flex gap-5">
               <p className="font-bold">{post.data.autor}</p>
-              <p>{`${date?.at(2)}/${
-                date?.at(1)
-              }/${date?.at(0)}`}</p>
+              <p>{`${date?.at(2)}/${date?.at(1)}/${date?.at(0)}`}</p>
             </div>
             <div className="flex gap-5">
               <div className="flex gap-2 MaxMd:hidden">

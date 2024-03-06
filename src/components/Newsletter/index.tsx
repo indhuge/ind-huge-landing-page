@@ -27,7 +27,7 @@ const CssTextField = styled(TextField)({
     },
 });
 
-async function register(email: string, setSucesso: Dispatch<SetStateAction<boolean>>, setFalha: Dispatch<SetStateAction<boolean>>, setRegistrado: Dispatch<SetStateAction<boolean>>) {
+async function register(email: string, setEmail: Dispatch<SetStateAction<string>>, setSucesso: Dispatch<SetStateAction<boolean>>, setFalha: Dispatch<SetStateAction<boolean>>, setRegistrado: Dispatch<SetStateAction<boolean>>) {
     const res = await fetch("/api/mailchimp", {
         body: JSON.stringify({
             email: email,
@@ -43,7 +43,7 @@ async function register(email: string, setSucesso: Dispatch<SetStateAction<boole
     const { error } = await res.json();
     if (error) console.log(error);
 
-    if (res.status === 200) { setSucesso(true); }
+    if (res.status === 200) { setEmail(""); setSucesso(true); }
     else if (res.status === 400) { setRegistrado(true); }
     else setFalha(true);
 }
@@ -63,9 +63,10 @@ export default function Newsletter(slice: NewsletterProps) {
                     <label className="text-[3vw] TabletPortrait:text-2xl font-bold">{slice?.slice?.primary?.titulo}</label>
                     <p className="text-[1.2vw] TabletPortrait:text-lg mt-8 TabletPortrait:w-[88vw]">{slice?.slice?.primary?.subtitulo}</p>
                 </div>
-                <form className="mx-5 TabletPortrait:col-span-1 TabletPortrait:mt-8 TabletPortrait:w-fit">
+                <form className="mx-[10%] TabletPortrait:col-span-1 TabletPortrait:mt-8 w-[80%]">
                     <CssTextField
-                        className="my-4 TabletPortrait:w-[75vw]"
+                        //className="my-4 TabletPortrait:w-[75vw]"
+                        style={{margin: "1rem 0", width: "100%"}}
                         id="email"
                         type="email"
                         label="E-mail"
@@ -81,7 +82,7 @@ export default function Newsletter(slice: NewsletterProps) {
                             control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
                             label={<span className="text-sm">Concordo em receber e-mails</span>}
                         />
-                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
+                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setEmail, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
                     </div>
                 </form>
 
