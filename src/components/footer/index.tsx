@@ -68,21 +68,19 @@ export default function Page(page: any) {
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        if (window.location.href.includes("/pt")) {
-            document.location.href = "../"
-        }
-        else if (window.location.href.includes("/en")) {
-            setLingua("en");
-            setLinguaLink("en");
-        }
-        else if (window.location.href.includes("/es")) {
-            setLingua("es");
-            setLinguaLink("es");
-        }
-        else {
-            setLingua("pt");
-            setLinguaLink("");
-        }
+        if (window.location.href.includes("/pt-BR")) {
+            setLingua("pt-BR");
+            setLinguaLink("pt-BR");
+          } else if (window.location.href.includes("/en-US")) {
+            setLingua("en-US");
+            setLinguaLink("en-US");
+          } else if (window.location.href.includes("/es-ES")) {
+            setLingua("es-ES");
+            setLinguaLink("es-ES");
+          } else {
+            setLingua("en-US");
+            setLinguaLink("en-US");
+          }
 
         const pos = searchParams.get("spos");
       if (pos != undefined) {

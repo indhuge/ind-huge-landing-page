@@ -37,17 +37,18 @@ export default function Page(page: any) {
   const [linguaLink, setLinguaLink] = useState("");
 
   useEffect(() => {
-    if (window.location.href.includes("/pt")) {
-      document.location.href = "../";
-    } else if (window.location.href.includes("/en")) {
-      setLingua("en");
-      setLinguaLink("en");
-    } else if (window.location.href.includes("/es")) {
-      setLingua("es");
-      setLinguaLink("es");
+    if (window.location.href.includes("/pt-BR")) {
+      setLingua("pt-BR");
+      setLinguaLink("pt-BR");
+    } else if (window.location.href.includes("/en-US")) {
+      setLingua("en-US");
+      setLinguaLink("en-US");
+    } else if (window.location.href.includes("/es-ES")) {
+      setLingua("es-ES");
+      setLinguaLink("es-ES");
     } else {
-      setLingua("pt");
-      setLinguaLink("");
+      setLingua("en-US");
+      setLinguaLink("en-US");
     }
 
     const pos = searchParams.get("spos");
@@ -55,21 +56,21 @@ export default function Page(page: any) {
       const e = document.getElementById(pos);
       e?.scrollIntoView({ behavior: "smooth" });
     }
-  }, []);
+  }, [searchParams]);
 
   const linguas = [
     {
-      id: "pt",
+      id: "pt-BR",
       label: "PT-BR",
       flag: require("../../../public/assets/BrasilFlag.svg"),
     },
     {
-      id: "en",
+      id: "en-US",
       label: "EN-US",
       flag: require("../../../public/assets/UsaFlag.svg"),
     },
     {
-      id: "es",
+      id: "es-ES",
       label: "ES-ES",
       flag: require("../../../public/assets/SpainFlag.svg"),
     },
@@ -77,8 +78,9 @@ export default function Page(page: any) {
 
   const mudaLingua = (event: SelectChangeEvent) => {
     if (
-      window.location.href.includes("/en") ||
-      window.location.href.includes("/es")
+      window.location.href.includes("/en-US") ||
+      window.location.href.includes("/es-ES") ||
+      window.location.href.includes("/pt-BR")
     ) {
       document.location.href = `../${event.target.value}`;
     } else {
