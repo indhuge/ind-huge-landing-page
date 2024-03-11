@@ -8,11 +8,11 @@ import { pages } from "next/dist/build/templates/app-page";
 import BlogCard from "@/components/BlogCard";
 import Head from "next/head";
 
-type Params = { uid: "landing_page" };
+type Params = { uid: "landing_page", lang : string };
 
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
-  const page = await client.getSingle("landing_page").catch(() => notFound());
+  const page = await client.getSingle("landing_page", {lang : params.lang}).catch(() => notFound());
   const banner = await client
     .getByUID("banner", "banner")
     .catch(() => notFound());
@@ -39,7 +39,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getByUID("landing_page", "landing_page")
+    .getByUID("landing_page", "landing_page", {lang : params.lang})
     .catch(() => notFound());
 
   return {
