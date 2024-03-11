@@ -20,7 +20,7 @@ const BlogParagraphSlice = ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className={Style.wrapper}>
+      <div className={`${Style.wrapper} mb-5`}>
         <PrismicRichText field={slice.primary.paragraph} />
       </div>
     </section>
