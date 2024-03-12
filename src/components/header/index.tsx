@@ -37,18 +37,18 @@ export default function Page(page: any) {
   const [linguaLink, setLinguaLink] = useState("");
 
   useEffect(() => {
-    if (window.location.href.includes("/pt-BR")) {
-      setLingua("pt-BR");
-      setLinguaLink("pt-BR");
-    } else if (window.location.href.includes("/en-US")) {
-      setLingua("en-US");
-      setLinguaLink("en-US");
-    } else if (window.location.href.includes("/es-ES")) {
-      setLingua("es-ES");
-      setLinguaLink("es-ES");
+    if (window.location.href.includes("/pt-br")) {
+      setLingua("pt-br");
+      setLinguaLink("pt-br");
+    } else if (window.location.href.includes("/en-us")) {
+      setLingua("en-us");
+      setLinguaLink("en-us");
+    } else if (window.location.href.includes("/es-es")) {
+      setLingua("es-es");
+      setLinguaLink("es-es");
     } else {
-      setLingua("en-US");
-      setLinguaLink("en-US");
+      setLingua("en-us");
+      setLinguaLink("en-us");
     }
 
     const pos = searchParams.get("spos");
@@ -60,17 +60,17 @@ export default function Page(page: any) {
 
   const linguas = [
     {
-      id: "pt-BR",
+      id: "pt-br",
       label: "PT-BR",
       flag: require("../../../public/assets/BrasilFlag.svg"),
     },
     {
-      id: "en-US",
+      id: "en-us",
       label: "EN-US",
       flag: require("../../../public/assets/UsaFlag.svg"),
     },
     {
-      id: "es-ES",
+      id: "es-es",
       label: "ES-ES",
       flag: require("../../../public/assets/SpainFlag.svg"),
     },
@@ -78,9 +78,9 @@ export default function Page(page: any) {
 
   const mudaLingua = (event: SelectChangeEvent) => {
     if (
-      window.location.href.includes("/en-US") ||
-      window.location.href.includes("/es-ES") ||
-      window.location.href.includes("/pt-BR")
+      window.location.href.includes("/en-us") ||
+      window.location.href.includes("/es-es") ||
+      window.location.href.includes("/pt-br")
     ) {
       document.location.href = `../${event.target.value}`;
     } else {
@@ -145,13 +145,13 @@ export default function Page(page: any) {
             </ListItemButton>
           </ListItem>
         ))}
-        <ListItem>
+        {/*<ListItem>
           <input
             type="button"
             value={page?.data?.label_entrar}
             className="hover:scale-105 border-green border-2 px-6 py-2 rounded-full text-green font-bold w-[90%] ml-[5%] mt-4"
           />
-        </ListItem>
+        </ListItem>*/}
         <ListItem>
           <input
             type="button"

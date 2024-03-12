@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: Params }) {
   const client = createClient();
   const page = await client.getSingle("landing_page", {lang : params.lang}).catch(() => notFound());
   const banner = await client
-    .getByUID("banner", "banner")
+    .getByUID("banner", "banner", {lang : params.lang})
     .catch(() => notFound());
   return (
     <>

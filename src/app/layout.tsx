@@ -14,22 +14,17 @@ export const metadata: Metadata = {
   description: "ind[huge]",
 };
 */
-
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type Params = { lang: string };
+export default async function RootLayout({params, children}: {params: Params, children: React.ReactNode} ) {
   const client = createClient();
   const header = await client
-    .getByUID("header", "header")
-    //.catch(() => notFound());
-
+    .getByUID("header", "header", { lang: params.lang })
+  //.catch(() => notFound());
   const footer = await client
-    .getByUID("footer", "footer")
-    //.catch(() => notFound());
+    .getByUID("footer", "footer", { lang: params.lang })
+  //.catch(() => notFound());
 
-
+  console.log(header);
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -40,4 +35,22 @@ export default async function RootLayout({
       </body>
     </html>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const client = createClient();
+  const header = await client
+    .getByUID("header", "header", { lang: params.lang })
+    .catch(() => notFound());
+
+  const footer = await client
+    .getByUID("footer", "footer", { lang: params.lang })
+    .catch(() => notFound());
+
+  return {
+  };
 }
