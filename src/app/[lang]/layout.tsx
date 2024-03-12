@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { createClient, repositoryName } from "@/prismicio";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { notFound } from "next/navigation";
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 };
 */
 type Params = { lang: string };
+
 export default async function RootLayout({params, children}: {params: Params, children: React.ReactNode} ) {
   const client = createClient();
   const header = await client

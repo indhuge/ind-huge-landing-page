@@ -17,28 +17,6 @@ export default function Page(page: any) {
 
   const searchParams = useSearchParams();
 
-  useEffect(() => {
-    if (window.location.href.includes("/pt-br")) {
-      setLingua("pt-br");
-      setLinguaLink("pt-br");
-    } else if (window.location.href.includes("/en-us")) {
-      setLingua("en-us");
-      setLinguaLink("en-us");
-    } else if (window.location.href.includes("/es-es")) {
-      setLingua("es-es");
-      setLinguaLink("es-es");
-    } else {
-      setLingua("en-us");
-      setLinguaLink("en-us");
-    }
-
-    // const pos = searchParams.get("spos");
-    // if (pos != undefined) {
-    //   const e = document.getElementById(pos);
-    //   e?.scrollIntoView({ behavior: "smooth" });
-    // }
-  }, []);
-
   return (
     <div
       id="inicio"

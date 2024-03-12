@@ -47,8 +47,8 @@ export default function Page(page: any) {
       setLingua("es-es");
       setLinguaLink("es-es");
     } else {
-      setLingua("en-us");
-      setLinguaLink("en-us");
+      setLingua("pt-br");
+      setLinguaLink("pt-br");
     }
 
     const pos = searchParams.get("spos");
