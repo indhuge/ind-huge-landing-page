@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 };
 */
 type Params = { lang: string };
+export const dynamic = 'force-dynamic'
 
 export default async function RootLayout({params, children}: {params: Params, children: React.ReactNode} ) {
   const client = createClient();
@@ -32,12 +33,12 @@ export default async function RootLayout({params, children}: {params: Params, ch
         <Header page={header} />
         <main>{children}</main>
         <Footer page={footer} />
-        <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   );
 }
 
+/*
 export async function generateMetadata({
   params,
 }: {
@@ -55,3 +56,4 @@ export async function generateMetadata({
   return {
   };
 }
+*/

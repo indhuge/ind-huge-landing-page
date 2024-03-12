@@ -4,12 +4,13 @@ import "./globals.css";
 import { PrismicPreview } from "@prismicio/next";
 
 const inter = Inter({ subsets: ["latin"] });
+export const dynamic = 'force-dynamic'
 
 export default async function RootLayout({children}: {children: React.ReactNode} ) {
   return (
     <html lang="en">
       <body className={inter.className}> 
-        <main>{children}</main>
+        {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
