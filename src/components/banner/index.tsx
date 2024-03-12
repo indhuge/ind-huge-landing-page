@@ -18,17 +18,18 @@ export default function Page(page: any) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (window.location.href.includes("/pt")) {
-      document.location.href = "../";
-    } else if (window.location.href.includes("/en")) {
-      setLingua("en");
-      setLinguaLink("en");
-    } else if (window.location.href.includes("/es")) {
-      setLingua("es");
-      setLinguaLink("es");
+    if (window.location.href.includes("/pt-br")) {
+      setLingua("pt-br");
+      setLinguaLink("pt-br");
+    } else if (window.location.href.includes("/en-us")) {
+      setLingua("en-us");
+      setLinguaLink("en-us");
+    } else if (window.location.href.includes("/es-es")) {
+      setLingua("es-es");
+      setLinguaLink("es-es");
     } else {
-      setLingua("pt");
-      setLinguaLink("");
+      setLingua("en-us");
+      setLinguaLink("en-us");
     }
 
     // const pos = searchParams.get("spos");
@@ -69,7 +70,7 @@ export default function Page(page: any) {
             <button
               onClick={() => {
                 const e = document.getElementById("funcionalidades")
-                e?.scrollIntoView({behavior: "smooth"});
+                e?.scrollIntoView({ behavior: "smooth" });
               }}
               className="text-[1vw] TabletPortrait:text-xl flex-initial font-bold bg-green px-6 py-2 rounded-full text-darkblue hover:scale-105 Mobile:text-sm"
             >

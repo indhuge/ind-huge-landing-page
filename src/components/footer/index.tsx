@@ -68,27 +68,25 @@ export default function Page(page: any) {
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        if (window.location.href.includes("/pt")) {
-            document.location.href = "../"
-        }
-        else if (window.location.href.includes("/en")) {
-            setLingua("en");
-            setLinguaLink("en");
-        }
-        else if (window.location.href.includes("/es")) {
-            setLingua("es");
-            setLinguaLink("es");
-        }
-        else {
-            setLingua("pt");
-            setLinguaLink("");
+        if (window.location.href.includes("/pt-br")) {
+            setLingua("pt-br");
+            setLinguaLink("pt-br");
+        } else if (window.location.href.includes("/en-us")) {
+            setLingua("en-us");
+            setLinguaLink("en-us");
+        } else if (window.location.href.includes("/es-es")) {
+            setLingua("es-es");
+            setLinguaLink("es-es");
+        } else {
+            setLingua("en-us");
+            setLinguaLink("en-us");
         }
 
         const pos = searchParams.get("spos");
-      if (pos != undefined) {
-        const e = document.getElementById(pos);
-        e?.scrollIntoView({ behavior: "smooth" });
-      }
+        if (pos != undefined) {
+            const e = document.getElementById(pos);
+            e?.scrollIntoView({ behavior: "smooth" });
+        }
     }, [searchParams])
 
     return (
@@ -112,7 +110,7 @@ export default function Page(page: any) {
                     <div className="col-span-2 mx-5 TabletPortrait:col-span-1 TabletPortrait:mb-8">
                         <Link href={"https://www.indhuge.com"}><PrismicNextImage alt="" field={page?.data?.logo} /></Link>
                         <p className="my-7 TabletPortrait:w-[70vw]">{page?.data?.descricao_logo}</p>
-                        <button onClick={()=>{window.location.href = `../${linguaLink}/?spos=contactForm`}} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
+                        <button onClick={() => { window.location.href = `../${linguaLink}/?spos=contactForm` }} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
                     </div>
                     <div className="grid grid-cols-1 mx-5">
                         <h5 className="text-lg font-bold">{page?.data?.subtitulo_navegacao}</h5>
@@ -157,9 +155,9 @@ export default function Page(page: any) {
                         <div className="flex items-center justify-between Mobile:flex-col">
                             <FormControlLabel
                                 control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
-                                label={<span className="text-sm">Concordo em receber e-mails</span>}
+                                label={<span className="text-sm">{page?.data?.label_checkbox}</span>}
                             />
-                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm" type="button" onClick={() => { register(email, setEmail, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
+                            <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm" type="button" onClick={() => { register(email, setEmail, setSucesso, setFalha, setRegistrado) }} value={page?.data?.label_enviar} disabled={!checked} />
                         </div>
                     </form>
                 </div>
@@ -185,12 +183,12 @@ export default function Page(page: any) {
             {
                 sucesso ?
                     <Snackbar
-                        anchorOrigin={{ vertical:"bottom", horizontal:"right" }}
+                        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                         open={sucesso}
                         autoHideDuration={6000}
-                        onClose={()=>setSucesso(false)}
+                        onClose={() => setSucesso(false)}
                     >
-                        <Alert severity="success" onClose={()=>setSucesso(false)} sx={{ width: '100%' }}> <AlertTitle>Obrigado por assinar nosso Newsletter!</AlertTitle>Verifique sua Caixa de Entrada</Alert>
+                        <Alert severity="success" onClose={() => setSucesso(false)} sx={{ width: '100%' }}> <AlertTitle>Obrigado por assinar nosso Newsletter!</AlertTitle>Verifique sua Caixa de Entrada</Alert>
                     </Snackbar>
                     :
                     <></>
@@ -198,12 +196,12 @@ export default function Page(page: any) {
             {
                 registrado ?
                     <Snackbar
-                        anchorOrigin={{ vertical:"bottom", horizontal:"right" }}
+                        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                         open={registrado}
                         autoHideDuration={6000}
-                        onClose={()=>setRegistrado(false)}
+                        onClose={() => setRegistrado(false)}
                     >
-                        <Alert severity="warning" onClose={()=>setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
+                        <Alert severity="warning" onClose={() => setRegistrado(false)} sx={{ width: '100%' }}> <AlertTitle>Esse e-mail já foi registrado na Newsletter!</AlertTitle>Cheque sua Caixa de Entrada!</Alert>
                     </Snackbar>
                     :
                     <></>
@@ -211,12 +209,12 @@ export default function Page(page: any) {
             {
                 falha ?
                     <Snackbar
-                        anchorOrigin={{ vertical:"bottom", horizontal:"right" }}
+                        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                         open={falha}
                         autoHideDuration={6000}
-                        onClose={()=>setFalha(false)}
+                        onClose={() => setFalha(false)}
                     >
-                        <Alert severity="error" onClose={()=>setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
+                        <Alert severity="error" onClose={() => setFalha(false)} sx={{ width: '100%' }}> <AlertTitle>Ocorreu um erro ao tentar assinar a Newsletter!</AlertTitle></Alert>
                     </Snackbar>
                     :
                     <></>
