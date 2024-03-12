@@ -70,7 +70,7 @@ export default function Page(page: any) {
     useEffect(() => {
         if (window.location.href.includes("/pt-br")) {
             setLingua("pt-br");
-            setLinguaLink("pt-br");
+            setLinguaLink("");
         } else if (window.location.href.includes("/en-us")) {
             setLingua("en-us");
             setLinguaLink("en-us");
@@ -78,8 +78,8 @@ export default function Page(page: any) {
             setLingua("es-es");
             setLinguaLink("es-es");
         } else {
-            setLingua("en-us");
-            setLinguaLink("en-us");
+            setLingua("pt-br");
+            setLinguaLink("");
         }
 
         const pos = searchParams.get("spos");
