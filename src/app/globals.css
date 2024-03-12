@@ -28,6 +28,10 @@ html {
   scroll-behavior: smooth;
 }
 
+h2 {
+  @apply my-3;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
