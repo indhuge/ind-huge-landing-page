@@ -167,8 +167,8 @@ export default function Contato(slice: ContatoProps) {
                     <CssTextField
                         id="nome"
                         type="text"
-                        label="Nome Completo"
-                        placeholder="Digite seu nome..."
+                        label={slice?.slice?.primary?.label_nome}
+                        placeholder={slice?.slice?.primary?.placeholder_nome as string}
                         inputProps={{ style: { color: "#FFFFFF" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.nome}
@@ -181,8 +181,8 @@ export default function Contato(slice: ContatoProps) {
                     <CssTextField
                         id="telefone"
                         type="text"
-                        label="Telefone(apenas números)"
-                        placeholder="46912345678"
+                        label={slice?.slice?.primary?.label_telefone}
+                        placeholder={slice?.slice?.primary?.placeholder_telefone as string}
                         inputProps={{ pattern: "[0-9]{10,11}", style: { color: "#FFFFFF" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.telefone}
@@ -195,8 +195,8 @@ export default function Contato(slice: ContatoProps) {
                     <CssTextField
                         id="email"
                         type="email"
-                        label="E-mail"
-                        placeholder="Digite seu melhor e-mail..."
+                        label={slice?.slice?.primary?.label_email}
+                        placeholder={slice?.slice?.primary?.placeholder_email as string}
                         inputProps={{ style: { color: "#FFFFFF" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.email}
@@ -209,8 +209,8 @@ export default function Contato(slice: ContatoProps) {
                     <CssTextField
                         id="mensagem"
                         type="text"
-                        label="Mensagem"
-                        placeholder="Escreva sua dúvida ou motivo de contato..."
+                        label={slice?.slice?.primary?.label_mensagem}
+                        placeholder={slice?.slice?.primary?.placeholder_mensagem as string}
                         inputProps={{ style: { color: "#FFFFFF", height: "100px" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.mensagem}
@@ -231,9 +231,9 @@ export default function Contato(slice: ContatoProps) {
                                     style={{ color: "white" }}
                                 />
                             }
-                            label={<span className="text-sm Mobile:text-[4vw]">Concordo em receber e-mails</span>}
+                            label={<span className="text-sm Mobile:text-[4vw]">{slice?.slice?.primary?.label_checkbox}</span>}
                         />
-                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="button" onClick={() => { mandaForm(formDados, setFormDados, setSucesso, setErro, setTipoErro) }} value="ENVIAR MENSAGEM" />
+                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 float-right Mobile:text-sm" type="button" onClick={() => { mandaForm(formDados, setFormDados, setSucesso, setErro, setTipoErro) }} value={slice?.slice?.primary?.label_enviar as string} />
                     </div>
                 </form>
             </div>

@@ -17,27 +17,6 @@ export default function Page(page: any) {
 
   const searchParams = useSearchParams();
 
-  useEffect(() => {
-    if (window.location.href.includes("/pt")) {
-      document.location.href = "../";
-    } else if (window.location.href.includes("/en")) {
-      setLingua("en");
-      setLinguaLink("en");
-    } else if (window.location.href.includes("/es")) {
-      setLingua("es");
-      setLinguaLink("es");
-    } else {
-      setLingua("pt");
-      setLinguaLink("");
-    }
-
-    // const pos = searchParams.get("spos");
-    // if (pos != undefined) {
-    //   const e = document.getElementById(pos);
-    //   e?.scrollIntoView({ behavior: "smooth" });
-    // }
-  }, []);
-
   return (
     <div
       id="inicio"
@@ -69,7 +48,7 @@ export default function Page(page: any) {
             <button
               onClick={() => {
                 const e = document.getElementById("funcionalidades")
-                e?.scrollIntoView({behavior: "smooth"});
+                e?.scrollIntoView({ behavior: "smooth" });
               }}
               className="text-[1vw] TabletPortrait:text-xl flex-initial font-bold bg-green px-6 py-2 rounded-full text-darkblue hover:scale-105 Mobile:text-sm"
             >

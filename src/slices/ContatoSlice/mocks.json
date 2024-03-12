@@ -19,7 +19,6 @@
 				"type": "Text"
 			},
 			"logo_whatsapp": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f",
@@ -37,6 +36,9 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"link_whatsapp": {
@@ -45,7 +47,6 @@
 				"type": "Text"
 			},
 			"logo_email": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
@@ -63,11 +64,64 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"link_email": {
 				"__TYPE__": "FieldContent",
 				"value": "stretch",
+				"type": "Text"
+			},
+			"label_nome": {
+				"__TYPE__": "FieldContent",
+				"value": "suit",
+				"type": "Text"
+			},
+			"label_telefone": {
+				"__TYPE__": "FieldContent",
+				"value": "income",
+				"type": "Text"
+			},
+			"label_email": {
+				"__TYPE__": "FieldContent",
+				"value": "crew",
+				"type": "Text"
+			},
+			"label_mensagem": {
+				"__TYPE__": "FieldContent",
+				"value": "neck",
+				"type": "Text"
+			},
+			"label_checkbox": {
+				"__TYPE__": "FieldContent",
+				"value": "cool",
+				"type": "Text"
+			},
+			"label_enviar": {
+				"__TYPE__": "FieldContent",
+				"value": "four",
+				"type": "Text"
+			},
+			"placeholder_nome": {
+				"__TYPE__": "FieldContent",
+				"value": "hello",
+				"type": "Text"
+			},
+			"placeholder_telefone": {
+				"__TYPE__": "FieldContent",
+				"value": "football",
+				"type": "Text"
+			},
+			"placeholder_email": {
+				"__TYPE__": "FieldContent",
+				"value": "watch",
+				"type": "Text"
+			},
+			"placeholder_mensagem": {
+				"__TYPE__": "FieldContent",
+				"value": "evidence",
 				"type": "Text"
 			}
 		},
