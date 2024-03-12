@@ -173,11 +173,11 @@ export default function Page(page: any) {
                         <label>{page?.data?.endereco}</label>
                     </span>
                 </div>
-                <div className="flex flex-row items-center place-content-end TabletPortrait:place-content-start TabletPortrait:h-[8vh]">
+                <div className="flex flex-row items-center place-content-end TabletPortrait:place-content-start TabletPortrait:h-[8vh] pr-6">
                     {page?.data?.redes_sociais.map((i: any, index: undefined) => {
                         let link = i?.link as string
                         return (
-                            <Link key={index} href={link} className="text-white ml-4 scale-125 hover:scale-150"><PrismicNextImage alt="" field={i?.icone} /></Link>
+                            <Link key={index} href={link} className="text-white mr-4 scale-125 hover:scale-150"><PrismicNextImage alt="" field={i?.icone} /></Link>
                         );
                     })}
                 </div>
