@@ -15,6 +15,11 @@ export type BlogParagraphSliceProps =
 const BlogParagraphSlice = ({
   slice,
 }: BlogParagraphSliceProps): JSX.Element => {
+  slice.primary.paragraph.forEach((e) => {
+    //@ts-expect-error
+    e.text = (e.text as string).replaceAll("\\line", "\n");
+  });
+  slice.primary.paragraph.forEach((e) => console.log(e));
   return (
     <section
       data-slice-type={slice.slice_type}
