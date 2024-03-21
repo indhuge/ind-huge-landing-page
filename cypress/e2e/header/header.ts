@@ -13,5 +13,5 @@ Then("I click on the CTA", () => {
 });
 
 Then("I should go to the contact form", () => {
-  cy.url().should('include', '/?spos=contactForm');
+  cy.url().should("include", "/#contactForm");
 });
