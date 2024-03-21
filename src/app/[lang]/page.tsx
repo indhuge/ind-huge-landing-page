@@ -11,11 +11,11 @@ import Head from "next/head";
 type Params = { uid: "landing_page", lang : string };
 export const dynamic = 'force-dynamic'
 
-export default async function Page() {
+export default async function Page({ params }: { params: Params }) {
   const client = createClient();
-  const page = await client.getSingle("landing_page",).catch(() => notFound());
+  const page = await client.getSingle("landing_page", {lang : params.lang}).catch(() => notFound());
   const banner = await client
-    .getByUID("banner", "banner",)
+    .getByUID("banner", "banner", {lang : params.lang})
     .catch(() => notFound());
   return (
     <>
@@ -40,7 +40,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getByUID("landing_page", "landing_page")
+    .getByUID("landing_page", "landing_page", {lang : params.lang})
     .catch(() => notFound());
 
   return {

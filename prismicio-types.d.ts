@@ -746,6 +746,28 @@ interface FooterDocumentData {
   descricao_newsletter: prismic.KeyTextField;
 
   /**
+   * Label Checkbox field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.label_checkbox
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_checkbox: prismic.KeyTextField;
+
+  /**
+   * Label Enviar field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.label_enviar
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_enviar: prismic.KeyTextField;
+
+  /**
    * Direitos field in *Footer*
    *
    * - **Field Type**: Text
@@ -1761,6 +1783,106 @@ export interface ContatoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   link_email: prismic.KeyTextField;
+
+  /**
+   * Label Nome field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.label_nome
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_nome: prismic.KeyTextField;
+
+  /**
+   * Label Telefone field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.label_telefone
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_telefone: prismic.KeyTextField;
+
+  /**
+   * Label Email field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.label_email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_email: prismic.KeyTextField;
+
+  /**
+   * Label Mensagem field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.label_mensagem
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_mensagem: prismic.KeyTextField;
+
+  /**
+   * Label Checkbox field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.label_checkbox
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_checkbox: prismic.KeyTextField;
+
+  /**
+   * Label Enviar field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.label_enviar
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_enviar: prismic.KeyTextField;
+
+  /**
+   * Placeholder Nome field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.placeholder_nome
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  placeholder_nome: prismic.KeyTextField;
+
+  /**
+   * Placeholder Telefone field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.placeholder_telefone
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  placeholder_telefone: prismic.KeyTextField;
+
+  /**
+   * Placeholder Email field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.placeholder_email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  placeholder_email: prismic.KeyTextField;
+
+  /**
+   * Placeholder Mensagem field in *ContatoSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contato.primary.placeholder_mensagem
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  placeholder_mensagem: prismic.KeyTextField;
 }
 
 /**

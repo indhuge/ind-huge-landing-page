@@ -8,9 +8,9 @@ on:
       - bugfix/*
       - hotfix/*
       - main
+      - dev
   pull_request:
     branches:
-      - dev
       - hmg
 
 env:
