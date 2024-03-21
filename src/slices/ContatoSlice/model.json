@@ -68,6 +68,76 @@
             "label": "Link Email",
             "placeholder": ""
           }
+        },
+        "label_nome": {
+          "type": "Text",
+          "config": {
+            "label": "Label Nome",
+            "placeholder": ""
+          }
+        },
+        "label_telefone": {
+          "type": "Text",
+          "config": {
+            "label": "Label Telefone",
+            "placeholder": ""
+          }
+        },
+        "label_email": {
+          "type": "Text",
+          "config": {
+            "label": "Label Email",
+            "placeholder": ""
+          }
+        },
+        "label_mensagem": {
+          "type": "Text",
+          "config": {
+            "label": "Label Mensagem",
+            "placeholder": ""
+          }
+        },
+        "label_checkbox": {
+          "type": "Text",
+          "config": {
+            "label": "Label Checkbox",
+            "placeholder": ""
+          }
+        },
+        "label_enviar": {
+          "type": "Text",
+          "config": {
+            "label": "Label Enviar",
+            "placeholder": ""
+          }
+        },
+        "placeholder_nome": {
+          "type": "Text",
+          "config": {
+            "label": "Placeholder Nome",
+            "placeholder": ""
+          }
+        },
+        "placeholder_telefone": {
+          "type": "Text",
+          "config": {
+            "label": "Placeholder Telefone",
+            "placeholder": ""
+          }
+        },
+        "placeholder_email": {
+          "type": "Text",
+          "config": {
+            "label": "Placeholder Email",
+            "placeholder": ""
+          }
+        },
+        "placeholder_mensagem": {
+          "type": "Text",
+          "config": {
+            "label": "Placeholder Mensagem",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

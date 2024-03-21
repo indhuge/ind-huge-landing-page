@@ -7,12 +7,12 @@ import React from "react";
 import FaqComponent from "@/components/faqComponent";
 import Head from "next/head";
 
-type Params = { uid: "faq" };
+type Params = { uid: "faq", lang : string };
 
 export default async function Faq({ params }: { params: Params }) {
   const client = createClient();
   const dados = {
-    page: await client.getSingle("faq").catch(() => notFound()),
+    page: await client.getSingle("faq", { lang: params.lang }).catch(() => notFound()),
     categorias: await client.getAllByType("category"),
     blogPosts: await client.getAllByType("blog_post")
   }
@@ -40,7 +40,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getSingle("faq")
+    .getSingle("faq", { lang: params.lang }).catch(() => notFound())
     .catch(() => notFound());
 
   return {

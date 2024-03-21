@@ -6,7 +6,7 @@ import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 import Link from "next/link";
 import BlogCardSkeleton from "../BlogCard/skeleton";
 import { motion, AnimatePresence } from "framer-motion";
-import { GetCategories } from "@/app/blog/[id]/service";
+import { GetCategories } from "@/app/[lang]/blog/[id]/service";
 
 export default function RelatedPosts({
   uid,

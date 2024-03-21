@@ -6,10 +6,11 @@ import { Metadata } from "next";
 import { createClient } from "@/prismicio";
 import { notFound } from "next/navigation";
 
-type Params = { uid: "blog" };
+type Params = { uid: "blog", lang: string };
 
 export default async function BlogPage({ params }: { params: Params }) {
-  const page = await getBlogPage();
+  const client = createClient();
+  const page = await client.getSingle("blog", { lang: params.lang }).catch(() => notFound());
   //const metaimage = require(page?.data?.meta_image as string)
   return <SliceZone slices={page.data.slices} components={components} />;
 }
@@ -21,7 +22,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getSingle("blog")
+    .getSingle("blog", { lang: params.lang })
     .catch(() => notFound());
 
   return {

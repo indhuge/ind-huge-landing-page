@@ -125,6 +125,20 @@
           "placeholder": ""
         }
       },
+      "label_checkbox": {
+        "type": "Text",
+        "config": {
+          "label": "Label Checkbox",
+          "placeholder": ""
+        }
+      },
+      "label_enviar": {
+        "type": "Text",
+        "config": {
+          "label": "Label Enviar",
+          "placeholder": ""
+        }
+      },
       "direitos": {
         "type": "Text",
         "config": {
