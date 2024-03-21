@@ -25,6 +25,13 @@
             "label": "Call To Action Text",
             "placeholder": ""
           }
+        },
+        "lang": {
+          "type": "Text",
+          "config": {
+            "label": "Language",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

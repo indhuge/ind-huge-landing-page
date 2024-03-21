@@ -115,6 +115,13 @@
             "label": "Auto Scroll Interval (s)",
             "placeholder": "10"
           }
+        },
+        "lang": {
+          "type": "Text",
+          "config": {
+            "label": "Language",
+            "placeholder": ""
+          }
         }
       },
       "items": {
@@ -172,6 +179,13 @@
           "type": "Text",
           "config": {
             "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "lang": {
+          "type": "Text",
+          "config": {
+            "label": "Language",
             "placeholder": ""
           }
         }

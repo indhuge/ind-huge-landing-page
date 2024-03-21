@@ -11,7 +11,7 @@ import Link from "next/link";
 export default function Cases({ slice }: any) {
   const [news,setNews] = useState<BlogPostDocument<string>[]>()
   useEffect(()=> {
-    GetNewsPosts().then((news)=>{setNews(news)});
+    GetNewsPosts(slice?.primary?.lang as string).then((news)=>{setNews(news)});
   })
     return(
       <div className="w-full h-fit pt-20 px-10 TabletPortrait:px-4 bg-white">
