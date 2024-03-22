@@ -211,7 +211,7 @@ export default function Contato(slice: ContatoProps) {
                         type="text"
                         label={slice?.slice?.primary?.label_mensagem}
                         placeholder={slice?.slice?.primary?.placeholder_mensagem as string}
-                        inputProps={{ style: { color: "#FFFFFF", height: "100px" } }}
+                        inputProps={{ style: { color: "#FFFFFF", height: "100px", overflow: "auto" } }}
                         InputLabelProps={{ style: { color: "#FFFFFF" } }}
                         value={formDados.mensagem}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
