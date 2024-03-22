@@ -9,10 +9,10 @@ import Head from "next/head";
 
 export default async function BlogPage({ params }: { params: { id: string, lang: string } }) {
   const tPage = await GetBlogPage(params);
-  const tCategories = GetCategories();
-  const newsletterInfo = GetNewsletter();
+  const tCategories = GetCategories(params.lang);
+  const newsletterInfo = GetNewsletter(params.lang);
 
-  return <BlogPost post={await tPage} categories={await tCategories} newsletter={(await newsletterInfo)!!} />;
+  return <BlogPost lang={ params.lang } post={await tPage} categories={await tCategories} newsletter={(await newsletterInfo)!!} />;
 }
 
 export async function generateMetadata(

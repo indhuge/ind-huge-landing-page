@@ -17,10 +17,11 @@ export default function Cases({ slice }: any) {
   const [pages, setPages] = useState<BlogPostDocument<string>[]>();
 
   useEffect(() => {
-    getHighlightedPosts().then((e) => {
+    //console.log(slice?.primary?.lang)
+    getHighlightedPosts(slice?.primary?.lang as string).then((e) => {
       setPages(e);
     });
-  }, []);
+  }, [slice?.primary?.lang]);
   
   
   const MakeTranslation = (value: number) => {

@@ -40,7 +40,7 @@ export default function RecentsPostsAndCategoriesComponent({
   };
 
   useEffect(() => {
-    getCategoriesAndPosts().then((e) => {
+    getCategoriesAndPosts(slice?.primary?.lang as string).then((e) => {
       setCategories(e.categories);
       setPosts(e.posts);
       setPostsView(seeAll(e.posts, e.categories));

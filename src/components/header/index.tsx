@@ -77,15 +77,9 @@ export default function Page(page: any) {
   ];
 
   const mudaLingua = (event: SelectChangeEvent) => {
-    if (
-      window.location.href.includes("/en-us") ||
-      window.location.href.includes("/es-es") ||
-      window.location.href.includes("/pt-br")
-    ) {
-      document.location.href = `../${event.target.value}`;
-    } else {
-      document.location.href = `./${event.target.value}`;
-    }
+    
+      document.location.href = `/${event.target.value}`;
+    
     setLingua(event.target.value as string);
   };
 
@@ -160,7 +154,7 @@ export default function Page(page: any) {
               if (pathname == "/") {
                 scrollToElement("contactForm");
                 window.location.hash = "contactForm";
-              } else router.push(`../${linguaLink}/?spos=contactForm`);
+              } else router.push(`/${linguaLink}/?spos=contactForm`);
             }}
             className="hover:scale-105 bg-green px-6 py-2 rounded-full font-bold text-darkblue w-[90%] ml-[5%]"
           />
@@ -207,7 +201,7 @@ export default function Page(page: any) {
           return (
             <Link
               key={index}
-              href={`../${linguaLink}/${link}`}
+              href={`/${linguaLink}/${link}`}
               className="text-white"
             >
               {i?.label}
@@ -260,7 +254,7 @@ export default function Page(page: any) {
             if (pathname == "/") {
               scrollToElement("contactForm");
               window.location.hash = "contactForm";
-            } else router.push(`../${linguaLink}/?spos=contactForm`);
+            } else router.push(`/${linguaLink}/?spos=contactForm`);
           }}
           className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 TabletPortrait:hidden"
         >

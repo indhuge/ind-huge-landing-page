@@ -12,6 +12,16 @@
 				"__TYPE__": "FieldContent",
 				"value": "at",
 				"type": "Text"
+			},
+			"label_checkbox": {
+				"__TYPE__": "FieldContent",
+				"value": "island",
+				"type": "Text"
+			},
+			"label_botao": {
+				"__TYPE__": "FieldContent",
+				"value": "wooden",
+				"type": "Text"
 			}
 		},
 		"items": []

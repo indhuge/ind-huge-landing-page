@@ -12,6 +12,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "student",
 				"type": "Text"
+			},
+			"lang": {
+				"__TYPE__": "FieldContent",
+				"value": "even",
+				"type": "Text"
 			}
 		},
 		"items": []
