@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import {
   BlogDocumentDataSlicesSlice,
@@ -23,18 +24,32 @@ import {
   getWhatsappShareLink,
 } from "./service";
 import Style from "./hoverEffect.module.css";
+import { useEffect, useState } from "react";
 
 export default function BlogPost({
+  lang,
   post,
   categories,
   newsletter,
 }: {
+  lang: string;
   post: BlogPostDocument<string>;
   categories: CategoryDocument<string>[];
   newsletter: BlogDocumentDataSlicesSlice;
 }) {
   // const date = new Date(post.data.date as string);
   const date = post.data.date?.split("-");
+  const [labels, setLabels] = useState({
+    leitura: "",
+    compartilhar: ""
+  })
+
+  useEffect(() => {
+    if (lang === "pt-br") { setLabels({ leitura: `Leitura de ${post.data.time_of_reading} ${post.data.time_of_reading === 1 ? "minuto" : "minutos"}`, compartilhar: "Compartilhar" }) }
+    else if (lang === "en-us") { setLabels({ leitura: `${post.data.time_of_reading} ${post.data.time_of_reading === 1 ? "minute" : "minutes"} Read`, compartilhar: "Share" }) }
+    else if (lang === "es-es") { setLabels({ leitura: `Lectura de ${post.data.time_of_reading} ${post.data.time_of_reading === 1 ? "minuto" : "minutos"}`, compartilhar: "Compartir" }) }
+  },[lang, post.data.time_of_reading])
+
   console.log(post.data.date);
   return (
     <div className="bg-white flex items-center justify-center">
@@ -45,7 +60,7 @@ export default function BlogPost({
           </h1>
           <div className="flex gap-2 md:hidden">
             <Image src={Clock} alt="Clock icon" />
-            <p className="text-darkgray">{`Leitura de ${post.data.time_of_reading} minutos`}</p>
+            <p className="text-darkgray">{labels.leitura}</p>
           </div>
           <div
             className={
@@ -76,15 +91,14 @@ export default function BlogPost({
             <div className="flex gap-5">
               <div className="flex gap-2 MaxMd:hidden">
                 <Image src={Clock} alt="Clock icon" />
-                <p className="text-darkgray">{`Leitura de ${post.data.time_of_reading} minutos`}</p>
+                <p className="text-darkgray">{labels.leitura}</p>
               </div>
               <div className="flex gap-2">
                 <Image src={tag} alt="tag" />
                 <p>
                   {
                     // @ts-expect-error
-                    categories.filter((e) => e.uid == post.data.category.uid)[0]
-                      .data.name
+                    categories.filter((e) => e.uid == post.data.category.uid)[0].data.name
                   }
                 </p>
               </div>
@@ -94,7 +108,7 @@ export default function BlogPost({
           <div className="grid grid-cols-[1fr_auto] items-center gap-5 my-8">
             <div className="bg-gray h-[0.05rem] w-full"></div>
             <div className="flex gap-2 items-center">
-              <p className="font-light text-darkgray">Compartilhar</p>
+              <p className="font-light text-darkgray">{labels.compartilhar}</p>
               <Link
                 href={getWhatsappShareLink(post.url ?? "")}
                 className="aspect-square w-11 rounded-full border-1 border-darkblue flex items-center justify-center px-2 transition-all duration-500 hover:px-0 hover:border-transparent"
@@ -134,6 +148,7 @@ export default function BlogPost({
             </div>
           </div>
           <RelatedPosts
+            lang={lang}
             uid={post.uid}
             categoryUID={
               //@ts-expect-error
@@ -148,8 +163,12 @@ export default function BlogPost({
               titulo={newsletter.primary.titulo}
               //@ts-expect-error
               subtitulo={newsletter.primary.subtitulo}
+              //@ts-expect-error
+              label_checkbox={newsletter.primary.label_checkbox}
+              //@ts-expect-error
+              label_botao={newsletter.primary.label_botao}
             />
-            <HighlightedPosts />
+            <HighlightedPosts lang={lang} />
           </div>
         </div>
       </div>

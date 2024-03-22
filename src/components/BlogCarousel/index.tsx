@@ -17,6 +17,7 @@ export default function Cases({ slice }: any) {
   const [pages, setPages] = useState<BlogPostDocument<string>[]>();
 
   useEffect(() => {
+    //console.log(slice?.primary?.lang)
     getHighlightedPosts(slice?.primary?.lang as string).then((e) => {
       setPages(e);
     });

@@ -10,22 +10,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 export default function HighlightedPosts({
+  lang,
   className,
 }: {
+  lang: string;
   className?: string;
 }) {
   const [pages, setPages] = useState<BlogPostDocument<string>[]>();
   const [isLoading, setIsLoading] = useState(true);
+  const [titulo, setTitulo] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    getHighlightedPosts().then((e) => {
+    if (lang === "pt-br") { setTitulo("Postagens Populares") }
+    else if (lang === "en-us") { setTitulo("Highlighted Posts") }
+    else if (lang === "es-es") { setTitulo("Publicaciones Populares") }
+    getHighlightedPosts(lang).then((e) => {
       setPages(e);
       setTimeout(() => {
         setIsLoading(false);
       }, 750);
     });
-  }, []);
+  }, [lang]);
 
   if (isLoading) {
     return (
@@ -36,7 +42,7 @@ export default function HighlightedPosts({
           className={className}
         >
           <h2 className="text-darkblue font-bold text-xl mb-4">
-            Postagens populares
+            {titulo}
           </h2>
           <div className="flex flex-col gap-5">
             {[1, 2, 3].map((e, i) => {
@@ -56,7 +62,7 @@ export default function HighlightedPosts({
         animate={{ opacity: 1 }}
       >
         <h2 className="text-darkblue font-bold text-xl mb-4">
-          Postagens populares
+          {titulo}
         </h2>
         <div className="flex flex-col gap-5">
           {pages.map((e, i) => {

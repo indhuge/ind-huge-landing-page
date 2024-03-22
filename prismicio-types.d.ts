@@ -2103,6 +2103,26 @@ export interface NewsletterSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitulo: prismic.KeyTextField;
+
+  /**
+   * Label Checkbox field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.label_checkbox
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_checkbox: prismic.KeyTextField;
+
+  /**
+   * Label Botao field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.label_botao
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_botao: prismic.KeyTextField;
 }
 
 /**

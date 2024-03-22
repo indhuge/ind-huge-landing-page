@@ -19,7 +19,7 @@ export default function Cases({ slice }: any) {
         <div className="pb-20 grid grid-flow-col-dense grid-cols-2 grid-rows-2 Mobile:grid-rows-4 Mobile:grid-cols-1 w-full h-full gap-4">
         {news?.map((item:BlogPostDocument<string>, i:number) => {
           const isLastRow = (i === 2);
-          console.log(item.data.image.url)
+          //console.log(item.data.image.url)
           const style = {
             backgroundImage:`url(${item.data.image.url})`
           }

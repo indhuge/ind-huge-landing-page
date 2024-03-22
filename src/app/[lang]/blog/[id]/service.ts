@@ -8,13 +8,13 @@ export async function GetBlogPage(params: {id: string, lang: string}) {
   return page;
 }
 
-export async function GetCategories() {
+export async function GetCategories(lang: string) {
   const client = createClient();
-  return await client.getAllByType("category");
+  return await client.getAllByType("category", {lang: lang});
 }
 
-export async function GetNewsletter()
+export async function GetNewsletter(lang: string)
 {
-  const blog = await getBlogPage();
+  const blog = await getBlogPage(lang);
   return blog.data.slices.find((e) => e.slice_type == "newsletter");
 }

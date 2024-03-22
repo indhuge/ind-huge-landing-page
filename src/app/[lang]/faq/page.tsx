@@ -13,7 +13,7 @@ export default async function Faq({ params }: { params: Params }) {
   const client = createClient();
   const dados = {
     page: await client.getSingle("faq", { lang: params.lang }).catch(() => notFound()),
-    categorias: await client.getAllByType("category"),
+    categorias: await client.getAllByType("category", { lang: params.lang }),
     blogPosts: await client.getAllByType("blog_post", {lang: params.lang})
   }
   //const metaimage = require(dados?.page?.data?.meta_image as string)
