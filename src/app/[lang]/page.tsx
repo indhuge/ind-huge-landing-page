@@ -45,6 +45,14 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL('https://www.indhuge.com'),
+    alternates: {
+      canonical: '/',
+      languages: {
+        'pt-br': '/pt-br',
+        'en-us': '/en-us',
+        'es-es': '/es-es',
+      },
+    },
     title: page.data.meta_title,
     description: page.data.meta_description,
     openGraph: {

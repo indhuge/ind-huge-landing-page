@@ -22,6 +22,14 @@ export async function generateMetadata(
   const tPage = await GetBlogPage(params);
   return {
     metadataBase: new URL('https://www.indhuge.com'),
+    alternates: {
+      canonical: '/',
+      languages: {
+        'pt-br': '/pt-br',
+        'en-us': '/en-us',
+        'es-es': '/es-es',
+      },
+    },
     title: tPage?.data?.meta_title,
     description: tPage?.data?.meta_description,
     openGraph: {
