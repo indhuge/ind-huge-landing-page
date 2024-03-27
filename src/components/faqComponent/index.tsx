@@ -19,8 +19,6 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
 
     var limitador = 0
 
-    categorias?.map((i, index) => { console.log(i?.data?.name, i?.data?.is_visible) });
-
     const [topico, setTopico] = useState('');
 
     const mudaTopico = (event: SelectChangeEvent) => {

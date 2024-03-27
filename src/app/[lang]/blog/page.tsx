@@ -30,7 +30,7 @@ export async function generateMetadata({
     alternates: {
       canonical: '/',
       languages: {
-        'pt-br': '/pt-br',
+        'pt-br': '/',
         'en-us': '/en-us',
         'es-es': '/es-es',
       },
@@ -42,6 +42,12 @@ export async function generateMetadata({
       description: page?.data?.meta_title as string,
       images: [page.data.meta_image.url ?? ""],
       url: page.data.meta_url as string,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.data.meta_title as string,
+      description: page.data.meta_description as string,
+      images: [page.data.meta_image.url ?? ""], // Must be an absolute URL
     },
   };
 }
