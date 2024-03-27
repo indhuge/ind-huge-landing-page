@@ -19,6 +19,9 @@ export default async function Page({ params }: { params: Params }) {
     .catch(() => notFound());
   return (
     <>
+      <Head>
+        <meta http-equiv="content-language" content={params.lang}/>
+      </Head>
       {/*Script Hubspot*/}
       <script
         type="text/javascript"

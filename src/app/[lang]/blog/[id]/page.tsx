@@ -33,10 +33,18 @@ export async function generateMetadata(
     title: tPage?.data?.meta_title,
     description: tPage?.data?.meta_description,
     openGraph: {
+      type: "website",
       title: tPage?.data?.meta_title as string,
       description: tPage?.data?.meta_title as string,
       images: [tPage.data.meta_image.url ?? ""],
       url: tPage.data.meta_url as string,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: tPage.data.meta_title as string,
+      site: "https://www.indhuge.com",
+      description: tPage.data.meta_description as string,
+      images: [tPage.data.meta_image.url ?? ""], // Must be an absolute URL
     },
   };
 }
