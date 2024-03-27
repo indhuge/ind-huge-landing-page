@@ -50,7 +50,6 @@ export default function BlogPost({
     else if (lang === "es-es") { setLabels({ leitura: `Lectura de ${post.data.time_of_reading} ${post.data.time_of_reading === 1 ? "minuto" : "minutos"}`, compartilhar: "Compartir" }) }
   },[lang, post.data.time_of_reading])
 
-  console.log(post.data.date);
   return (
     <div className="bg-white flex items-center justify-center">
       <div className="LaptopS:container px-5 LaptopS:px-0 py-16 grid grid-cols-[3fr_1fr] MaxBlogGrid:grid-cols-1 gap-10">

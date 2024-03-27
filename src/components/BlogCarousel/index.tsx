@@ -58,8 +58,6 @@ export default function Cases({ slice }: any) {
     );
     _setInterval(tmp);
   }, [selected]);
-
-  console.log(pages);
   
   return (
     <div className="w-full h-fit py-24 Mobile:pt-4 Mobile:pb-0 flex-col justify-center items-center gap-8 flex Mobile:gap-0 bg-white overflow-hidden relative">

@@ -42,10 +42,10 @@ export default function Page(page: any) {
       setLinguaLink("");
     } else if (window.location.href.includes("/en-us")) {
       setLingua("en-us");
-      setLinguaLink("en-us");
+      setLinguaLink("en-us/");
     } else if (window.location.href.includes("/es-es")) {
       setLingua("es-es");
-      setLinguaLink("es-es");
+      setLinguaLink("es-es/");
     } else {
       setLingua("pt-br");
       setLinguaLink("");
@@ -134,7 +134,7 @@ export default function Page(page: any) {
       <List>
         {page?.data?.links.map((i: any, index: undefined) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton href={`../${linguaLink}/${i?.link}`}>
+            <ListItemButton href={`../${linguaLink}${i?.link}`}>
               <ListItemText primary={i?.label} />
             </ListItemButton>
           </ListItem>
@@ -154,7 +154,7 @@ export default function Page(page: any) {
               if (pathname == "/") {
                 scrollToElement("contactForm");
                 window.location.hash = "contactForm";
-              } else router.push(`/${linguaLink}/?spos=contactForm`);
+              } else router.push(`/${linguaLink}?spos=contactForm`);
             }}
             className="hover:scale-105 bg-green px-6 py-2 rounded-full font-bold text-darkblue w-[90%] ml-[5%]"
           />
@@ -201,7 +201,7 @@ export default function Page(page: any) {
           return (
             <Link
               key={index}
-              href={`/${linguaLink}/${link}`}
+              href={`/${linguaLink}${link}`}
               className="text-white"
             >
               {i?.label}
@@ -254,7 +254,7 @@ export default function Page(page: any) {
             if (pathname == "/") {
               scrollToElement("contactForm");
               window.location.hash = "contactForm";
-            } else router.push(`/${linguaLink}/?spos=contactForm`);
+            } else router.push(`/${linguaLink}?spos=contactForm`);
           }}
           className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 TabletPortrait:hidden"
         >
