@@ -45,12 +45,12 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL('https://www.indhuge.com'),
+    
     alternates: {
+
       canonical: '/',
       languages: {
         'pt-br': '/',
-        'en-us': '/en-us',
-        'es-es': '/es-es',
       },
     },
     title: page.data.meta_title,
