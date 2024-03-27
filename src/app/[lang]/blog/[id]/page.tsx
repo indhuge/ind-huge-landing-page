@@ -21,6 +21,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const tPage = await GetBlogPage(params);
   return {
+    metadataBase: new URL('https://www.indhuge.com'),
     title: tPage?.data?.meta_title,
     description: tPage?.data?.meta_description,
     openGraph: {

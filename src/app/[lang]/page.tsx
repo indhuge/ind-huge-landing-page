@@ -44,6 +44,7 @@ export async function generateMetadata({
     .catch(() => notFound());
 
   return {
+    metadataBase: new URL('https://www.indhuge.com'),
     title: page.data.meta_title,
     description: page.data.meta_description,
     openGraph: {
