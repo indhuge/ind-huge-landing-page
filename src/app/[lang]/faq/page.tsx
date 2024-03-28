@@ -19,6 +19,54 @@ export default async function Faq({ params }: { params: Params }) {
   //const metaimage = require(dados?.page?.data?.meta_image as string)
   return (
     <>
+      <Head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+              "@type": "Question",
+              "name": ${dados?.page?.data?.item[0]?.pergunta},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "<p>${dados?.page?.data?.item[0]?.resposta}</p>"
+              }
+            }, 
+            {
+              "@type": "Question",
+              "name": ${dados?.page?.data?.item[1]?.pergunta},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "<p>${dados?.page?.data?.item[1]?.resposta}</p>"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": ${dados?.page?.data?.item[2]?.pergunta},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "<p>${dados?.page?.data?.item[2]?.resposta}</p>"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": ${dados?.page?.data?.item[3]?.pergunta},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "<p>${dados?.page?.data?.item[3]?.resposta}</p>"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": ${dados?.page?.data?.item[4]?.pergunta},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "<p>${dados?.page?.data?.item[4]?.resposta}</p>"
+              }
+            }]
+          }
+        `}} />
+      </Head>
       {/*Script Hubspot*/}
       <script
         type="text/javascript"

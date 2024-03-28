@@ -12,7 +12,30 @@ export default async function BlogPage({ params }: { params: { id: string, lang:
   const tCategories = GetCategories(params.lang);
   const newsletterInfo = GetNewsletter(params.lang);
 
-  return <BlogPost lang={ params.lang } post={await tPage} categories={await tCategories} newsletter={(await newsletterInfo)!!} />;
+  return (
+    <>
+      <Head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: `
+          {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "headline": ${tPage?.data?.title},
+            "image": [
+              ${tPage?.data?.image}
+            ],
+            "datePublished": ${tPage?.data?.date},
+            "dateModified": ${tPage?.data?.date},
+            "author": [{
+                "@type": "Organization",
+                "name": "indhuge",
+                "url": "https://www.indhuge.com"
+            }]
+          }
+        `}} />
+      </Head>
+      <BlogPost lang={ params.lang } post={await tPage} categories={await tCategories} newsletter={(await newsletterInfo)!!} />
+    </>
+  );
 }
 
 export async function generateMetadata(
