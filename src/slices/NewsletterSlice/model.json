@@ -25,6 +25,20 @@
             "label": "Subtitulo",
             "placeholder": ""
           }
+        },
+        "label_checkbox": {
+          "type": "Text",
+          "config": {
+            "label": "Label Checkbox",
+            "placeholder": ""
+          }
+        },
+        "label_botao": {
+          "type": "Text",
+          "config": {
+            "label": "Label Botao",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

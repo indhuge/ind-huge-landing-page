@@ -9,35 +9,42 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GetCategories } from "@/app/[lang]/blog/[id]/service";
 
 export default function RelatedPosts({
+  lang,
   uid,
   categoryUID,
 }: {
+  lang: string;
   uid: string;
   categoryUID: string;
 }) {
   const [posts, setPosts] = useState<BlogPostDocument<string>[]>();
   const [categories, setCategories] = useState<CategoryDocument<string>[]>();
   const [isLoading, setIsLoading] = useState(true);
+  const [titulo, setTitulo] = useState("");
 
   const trySetIsLoading = () => {
     setIsLoading(false);
   };
 
+
   useEffect(() => {
-    getRelatedPosts(uid, categoryUID).then((e) => {
+    if (lang === "pt-br") { setTitulo("Posts Relacionados") }
+    else if (lang === "en-us") { setTitulo("Related Posts") }
+    else if (lang === "es-es") { setTitulo("publicaciones relacionadas") }
+    getRelatedPosts(lang, uid, categoryUID).then((e) => {
       setPosts(e);
       setTimeout(() => {
         trySetIsLoading();
       }, 1000);
     });
 
-    GetCategories().then((e) => {
+    GetCategories(lang).then((e) => {
       setCategories(e);
       setTimeout(() => {
         trySetIsLoading();
       }, 1000);
     });
-  }, []);
+  }, [categoryUID, lang, uid]);
 
   if (isLoading) {
     return (
@@ -48,7 +55,7 @@ export default function RelatedPosts({
           exit={{ opacity: 0 }}
         >
           <h2 className="text-darkblue text-2xl font-bold mb-4">
-            Posts Relacionados
+            {titulo}
           </h2>
           <div className="flex gap-5 TabletPortrait:grid TabletPortrait:grid-cols-1 TabletPortrait:justify-center TabletPortrait:items-center">
             {[1, 2].map((e, i) => {
@@ -71,7 +78,7 @@ export default function RelatedPosts({
         exit={{ opacity: 0 }}
       >
         <h2 className="text-darkblue text-2xl font-bold mb-4">
-          Posts Relacionados
+          {titulo}
         </h2>
         <div className="flex gap-5 TabletPortrait:grid TabletPortrait:grid-cols-1 TabletPortrait:justify-center TabletPortrait:items-center">
           {posts?.map((e, i) => {

@@ -459,6 +459,61 @@ interface FaqDocumentData {
   banner_texto: prismic.KeyTextField;
 
   /**
+   * Placeholder Pesquisa field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.placeholder_pesquisa
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  placeholder_pesquisa: prismic.KeyTextField;
+
+  /**
+   * Label Topico Selecionar field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.label_topico_selecionar
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_topico_selecionar: prismic.KeyTextField;
+
+  /**
+   * Label Topico Nenhum field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.label_topico_nenhum
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_topico_nenhum: prismic.KeyTextField;
+
+  /**
+   * Titulo Blog Slice field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.titulo_blog_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo_blog_slice: prismic.KeyTextField;
+
+  /**
+   * Call to Action Blog field in *FAQ*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.cta_blog
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cta_blog: prismic.KeyTextField;
+
+  /**
    * item field in *FAQ*
    *
    * - **Field Type**: Group
@@ -1497,6 +1552,16 @@ export interface CasesSliceSliceBlogCarouselPrimary {
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   auto_scroll_interval: prismic.NumberField;
+
+  /**
+   * Language field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.primary.lang
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lang: prismic.KeyTextField;
 }
 
 /**
@@ -1580,6 +1645,16 @@ export interface CasesSliceSliceNewsSectionPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Language field in *CasesSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cases_slice.primary.lang
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lang: prismic.KeyTextField;
 }
 
 /**
@@ -2028,6 +2103,26 @@ export interface NewsletterSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitulo: prismic.KeyTextField;
+
+  /**
+   * Label Checkbox field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.label_checkbox
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_checkbox: prismic.KeyTextField;
+
+  /**
+   * Label Botao field in *NewsletterSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.label_botao
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label_botao: prismic.KeyTextField;
 }
 
 /**
@@ -2143,6 +2238,16 @@ export interface RecentPostsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   call_to_action_text: prismic.KeyTextField;
+
+  /**
+   * Language field in *RecentPosts → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recent_posts.primary.lang
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lang: prismic.KeyTextField;
 }
 
 /**
@@ -2198,6 +2303,16 @@ export interface RecentsPostsAndCategoriesSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   see_all_text: prismic.KeyTextField;
+
+  /**
+   * Language field in *RecentsPostsAndCategories → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: recents_posts_and_categories.primary.lang
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  lang: prismic.KeyTextField;
 }
 
 /**

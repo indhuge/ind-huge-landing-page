@@ -19,8 +19,6 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
 
     var limitador = 0
 
-    categorias?.map((i, index) => { console.log(i?.data?.name, i?.data?.is_visible) });
-
     const [topico, setTopico] = useState('');
 
     const mudaTopico = (event: SelectChangeEvent) => {
@@ -37,7 +35,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                         type="text"
                         value={pesquisa}
                         onChange={(e) => { setPesquisa(e.target.value) }}
-                        placeholder="Alguma dúvida? Busque em nossa central"
+                        placeholder={page?.data?.placeholder_pesquisa as string}
                     />
                     <Image className="absolute right-4 top-[35%]" src={iconePesquisa} alt="pesquisar" />
                 </div>
@@ -46,7 +44,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                 <div className="col-span-2">
                     <Box className="mt-12 w-[40%] TabletPortrait:w-[80%]" sx={{ minWidth: 120 }}>
                         <FormControl fullWidth>
-                            <InputLabel className="text-blue" id="demo-simple-select-label">Selecionar tópico</InputLabel>
+                            <InputLabel className="text-blue" id="demo-simple-select-label">{page?.data?.label_topico_selecionar}</InputLabel>
                             <Select
                                 className="rounded-full"
                                 labelId="demo-simple-select-label"
@@ -56,7 +54,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                                 onChange={mudaTopico}
                                 sx={{ color: blue[900] }}
                             >
-                                <MenuItem value={""}>Nenhum</MenuItem>
+                                <MenuItem value={""}>{page?.data?.label_topico_nenhum}</MenuItem>
                                 {categorias?.map((i, index) => {
                                     if (i?.data?.is_visible){
                                         return (
@@ -87,7 +85,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                     })}
                 </div>
                 <div className="pt-16">
-                    <label className="text-2xl text-blue font-bold ml-5 mb-7 TabletPortrait:ml-0">Conheça nosso blog</label>
+                    <label className="text-2xl text-blue font-bold ml-5 mb-7 TabletPortrait:ml-0">{page?.data?.titulo_blog_slice}</label>
                     {blogPosts.map((i: any, index) => {
                         if (i?.data?.category?.uid as string === topico || topico === "") {
                             if (limitador < 3) {
@@ -107,7 +105,7 @@ export default function FaqPesquisa(dados: { page: FaqDocument<string>, categori
                             }
                         }
                     })}
-                    <button className="bg-green py-2 rounded-full text-darkblue font-bold hover:scale-105 Mobile:text-sm w-[90%] ml-5 mt-5 mb-16 TabletPortrait:ml-[5%]" type="button" onClick={() => { router.push(`./blog?category=${topico}`) }}>VER MAIS ARTIGOS &#10140;</button>
+                    <button className="bg-green py-2 rounded-full text-darkblue font-bold hover:scale-105 Mobile:text-sm w-[90%] ml-5 mt-5 mb-16 TabletPortrait:ml-[5%]" type="button" onClick={() => { router.push(`./blog?category=${topico}`) }}>{page?.data?.cta_blog} &#10140;</button>
                 </div>
             </div>
         </>

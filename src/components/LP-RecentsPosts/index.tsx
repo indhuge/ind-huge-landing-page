@@ -19,19 +19,20 @@ import ArrowIcon from "/public/assets/arrow.svg";
 import Image from "next/image";
 import { RecentPostsProps } from "@/slices/RecentPosts";
 
+type Params = { lang : string };
+
 export default function RecentsPostsComponent({ slice }: RecentPostsProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<CategoryDocument<string>[]>();
   const [posts, setPosts] = useState<BlogPostDocument<string>[]>();
   const router = useRouter();
-
   useEffect(() => {
-    getCategoriesAndPosts().then((e) => {
+    getCategoriesAndPosts(slice?.primary?.lang as string).then((e) => {
       setCategories(e.categories);
       setPosts(seeAll(e.posts, e.categories));
       setTimeout(() => setIsLoading(false), 1000);
     });
-  }, []);
+  }, [slice?.primary?.lang]);
 
   if (isLoading)
     return (

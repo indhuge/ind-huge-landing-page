@@ -1,9 +1,9 @@
 import { createClient } from "@/prismicio";
 
-export async function GetNewsPosts() {
+export async function GetNewsPosts(lang: string) {
   const client = createClient();
   // Pega todas as paginas
-  const _posts = await client.getAllByType("blog_post");
+  const _posts = await client.getAllByType("blog_post", {lang: lang});
   
   // Filtra todas as paginas que possuem .data.category.uid iquais a news
   // @ts-expect-error

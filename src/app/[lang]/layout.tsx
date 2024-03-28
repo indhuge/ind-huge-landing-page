@@ -28,7 +28,7 @@ export default async function RootLayout({params, children}: {params: Params, ch
 
   console.log(header);
   return (
-    <html lang="en">
+    <html lang={params.lang}>
       <body className={inter.className}>
         <Header page={header} />
         <main>{children}</main>

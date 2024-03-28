@@ -80,9 +80,9 @@ export default function Newsletter(slice: NewsletterProps) {
                     <div className="flex items-center justify-between Mobile:flex-col">
                         <FormControlLabel
                             control={<Checkbox checked={checked} onChange={() => { setChecked(!checked) }} style={{ color: "white" }} />}
-                            label={<span className="text-sm">Concordo em receber e-mails</span>}
+                            label={<span className="text-sm">{slice?.slice?.primary?.label_checkbox}</span>}
                         />
-                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setEmail, setSucesso, setFalha, setRegistrado) }} value="INSCREVER-SE" disabled={!checked} />
+                        <input className="bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105 disabled:bg-slate-700 disabled:hover:scale-100 Mobile:text-sm TabletPortrait:m-0" type="button" onClick={() => { register(email, setEmail, setSucesso, setFalha, setRegistrado) }} value={slice?.slice?.primary?.label_botao as string} disabled={!checked} />
                     </div>
                 </form>
 

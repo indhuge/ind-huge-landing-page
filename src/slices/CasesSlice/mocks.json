@@ -152,6 +152,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "65",
 				"type": "Number"
+			},
+			"lang": {
+				"__TYPE__": "FieldContent",
+				"value": "surprise",
+				"type": "Text"
 			}
 		},
 		"items": [
@@ -229,6 +234,11 @@
 			"title": {
 				"__TYPE__": "FieldContent",
 				"value": "harder",
+				"type": "Text"
+			},
+			"lang": {
+				"__TYPE__": "FieldContent",
+				"value": "into",
 				"type": "Text"
 			}
 		},
