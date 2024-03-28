@@ -25,6 +25,13 @@
             "label": "See all text",
             "placeholder": ""
           }
+        },
+        "lang": {
+          "type": "Text",
+          "config": {
+            "label": "Language",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

@@ -19,6 +19,41 @@
           "placeholder": ""
         }
       },
+      "placeholder_pesquisa": {
+        "type": "Text",
+        "config": {
+          "label": "Placeholder Pesquisa",
+          "placeholder": ""
+        }
+      },
+      "label_topico_selecionar": {
+        "type": "Text",
+        "config": {
+          "label": "Label Topico Selecionar",
+          "placeholder": ""
+        }
+      },
+      "label_topico_nenhum": {
+        "type": "Text",
+        "config": {
+          "label": "Label Topico Nenhum",
+          "placeholder": ""
+        }
+      },
+      "titulo_blog_slice": {
+        "type": "Text",
+        "config": {
+          "label": "Titulo Blog Slice",
+          "placeholder": ""
+        }
+      },
+      "cta_blog": {
+        "type": "Text",
+        "config": {
+          "label": "Call to Action Blog",
+          "placeholder": ""
+        }
+      },
       "item": {
         "type": "Group",
         "config": {

@@ -12,6 +12,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "direct",
 				"type": "Text"
+			},
+			"lang": {
+				"__TYPE__": "FieldContent",
+				"value": "if",
+				"type": "Text"
 			}
 		},
 		"items": []

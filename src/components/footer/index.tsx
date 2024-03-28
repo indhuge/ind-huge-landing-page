@@ -73,10 +73,10 @@ export default function Page(page: any) {
             setLinguaLink("");
         } else if (window.location.href.includes("/en-us")) {
             setLingua("en-us");
-            setLinguaLink("en-us");
+            setLinguaLink("en-us/");
         } else if (window.location.href.includes("/es-es")) {
             setLingua("es-es");
-            setLinguaLink("es-es");
+            setLinguaLink("es-es/");
         } else {
             setLingua("pt-br");
             setLinguaLink("");
@@ -110,14 +110,14 @@ export default function Page(page: any) {
                     <div className="col-span-2 mx-5 TabletPortrait:col-span-1 TabletPortrait:mb-8">
                         <Link href={"https://www.indhuge.com"}><PrismicNextImage alt="" field={page?.data?.logo} /></Link>
                         <p className="my-7 TabletPortrait:w-[70vw]">{page?.data?.descricao_logo}</p>
-                        <button onClick={() => { window.location.href = `../${linguaLink}/?spos=contactForm` }} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
+                        <button onClick={() => { window.location.href = `../${linguaLink}?spos=contactForm` }} className="flex-initial bg-green px-6 py-2 rounded-full text-darkblue font-bold hover:scale-105">{page?.data?.cta_label}</button>
                     </div>
                     <div className="grid grid-cols-1 mx-5">
                         <h5 className="text-lg font-bold">{page?.data?.subtitulo_navegacao}</h5>
                         {page?.data?.links.map((i: any, index: undefined) => {
                             let link = i?.link as string
                             return (
-                                <Link key={index} href={`../${linguaLink}/${link}`} className="text-white text-sm TabletPortrait:text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4 hover:font-bold">{i?.label}</Link>
+                                <Link key={index} href={`../${linguaLink}${link}`} className="text-white text-sm TabletPortrait:text-[1vw] -mt-6 TabletPortrait:text-base TabletPortrait:mt-4 hover:font-bold">{i?.label}</Link>
                             );
                         })}
                     </div>

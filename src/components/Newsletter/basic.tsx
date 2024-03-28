@@ -59,10 +59,14 @@ async function register(email: string, setEmail: Dispatch<SetStateAction<string>
 export default function Newsletter({
   titulo,
   subtitulo,
+  label_checkbox,
+  label_botao,
   className,
 }: {
   titulo: string;
   subtitulo: string;
+  label_checkbox: string;
+  label_botao: string;
   className?: string;
 }) {
   const [email, setEmail] = useState("");
@@ -117,7 +121,7 @@ export default function Newsletter({
                 />
               }
               label={
-                <span className="text-sm">Concordo em receber e-mails</span>
+                <span className="text-sm">{label_checkbox}</span>
               }
             />
             <input
@@ -126,7 +130,7 @@ export default function Newsletter({
               onClick={() => {
                 register(email, setEmail, setSucesso, setFalha, setRegistrado);
               }}
-              value="INSCREVER-SE"
+              value={label_botao}
               disabled={!checked}
             />
           </div>
