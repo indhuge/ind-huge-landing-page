@@ -2,10 +2,10 @@
 import { createClient } from "@/prismicio";
 import { BlogPostDocument, CategoryDocument } from "../../../prismicio-types";
 
-export async function getCategoriesAndPosts() {
+export async function getCategoriesAndPosts(lang: string) {
   const client = createClient();
-  const c = client.getAllByType("category");
-  const p = client.getAllByType("blog_post");
+  const c = client.getAllByType("category", {lang: lang});
+  const p = client.getAllByType("blog_post", {lang: lang});
 
   return {
     categories: (await c).filter(
