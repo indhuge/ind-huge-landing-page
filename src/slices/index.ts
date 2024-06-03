@@ -8,6 +8,7 @@ export const components = {
   blog_paragraph_slice: dynamic(() => import("./BlogParagraphSlice")),
   cases_slice: dynamic(() => import("./CasesSlice")),
   contato: dynamic(() => import("./ContatoSlice")),
+  feature_page: dynamic(() => import("./FeaturePageSlice")),
   features_slice: dynamic(() => import("./FeaturesSlice")),
   newsletter: dynamic(() => import("./NewsletterSlice")),
   partners_slice: dynamic(() => import("./PartnersSlice")),

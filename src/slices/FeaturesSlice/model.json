@@ -49,6 +49,14 @@
             "label": "Content",
             "placeholder": ""
           }
+        },
+        "link_to_page": {
+          "type": "Link",
+          "config": {
+            "label": "Link To Page",
+            "placeholder": "",
+            "select": null
+          }
         }
       }
     }

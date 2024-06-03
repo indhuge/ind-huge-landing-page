@@ -30,6 +30,10 @@ const routes: prismic.ClientConfig["routes"] = [
     type: "blog_post",
     path: "/:lang?/blog/:uid",
   },
+  {
+    type: "feature",
+    path: "/:lang?/feature/:uid",
+  }
 ];
 
 /**
