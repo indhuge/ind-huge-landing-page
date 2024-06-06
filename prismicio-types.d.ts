@@ -590,6 +590,71 @@ interface FaqDocumentData {
 export type FaqDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FaqDocumentData>, "faq", Lang>;
 
+type FeatureDocumentDataSlicesSlice = FeaturePageSlice;
+
+/**
+ * Content for Feature documents
+ */
+interface FeatureDocumentData {
+  /**
+   * Slice Zone field in *Feature*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FeatureDocumentDataSlicesSlice> /**
+   * Meta Title field in *Feature*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: feature.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Feature*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Description field in *Feature*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: feature.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+}
+
+/**
+ * Feature document from Prismic
+ *
+ * - **API ID**: `feature`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FeatureDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<FeatureDocumentData>,
+    "feature",
+    Lang
+  >;
+
 /**
  * Item in *Footer → Links Navegação*
  */
@@ -1168,6 +1233,7 @@ export type AllDocumentTypes =
   | BlogPostDocument
   | CategoryDocument
   | FaqDocument
+  | FeatureDocument
   | FooterDocument
   | HeaderDocument
   | LandingPageDocument
@@ -1991,6 +2057,71 @@ export type ContatoSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FeaturePageSlice → Primary*
+ */
+export interface FeaturePageSliceDefaultPrimary {
+  /**
+   * Title field in *FeaturePageSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_page.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Image field in *FeaturePageSlice → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_page.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *FeaturePageSlice → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_page.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for FeaturePageSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturePageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturePageSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturePageSlice*
+ */
+type FeaturePageSliceVariation = FeaturePageSliceDefault;
+
+/**
+ * FeaturePageSlice Shared Slice
+ *
+ * - **API ID**: `feature_page`
+ * - **Description**: FeaturePage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturePageSlice = prismic.SharedSlice<
+  "feature_page",
+  FeaturePageSliceVariation
+>;
+
+/**
  * Primary content in *FeaturesSlice → Primary*
  */
 export interface FeaturesSliceSliceDefaultPrimary {
@@ -2048,6 +2179,16 @@ export interface FeaturesSliceSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   content: prismic.KeyTextField;
+
+  /**
+   * Link To Page field in *FeaturesSlice → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features_slice.items[].link_to_page
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_to_page: prismic.LinkField;
 }
 
 /**
@@ -2399,6 +2540,9 @@ declare module "@prismicio/client" {
       FaqDocumentData,
       FaqDocumentDataItemItem,
       FaqDocumentDataSlicesSlice,
+      FeatureDocument,
+      FeatureDocumentData,
+      FeatureDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataLinksItem,
@@ -2445,6 +2589,10 @@ declare module "@prismicio/client" {
       ContatoSliceDefaultPrimary,
       ContatoSliceVariation,
       ContatoSliceDefault,
+      FeaturePageSlice,
+      FeaturePageSliceDefaultPrimary,
+      FeaturePageSliceVariation,
+      FeaturePageSliceDefault,
       FeaturesSliceSlice,
       FeaturesSliceSliceDefaultPrimary,
       FeaturesSliceSliceDefaultItem,

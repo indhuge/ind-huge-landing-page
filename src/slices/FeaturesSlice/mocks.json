@@ -21,7 +21,6 @@
 					[
 						"icon",
 						{
-							"__TYPE__": "ImageContent",
 							"origin": {
 								"id": "main",
 								"url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
@@ -39,6 +38,9 @@
 								},
 								"background": "transparent"
 							},
+							"credits": null,
+							"alt": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					],
@@ -56,6 +58,16 @@
 							"__TYPE__": "FieldContent",
 							"value": "land",
 							"type": "Text"
+						}
+					],
+					[
+						"link_to_page",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "https://prismic.io"
+							}
 						}
 					]
 				]
