@@ -10,6 +10,7 @@ export const components = {
   contato: dynamic(() => import("./ContatoSlice")),
   feature_page: dynamic(() => import("./FeaturePageSlice")),
   features_slice: dynamic(() => import("./FeaturesSlice")),
+  galery_img_slice: dynamic(() => import("./GaleryImgSlice")),
   newsletter: dynamic(() => import("./NewsletterSlice")),
   partners_slice: dynamic(() => import("./PartnersSlice")),
   recent_posts: dynamic(() => import("./RecentPosts")),

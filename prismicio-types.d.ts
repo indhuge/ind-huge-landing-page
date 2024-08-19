@@ -977,6 +977,67 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 
+type GaleryDocumentDataSlicesSlice = GaleryImgSliceSlice;
+
+/**
+ * Content for Galery documents
+ */
+interface GaleryDocumentData {
+  /**
+   * Slice Zone field in *Galery*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galery.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<GaleryDocumentDataSlicesSlice> /**
+   * Meta Title field in *Galery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: galery.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Galery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: galery.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Galery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galery.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Galery document from Prismic
+ *
+ * - **API ID**: `galery`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GaleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<GaleryDocumentData>, "galery", Lang>;
+
 /**
  * Item in *Header → Links*
  */
@@ -1235,71 +1296,72 @@ export type AllDocumentTypes =
   | FaqDocument
   | FeatureDocument
   | FooterDocument
+  | GaleryDocument
   | HeaderDocument
   | LandingPageDocument
   | PostagensDestacadasDocument;
 
 /**
- * Primary content in *BigNumbersSlice → Primary*
+ * Primary content in *BigNumbersSlice → Default → Primary*
  */
 export interface BigNumbersSliceSliceDefaultPrimary {
   /**
-   * BigNumbersTitle field in *BigNumbersSlice → Primary*
+   * BigNumbersTitle field in *BigNumbersSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: big_numbers_slice.primary.bignumberstitle
+   * - **API ID Path**: big_numbers_slice.default.primary.bignumberstitle
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   bignumberstitle: prismic.KeyTextField;
 
   /**
-   * BigNumbersTitleHighlights field in *BigNumbersSlice → Primary*
+   * BigNumbersTitleHighlights field in *BigNumbersSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Palavras para destacar
-   * - **API ID Path**: big_numbers_slice.primary.bignumberstitlehighlights
+   * - **API ID Path**: big_numbers_slice.default.primary.bignumberstitlehighlights
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   bignumberstitlehighlights: prismic.KeyTextField;
 
   /**
-   * BigNumbersSliceButtontext field in *BigNumbersSlice → Primary*
+   * BigNumbersSliceButtontext field in *BigNumbersSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: big_numbers_slice.primary.bignumbersslicebuttontext
+   * - **API ID Path**: big_numbers_slice.default.primary.bignumbersslicebuttontext
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   bignumbersslicebuttontext: prismic.KeyTextField;
 
   /**
-   * BigNumbersSliceButtonLink field in *BigNumbersSlice → Primary*
+   * BigNumbersSliceButtonLink field in *BigNumbersSlice → Default → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: big_numbers_slice.primary.bignumbersslicebuttonlink
+   * - **API ID Path**: big_numbers_slice.default.primary.bignumbersslicebuttonlink
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   bignumbersslicebuttonlink: prismic.LinkField;
 
   /**
-   * BigNumbersImage field in *BigNumbersSlice → Primary*
+   * BigNumbersImage field in *BigNumbersSlice → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: big_numbers_slice.primary.bignumbersimage
+   * - **API ID Path**: big_numbers_slice.default.primary.bignumbersimage
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   bignumbersimage: prismic.ImageField<never>;
 
   /**
-   * BigNumbersImageVisibility field in *BigNumbersSlice → Primary*
+   * BigNumbersImageVisibility field in *BigNumbersSlice → Default → Primary*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
    * - **Default Value**: true
-   * - **API ID Path**: big_numbers_slice.primary.bignumbersimagevisibility
+   * - **API ID Path**: big_numbers_slice.default.primary.bignumbersimagevisibility
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   bignumbersimagevisibility: prismic.BooleanField;
@@ -1372,25 +1434,25 @@ export type BigNumbersSliceSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *BlogImageSlice → Primary*
+ * Primary content in *BlogImageSlice → Default → Primary*
  */
 export interface BlogImageSliceSliceDefaultPrimary {
   /**
-   * image field in *BlogImageSlice → Primary*
+   * image field in *BlogImageSlice → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_image_slice.primary.image
+   * - **API ID Path**: blog_image_slice.default.primary.image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
 
   /**
-   * Legenda field in *BlogImageSlice → Primary*
+   * Legenda field in *BlogImageSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_image_slice.primary.legenda
+   * - **API ID Path**: blog_image_slice.default.primary.legenda
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   legenda: prismic.KeyTextField;
@@ -1427,15 +1489,15 @@ export type BlogImageSliceSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *BlogParagraphSlice → Primary*
+ * Primary content in *BlogParagraphSlice → Default → Primary*
  */
 export interface BlogParagraphSliceSliceDefaultPrimary {
   /**
-   * Paragraph field in *BlogParagraphSlice → Primary*
+   * Paragraph field in *BlogParagraphSlice → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_paragraph_slice.primary.paragraph
+   * - **API ID Path**: blog_paragraph_slice.default.primary.paragraph
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   paragraph: prismic.RichTextField;
@@ -1472,35 +1534,35 @@ export type BlogParagraphSliceSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *CasesSlice → Primary*
+ * Primary content in *CasesSlice → CarouselLanding → Primary*
  */
 export interface CasesSliceSliceDefaultPrimary {
   /**
-   * Title field in *CasesSlice → Primary*
+   * Title field in *CasesSlice → CarouselLanding → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: cases_slice.primary.title
+   * - **API ID Path**: cases_slice.default.primary.title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * Subtitle field in *CasesSlice → Primary*
+   * Subtitle field in *CasesSlice → CarouselLanding → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: cases_slice.primary.subtitle
+   * - **API ID Path**: cases_slice.default.primary.subtitle
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitle: prismic.KeyTextField;
 
   /**
-   * Auto Scroll Interval (s) field in *CasesSlice → Primary*
+   * Auto Scroll Interval (s) field in *CasesSlice → CarouselLanding → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: 10
-   * - **API ID Path**: cases_slice.primary.auto_scroll_interval
+   * - **API ID Path**: cases_slice.default.primary.auto_scroll_interval
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   auto_scroll_interval: prismic.NumberField;
@@ -1606,25 +1668,25 @@ export type CasesSliceSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *CasesSlice → Primary*
+ * Primary content in *CasesSlice → BlogCarousel → Primary*
  */
 export interface CasesSliceSliceBlogCarouselPrimary {
   /**
-   * Auto Scroll Interval (s) field in *CasesSlice → Primary*
+   * Auto Scroll Interval (s) field in *CasesSlice → BlogCarousel → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: 10
-   * - **API ID Path**: cases_slice.primary.auto_scroll_interval
+   * - **API ID Path**: cases_slice.blogCarousel.primary.auto_scroll_interval
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   auto_scroll_interval: prismic.NumberField;
 
   /**
-   * Language field in *CasesSlice → Primary*
+   * Language field in *CasesSlice → BlogCarousel → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: cases_slice.primary.lang
+   * - **API ID Path**: cases_slice.blogCarousel.primary.lang
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   lang: prismic.KeyTextField;
@@ -1699,25 +1761,25 @@ export type CasesSliceSliceBlogCarousel = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *CasesSlice → Primary*
+ * Primary content in *CasesSlice → NewsSection → Primary*
  */
 export interface CasesSliceSliceNewsSectionPrimary {
   /**
-   * Title field in *CasesSlice → Primary*
+   * Title field in *CasesSlice → NewsSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: cases_slice.primary.title
+   * - **API ID Path**: cases_slice.newsSection.primary.title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * Language field in *CasesSlice → Primary*
+   * Language field in *CasesSlice → NewsSection → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: cases_slice.primary.lang
+   * - **API ID Path**: cases_slice.newsSection.primary.lang
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   lang: prismic.KeyTextField;
@@ -1852,175 +1914,175 @@ export type CasesSliceSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *ContatoSlice → Primary*
+ * Primary content in *ContatoSlice → Default → Primary*
  */
 export interface ContatoSliceDefaultPrimary {
   /**
-   * Titulo field in *ContatoSlice → Primary*
+   * Titulo field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.titulo
+   * - **API ID Path**: contato.default.primary.titulo
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   titulo: prismic.KeyTextField;
 
   /**
-   * Destaque do Titulo field in *ContatoSlice → Primary*
+   * Destaque do Titulo field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.destaque_titulo
+   * - **API ID Path**: contato.default.primary.destaque_titulo
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   destaque_titulo: prismic.KeyTextField;
 
   /**
-   * Descrição field in *ContatoSlice → Primary*
+   * Descrição field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.descricao
+   * - **API ID Path**: contato.default.primary.descricao
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   descricao: prismic.KeyTextField;
 
   /**
-   * Logo Whatsapp field in *ContatoSlice → Primary*
+   * Logo Whatsapp field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.logo_whatsapp
+   * - **API ID Path**: contato.default.primary.logo_whatsapp
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo_whatsapp: prismic.ImageField<never>;
 
   /**
-   * Link Whatsapp field in *ContatoSlice → Primary*
+   * Link Whatsapp field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.link_whatsapp
+   * - **API ID Path**: contato.default.primary.link_whatsapp
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   link_whatsapp: prismic.KeyTextField;
 
   /**
-   * Logo Email field in *ContatoSlice → Primary*
+   * Logo Email field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.logo_email
+   * - **API ID Path**: contato.default.primary.logo_email
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo_email: prismic.ImageField<never>;
 
   /**
-   * Link Email field in *ContatoSlice → Primary*
+   * Link Email field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.link_email
+   * - **API ID Path**: contato.default.primary.link_email
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   link_email: prismic.KeyTextField;
 
   /**
-   * Label Nome field in *ContatoSlice → Primary*
+   * Label Nome field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.label_nome
+   * - **API ID Path**: contato.default.primary.label_nome
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_nome: prismic.KeyTextField;
 
   /**
-   * Label Telefone field in *ContatoSlice → Primary*
+   * Label Telefone field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.label_telefone
+   * - **API ID Path**: contato.default.primary.label_telefone
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_telefone: prismic.KeyTextField;
 
   /**
-   * Label Email field in *ContatoSlice → Primary*
+   * Label Email field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.label_email
+   * - **API ID Path**: contato.default.primary.label_email
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_email: prismic.KeyTextField;
 
   /**
-   * Label Mensagem field in *ContatoSlice → Primary*
+   * Label Mensagem field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.label_mensagem
+   * - **API ID Path**: contato.default.primary.label_mensagem
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_mensagem: prismic.KeyTextField;
 
   /**
-   * Label Checkbox field in *ContatoSlice → Primary*
+   * Label Checkbox field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.label_checkbox
+   * - **API ID Path**: contato.default.primary.label_checkbox
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_checkbox: prismic.KeyTextField;
 
   /**
-   * Label Enviar field in *ContatoSlice → Primary*
+   * Label Enviar field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.label_enviar
+   * - **API ID Path**: contato.default.primary.label_enviar
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_enviar: prismic.KeyTextField;
 
   /**
-   * Placeholder Nome field in *ContatoSlice → Primary*
+   * Placeholder Nome field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.placeholder_nome
+   * - **API ID Path**: contato.default.primary.placeholder_nome
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder_nome: prismic.KeyTextField;
 
   /**
-   * Placeholder Telefone field in *ContatoSlice → Primary*
+   * Placeholder Telefone field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.placeholder_telefone
+   * - **API ID Path**: contato.default.primary.placeholder_telefone
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder_telefone: prismic.KeyTextField;
 
   /**
-   * Placeholder Email field in *ContatoSlice → Primary*
+   * Placeholder Email field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.placeholder_email
+   * - **API ID Path**: contato.default.primary.placeholder_email
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder_email: prismic.KeyTextField;
 
   /**
-   * Placeholder Mensagem field in *ContatoSlice → Primary*
+   * Placeholder Mensagem field in *ContatoSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contato.primary.placeholder_mensagem
+   * - **API ID Path**: contato.default.primary.placeholder_mensagem
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder_mensagem: prismic.KeyTextField;
@@ -2057,35 +2119,35 @@ export type ContatoSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *FeaturePageSlice → Primary*
+ * Primary content in *FeaturePageSlice → Default → Primary*
  */
 export interface FeaturePageSliceDefaultPrimary {
   /**
-   * Title field in *FeaturePageSlice → Primary*
+   * Title field in *FeaturePageSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: feature_page.primary.title
+   * - **API ID Path**: feature_page.default.primary.title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * Image field in *FeaturePageSlice → Primary*
+   * Image field in *FeaturePageSlice → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: feature_page.primary.image
+   * - **API ID Path**: feature_page.default.primary.image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
 
   /**
-   * Description field in *FeaturePageSlice → Primary*
+   * Description field in *FeaturePageSlice → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: feature_page.primary.description
+   * - **API ID Path**: feature_page.default.primary.description
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
@@ -2122,25 +2184,25 @@ export type FeaturePageSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *FeaturesSlice → Primary*
+ * Primary content in *FeaturesSlice → Default → Primary*
  */
 export interface FeaturesSliceSliceDefaultPrimary {
   /**
-   * Main Title field in *FeaturesSlice → Primary*
+   * Main Title field in *FeaturesSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: features_slice.primary.main_title
+   * - **API ID Path**: features_slice.default.primary.main_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   main_title: prismic.KeyTextField;
 
   /**
-   * Right text field in *FeaturesSlice → Primary*
+   * Right text field in *FeaturesSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: features_slice.primary.right_text
+   * - **API ID Path**: features_slice.default.primary.right_text
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   right_text: prismic.KeyTextField;
@@ -2222,45 +2284,117 @@ export type FeaturesSliceSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *NewsletterSlice → Primary*
+ * Item in *GaleryImgSlice → Default → Primary → Cards*
+ */
+export interface GaleryImgSliceSliceDefaultPrimaryCardsItem {
+  /**
+   * Image field in *GaleryImgSlice → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galery_img_slice.default.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *GaleryImgSlice → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galery_img_slice.default.primary.cards[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *GaleryImgSlice → Default → Primary*
+ */
+export interface GaleryImgSliceSliceDefaultPrimary {
+  /**
+   * Cards field in *GaleryImgSlice → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galery_img_slice.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cards: prismic.GroupField<
+    Simplify<GaleryImgSliceSliceDefaultPrimaryCardsItem>
+  >;
+}
+
+/**
+ * Default variation for GaleryImgSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GaleryImgSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GaleryImgSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GaleryImgSlice*
+ */
+type GaleryImgSliceSliceVariation = GaleryImgSliceSliceDefault;
+
+/**
+ * GaleryImgSlice Shared Slice
+ *
+ * - **API ID**: `galery_img_slice`
+ * - **Description**: GaleryImgSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GaleryImgSliceSlice = prismic.SharedSlice<
+  "galery_img_slice",
+  GaleryImgSliceSliceVariation
+>;
+
+/**
+ * Primary content in *NewsletterSlice → Default → Primary*
  */
 export interface NewsletterSliceDefaultPrimary {
   /**
-   * Titulo field in *NewsletterSlice → Primary*
+   * Titulo field in *NewsletterSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.primary.titulo
+   * - **API ID Path**: newsletter.default.primary.titulo
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   titulo: prismic.KeyTextField;
 
   /**
-   * Subtitulo field in *NewsletterSlice → Primary*
+   * Subtitulo field in *NewsletterSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.primary.subtitulo
+   * - **API ID Path**: newsletter.default.primary.subtitulo
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subtitulo: prismic.KeyTextField;
 
   /**
-   * Label Checkbox field in *NewsletterSlice → Primary*
+   * Label Checkbox field in *NewsletterSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.primary.label_checkbox
+   * - **API ID Path**: newsletter.default.primary.label_checkbox
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_checkbox: prismic.KeyTextField;
 
   /**
-   * Label Botao field in *NewsletterSlice → Primary*
+   * Label Botao field in *NewsletterSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: newsletter.primary.label_botao
+   * - **API ID Path**: newsletter.default.primary.label_botao
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label_botao: prismic.KeyTextField;
@@ -2297,15 +2431,15 @@ export type NewsletterSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *PartnersSlice → Primary*
+ * Primary content in *PartnersSlice → Default → Primary*
  */
 export interface PartnersSliceSliceDefaultPrimary {
   /**
-   * Title field in *PartnersSlice → Primary*
+   * Title field in *PartnersSlice → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: partners_slice.primary.title
+   * - **API ID Path**: partners_slice.default.primary.title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
@@ -2357,35 +2491,35 @@ export type PartnersSliceSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *RecentPosts → Primary*
+ * Primary content in *RecentPosts → Default → Primary*
  */
 export interface RecentPostsSliceDefaultPrimary {
   /**
-   * Main Title field in *RecentPosts → Primary*
+   * Main Title field in *RecentPosts → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: recent_posts.primary.main_title
+   * - **API ID Path**: recent_posts.default.primary.main_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   main_title: prismic.KeyTextField;
 
   /**
-   * Call To Action Text field in *RecentPosts → Primary*
+   * Call To Action Text field in *RecentPosts → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: recent_posts.primary.call_to_action_text
+   * - **API ID Path**: recent_posts.default.primary.call_to_action_text
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   call_to_action_text: prismic.KeyTextField;
 
   /**
-   * Language field in *RecentPosts → Primary*
+   * Language field in *RecentPosts → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: recent_posts.primary.lang
+   * - **API ID Path**: recent_posts.default.primary.lang
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   lang: prismic.KeyTextField;
@@ -2422,35 +2556,35 @@ export type RecentPostsSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *RecentsPostsAndCategories → Primary*
+ * Primary content in *RecentsPostsAndCategories → Default → Primary*
  */
 export interface RecentsPostsAndCategoriesSliceDefaultPrimary {
   /**
-   * Main TItle field in *RecentsPostsAndCategories → Primary*
+   * Main TItle field in *RecentsPostsAndCategories → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: recents_posts_and_categories.primary.main_title
+   * - **API ID Path**: recents_posts_and_categories.default.primary.main_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   main_title: prismic.KeyTextField;
 
   /**
-   * See all text field in *RecentsPostsAndCategories → Primary*
+   * See all text field in *RecentsPostsAndCategories → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: recents_posts_and_categories.primary.see_all_text
+   * - **API ID Path**: recents_posts_and_categories.default.primary.see_all_text
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   see_all_text: prismic.KeyTextField;
 
   /**
-   * Language field in *RecentsPostsAndCategories → Primary*
+   * Language field in *RecentsPostsAndCategories → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: recents_posts_and_categories.primary.lang
+   * - **API ID Path**: recents_posts_and_categories.default.primary.lang
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   lang: prismic.KeyTextField;
@@ -2550,6 +2684,9 @@ declare module "@prismicio/client" {
       FooterDocumentDataBotoesContatoItem,
       FooterDocumentDataRedesSociaisItem,
       FooterDocumentDataSlicesSlice,
+      GaleryDocument,
+      GaleryDocumentData,
+      GaleryDocumentDataSlicesSlice,
       HeaderDocument,
       HeaderDocumentData,
       HeaderDocumentDataLinksItem,
@@ -2598,6 +2735,11 @@ declare module "@prismicio/client" {
       FeaturesSliceSliceDefaultItem,
       FeaturesSliceSliceVariation,
       FeaturesSliceSliceDefault,
+      GaleryImgSliceSlice,
+      GaleryImgSliceSliceDefaultPrimaryCardsItem,
+      GaleryImgSliceSliceDefaultPrimary,
+      GaleryImgSliceSliceVariation,
+      GaleryImgSliceSliceDefault,
       NewsletterSlice,
       NewsletterSliceDefaultPrimary,
       NewsletterSliceVariation,
