@@ -25,6 +25,8 @@ const config: Config = {
       TabletLandscape: { min: "992px" },
       // => @media (min-width: 992px) { ... }
 
+      Tablet: { min: "768px", max: "1024px" },
+
       Laptop: { min: "923px", max: "1440px" },
       LaptopS: "1200px",
       MaxBlogGrid: { max: "1250px" },
@@ -61,6 +63,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 };
 export default config;

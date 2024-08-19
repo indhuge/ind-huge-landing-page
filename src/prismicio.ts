@@ -33,7 +33,13 @@ const routes: prismic.ClientConfig["routes"] = [
   {
     type: "feature",
     path: "/:lang?/feature/:uid",
-  }
+  },
+  {
+    type: "galery",
+    path: "/:lang?/galery",
+  },
+  
+
 ];
 
 /**
